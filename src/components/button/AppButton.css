@@ -1,0 +1,37 @@
+.primary {
+  background-color: lightblue;
+  color: black;
+}
+
+.secondary {
+  background-color: ghostwhite;
+  color: black;
+}
+
+.warning {
+  background-color: lightgoldenrodyellow;
+  color: black;
+}
+
+.danger {
+  background-color: red;
+  color: white;
+}
+
+.header-btn {
+  padding: 0.5rem 2rem;
+  border-radius: 5%;
+}
+
+.icon-btn {
+  padding: 0.25;
+  border-radius: 50%;
+  border: 2px solid black;
+  height: 25px;
+  width: 25px;
+}
+
+.user-submit-btn {
+  padding: 0.25rem 1rem;
+  border-radius: 2%;
+}

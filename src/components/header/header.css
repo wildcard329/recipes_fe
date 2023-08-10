@@ -1,0 +1,15 @@
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.header-links {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.header-menu {
+  position: relative;
+}
