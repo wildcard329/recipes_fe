@@ -1,14 +1,21 @@
 .user-form {
   display: flex;
   flex-direction: column;
+  gap: 0.5rem;
   position: absolute;
   right: 0;
-  padding: 12px;
+  padding: 2rem 0 2rem 2rem;
+  margin-top: 0;
   border: 2px solid black;
+}
+
+.user-form h4, label {
+  text-transform: capitalize;
 }
 
 .form-input {
   font-size: 1rem;
+  padding-top: 0;
 }
 
 .form-header {

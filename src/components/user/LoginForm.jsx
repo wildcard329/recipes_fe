@@ -23,8 +23,14 @@ const LoginForm = ({ formCb }) => {
         <h4>login</h4>
         <AppButton btnLabel={"x"} classname={"icon-btn"} btnCb={formCb} />
       </div>
-      <input name="username" placeholder="username" className="form-input" type="text" value={user.username} onChange={handleChange} />
-      <input name="password" placeholder="password" className="form-input" type="password" value={user.password} onChange={handleChange}  />
+      <div className="form-field">
+        <label>username</label>
+        <input name="username" placeholder="username" className="form-input" type="text" value={user.username} onChange={handleChange} />
+      </div>
+      <div className="form-field">
+        <label>password</label>
+        <input name="password" placeholder="password" className="form-input" type="password" value={user.password} onChange={handleChange}  />
+      </div>
       <AppButton btnLabel={"submit"} classname={"user-submit-btn"} btnType="submit" />
     </form>
   )
