@@ -25,10 +25,22 @@ const RegisterForm = ({ formCb }) => {
         <h4>register</h4>
         <AppButton btnLabel={"x"} classname={"icon-btn"} btnCb={formCb} />
       </div>
-      <input name="username" placeholder="username" className="form-input" type="text" value={user.username} onChange={handleChange} />
-      <input name="password" placeholder="password" className="form-input" type="password" value={user.password} onChange={handleChange}  />
-      <input name="confirmedPassword" placeholder="confirm password" className="form-input" type="password" value={user.confirmedPassword} onChange={handleChange}  />
-      <input name="email" placeholder="email" className="form-input" type="email" value={user.email} onChange={handleChange}  />
+      <div className="form-field">
+        <label>username</label>
+        <input name="username" placeholder="username" className="form-input" type="text" value={user.username} onChange={handleChange} />
+      </div>
+      <div className="form-field">
+        <label>password</label>
+        <input name="password" placeholder="password" className="form-input" type="password" value={user.password} onChange={handleChange}  />
+      </div>
+      <div className="form-field">
+        <label>confirm password</label>
+        <input name="confirmedPassword" placeholder="confirm password" className="form-input" type="password" value={user.confirmedPassword} onChange={handleChange}  />
+      </div>
+      <div className="form-field">
+        <label>email</label>
+        <input name="email" placeholder="email" className="form-input" type="email" value={user.email} onChange={handleChange}  />
+      </div>
       <AppButton btnLabel={"submit"} classname={""} btnType="submit" />
     </form>
   )
