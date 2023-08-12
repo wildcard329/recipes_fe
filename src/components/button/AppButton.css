@@ -3,9 +3,19 @@
   color: black;
 }
 
+.primary:hover {
+  background-color: aliceblue;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
 .secondary {
   background-color: ghostwhite;
   color: black;
+}
+
+.secondary:hover {
+  background-color: white;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
 .warning {
@@ -13,9 +23,19 @@
   color: black;
 }
 
+.warning:hover {
+  background-color: lemonchiffon;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
 .danger {
   background-color: red;
   color: white;
+}
+
+.danger:hover {
+  background-color: darkred;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
 .header-btn {
@@ -31,7 +51,16 @@
   width: 25px;
 }
 
+.menu-btn {
+  padding: 0.5rem 2rem;
+  border-radius: 5%;
+  white-space: nowrap;
+}
+
 .user-submit-btn {
   padding: 0.25rem 1rem;
+  margin-top: 0.75rem;
   border-radius: 2%;
+  width: min-content;
+  text-transform: capitalize;
 }

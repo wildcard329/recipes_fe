@@ -20,10 +20,10 @@ const RegisterForm = ({ formCb }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="user-form">
+    <form onSubmit={handleSubmit} className="user-form absolute-right">
       <div className="form-header">
-        <h4>register</h4>
-        <AppButton btnLabel={"x"} classname={"icon-btn"} btnCb={formCb} />
+        <h2>register</h2>
+        <AppButton btnLabel={"x"} classname={"secondary icon-btn"} btnCb={formCb} />
       </div>
       <div className="form-field">
         <label>username</label>
@@ -41,7 +41,7 @@ const RegisterForm = ({ formCb }) => {
         <label>email</label>
         <input name="email" placeholder="email" className="form-input" type="email" value={user.email} onChange={handleChange}  />
       </div>
-      <AppButton btnLabel={"submit"} classname={""} btnType="submit" />
+      <AppButton btnLabel={"submit"} classname={"primary user-submit-btn"} btnType="submit" />
     </form>
   )
 }

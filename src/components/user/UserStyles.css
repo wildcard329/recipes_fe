@@ -2,20 +2,21 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  position: absolute;
-  right: 0;
-  padding: 2rem 0 2rem 2rem;
-  margin-top: 0;
+  padding: 0.5rem 2rem 2rem 2rem;
   border: 2px solid black;
 }
 
-.user-form h4, label {
+.user-form h2, label {
   text-transform: capitalize;
+}
+
+.user-menu {
+  display: flex;
+  flex-direction: column;
 }
 
 .form-input {
   font-size: 1rem;
-  padding-top: 0;
 }
 
 .form-header {
