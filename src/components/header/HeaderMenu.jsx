@@ -1,13 +1,19 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { userContext } from "../../state/contexts";
 import UserAuth from "../user/UserAuth";
+import UserMenuContainer from "../user/UserMenuContainer";
 import "./header.css";
 
 const HeaderMenu = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { isLoggedIn } = useContext(userContext);
 
   return(
     <div className="header-menu">
-      {<UserAuth />}
+      {isLoggedIn ?
+        <UserMenuContainer />
+      :
+        <UserAuth />
+      }
     </div>
   )
 }
