@@ -6,7 +6,7 @@ import "./UserStyles.css";
 const LoginForm = ({ formCb }) => {
 const { loginUser } = useContext(userContext);
   const [user, setUser] = useState({
-    username: "",
+    email: "",
     password: "",
   });
 
@@ -27,8 +27,8 @@ const { loginUser } = useContext(userContext);
         <AppButton btnLabel={"x"} classname={"secondary icon-btn"} btnCb={formCb} />
       </div>
       <div className="form-field">
-        <label>username</label>
-        <input name="username" placeholder="username" className="form-input" type="text" value={user.username} onChange={handleChange} />
+        <label>email</label>
+        <input name="email" placeholder="email" className="form-input" type="text" value={user.email} onChange={handleChange} />
       </div>
       <div className="form-field">
         <label>password</label>
