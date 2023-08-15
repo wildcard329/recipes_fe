@@ -1,6 +1,5 @@
 import HeaderLink from "./HeaderLink";
 
-
 const HeaderLinksContainer = () => 
   <div className="header-links">
     <HeaderLink path={'/'} classname={'header-link'} label={'home'} />

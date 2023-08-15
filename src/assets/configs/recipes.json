@@ -1,0 +1,50 @@
+[
+  {
+    "recipe_id": 12,
+    "recipe_name": "perfect prime rib",
+    "recipe_description": "The best prime rib you'll ever eat, cooked to a perfect, juicy medium rare.",
+    "recipe_image_name": "",
+    "user_id": 19,
+    "prep_time": 10,
+    "cook_time": 140,
+    "total_time": 270,
+    "ingredients": [],
+    "instructions": [
+      {
+        "recipe_id": 12,
+        "step_number": 1,
+        "step_description": "Place prime rib roast on plate and bring to room temperature, 2 to 4 hours."
+      },
+      {
+        "recipe_id": 12,
+        "step_number": 2,
+        "step_description": "Preheat the oven to 500 degrees F."
+      },
+      {
+        "recipe_id": 12,
+        "step_number": 3,
+        "step_description": "Combine butter, pepper, and herbes de Provence in a bowl; mix until well blended. Spread butter mixture evenly over entire roast. Season roast generously with kosher salt."
+      },
+      {
+        "recipe_id": 12,
+        "step_number": 4,
+        "step_description": "Roast the 4 pound roast in the preheated oven for 20 minutes. (If your roast is larger or smaller than 4 pounds, multiply the exact weight times 5 minutes.)"
+      },
+      {
+        "recipe_id": 12,
+        "step_number": 5,
+        "step_description": "Turn the oven off and, leaving the roast in the oven with the door closed, let the roast sit in the oven for 2 hours."
+      },
+      {
+        "recipe_id": 12,
+        "step_number": 6,
+        "step_description": "Remove roast from the oven, slice, and serve."
+      }
+    ],
+    "categories": [
+      {
+        "category_name": "dinner"
+      }
+    ]
+  }
+]

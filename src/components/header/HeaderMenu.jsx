@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { userContext } from "../../state/contexts";
 import UserAuth from "../user/UserAuth";
 import UserMenuContainer from "../user/UserMenuContainer";
