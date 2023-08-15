@@ -2,3 +2,8 @@
   position: absolute;
   right: 0;
 }
+
+.spaced-apart {
+  display: flex;
+  justify-content: space-between;
+}
