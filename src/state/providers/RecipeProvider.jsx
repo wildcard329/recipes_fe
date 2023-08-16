@@ -6,8 +6,16 @@ const RecipeProvider = ({ children }) => {
   const [recipe, setRecipe] = useState({});
   const recipes = useArray();
 
+  const addRecipeDetails = (e) => setRecipe({ ...recipe, [e.target.name]: e.target.value });
+
+  const setRecipeCategories = (categories) => setRecipe({ ...recipe, categories });
+
+  const setRecipeIngredients = (ingredients) => setRecipe({ ...recipe, ingredients });
+
+  const setRecipeInstructions = (instructions) => setRecipe({ ...recipe, instructions });
+
   return(
-    <recipeContext.Provider value={{ recipes, recipe, setRecipe }}>
+  <recipeContext.Provider value={{ recipes, recipe, addRecipeDetails, setRecipeCategories, setRecipeIngredients, setRecipeInstructions }}>
       {children}
     </recipeContext.Provider>
   )
