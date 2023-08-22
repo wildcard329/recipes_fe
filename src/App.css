@@ -7,3 +7,35 @@
   display: flex;
   justify-content: space-between;
 }
+
+.recipes-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 2rem;
+}
+
+.recipe-card {
+  padding: 1rem;
+  background-color: whitesmoke;
+  border: 2px solid whitesmoke;
+}
+
+.recipe-card:hover, :focus {
+  border: 2px solid black;
+  cursor: pointer;
+}
+
+.recipe-data-cluster {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.recipe-list-cluster {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.recipe-info-image {
+  float: left;
+}
