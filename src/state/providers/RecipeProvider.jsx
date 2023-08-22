@@ -15,7 +15,7 @@ const RecipeProvider = ({ children }) => {
   const setRecipeInstructions = (instructions) => setRecipe({ ...recipe, instructions });
 
   return(
-  <recipeContext.Provider value={{ recipes, recipe, addRecipeDetails, setRecipeCategories, setRecipeIngredients, setRecipeInstructions }}>
+    <recipeContext.Provider value={{ recipes, recipe, addRecipeDetails, setRecipeCategories, setRecipeIngredients, setRecipeInstructions }}>
       {children}
     </recipeContext.Provider>
   )

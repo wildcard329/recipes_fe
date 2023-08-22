@@ -1,0 +1,26 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-recbackend-dev-81551-authRole",
+      "UnauthRoleArn": "arn:aws:iam::655708725371:role/amplify-recbackend-dev-81551-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::655708725371:role/amplify-recbackend-dev-81551-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-recbackend-dev-81551-deployment",
+      "UnauthRoleName": "amplify-recbackend-dev-81551-unauthRole",
+      "StackName": "amplify-recbackend-dev-81551",
+      "StackId": "arn:aws:cloudformation:us-west-2:655708725371:stack/amplify-recbackend-dev-81551/9db58f30-4035-11ee-919f-0a4a3e875f8d",
+      "AmplifyAppId": "d3nres1avtnmum"
+    },
+    "categories": {
+      "function": {
+        "reclambda": {
+          "deploymentBucketName": "amplify-recbackend-dev-81551-deployment",
+          "s3Key": "amplify-builds/reclambda-6a6668744a4f4b32596f-build.zip"
+        }
+      },
+      "api": {
+        "recipes": {}
+      }
+    }
+  }
+}

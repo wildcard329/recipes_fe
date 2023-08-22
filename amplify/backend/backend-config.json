@@ -1,0 +1,43 @@
+{
+  "api": {
+    "recipes": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "reclambda"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
+  "function": {
+    "reclambda": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_reclambda_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "reclambda"
+        }
+      ]
+    },
+    "AMPLIFY_function_reclambda_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "reclambda"
+        }
+      ]
+    }
+  }
+}
