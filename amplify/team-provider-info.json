@@ -20,6 +20,9 @@
       },
       "api": {
         "recipes": {}
+      },
+      "storage": {
+        "recipes": {}
       }
     }
   }

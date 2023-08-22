@@ -1,0 +1,44 @@
+[
+  {
+    "recipe_id": 1,
+    "recipe_name": "chicken and mushroom risotto",
+    "recipe_description": "Simple and elegant, this savory dish is an amazing side which can pair well with other dishes.",
+    "recipe_author": "kevin",
+    "recipe_image_key": null,
+    "recipe_prep_time": 20,
+    "recipe_cook_time": 60,
+    "recipe_total_time": 80,
+    "is_ingredient": false,
+    "recipe_categories": ["side", "appetizer"],
+    "recipe_ingredients": [
+      "1 cup arborio rice",
+      "4 cups chicken broth",
+      "1 cup mushrooms (sliced)",
+      "1 small onion (finely chopped)",
+      "2 cloves garlic (minced)",
+      "1/2 cup white grape juice",
+      "1/4 cup grated Parmesan cheese",
+      "2 tablespoons butter",
+      "2 tablespoons olive oil",
+      "1 cup cubed chicken",
+      "salt and pepper to taste"
+    ],
+    "recipe_instructions": [
+      "Prepare the mushrooms, onion, and garlic if they need to be chopped or sliced.",
+      "In a medium saucepan, heat the chicken broth over medium heat. Keep simmering while risotto is prepared.",
+      "In a large skillet, heat 1 tablespoon of olive oil over medium heat. Add the sliced mushrooms and cook until they are brown and tender. When they are cooked, remove and set aside.",
+      "In the same skillet, add the remaining tablespoon of olive oil. Add the chopped onion and cook until it becomes translucent. Add the minced garlic and cook for an additional minute.",
+      "Add the Arborio rice to the skillet and stir to coat the rice with the oil.",
+      "Pour the grape juice into the skillet and stir until the liquid is mostly absorbed by the rice.",
+      "Begin adding the simmering broth to the rice, one ladleful at a time. Stir constantly and allow the liquid to be mostly absorbed before adding more broth. After half the broth is added, stir in the mushrooms. Continue to cook in the broth until the rice is creamy and cooked to your desired level of tenderness.",
+      "Once the rice is cooked, remove the skillet from heat. Stir in the butter and Parmesan cheese until they are melted. Salt and pepper to taste."
+    ],
+    "recipe_tools": [
+      "stove burner (2)",
+      "medium saucepan",
+      "large skillet",
+      "measuring cups",
+      "measuring spoons"
+    ]
+  }
+]
