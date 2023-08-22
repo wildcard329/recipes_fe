@@ -35,9 +35,10 @@ app.get('/recipes', function(req, res) {
   res.json({ success: 'get call succeed!', recipes });
 });
 
-app.get('/recipes/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'get call succeed!', url: req.url});
+app.get('/recipes/:recipeId', function(req, res) {
+  const recipeId = parseInt(req.params.recipeId);
+  const recipe = recipes.find((recipeItem) => recipeItem.recipe_id === recipeId);
+  res.json({ success: 'get call succeed!', recipe });
 });
 
 /****************************
