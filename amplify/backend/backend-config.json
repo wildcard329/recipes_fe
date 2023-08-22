@@ -39,5 +39,11 @@
         }
       ]
     }
+  },
+  "storage": {
+    "recipes": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    }
   }
 }

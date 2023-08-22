@@ -12,6 +12,7 @@ See the License for the specific language governing permissions and limitations 
 const express = require('express')
 const bodyParser = require('body-parser')
 const awsServerlessExpressMiddleware = require('aws-serverless-express/middleware')
+const recipes = require('./recipes.json');
 
 // declare a new express app
 const app = express()
@@ -31,7 +32,6 @@ app.use(function(req, res, next) {
  **********************/
 
 app.get('/recipes', function(req, res) {
-  const recipes = ['spaghetti', 'risotto', 'pizza']
   res.json({ success: 'get call succeed!', recipes });
 });
 

@@ -1,0 +1,26 @@
+{
+  "resourceName": "recipes",
+  "tableName": "recipes",
+  "partitionKey": {
+    "fieldName": "recipe_id",
+    "fieldType": "number"
+  },
+  "sortKey": {
+    "fieldName": "recipe_author",
+    "fieldType": "string"
+  },
+  "gsi": [
+    {
+      "name": "recipe_name",
+      "partitionKey": {
+        "fieldName": "recipe_name",
+        "fieldType": "string"
+      },
+      "sortKey": {
+        "fieldName": "recipe_total_time",
+        "fieldType": "number"
+      }
+    }
+  ],
+  "triggerFunctions": []
+}
