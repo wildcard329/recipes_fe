@@ -36,21 +36,21 @@ app.use(function(req, res, next) {
 
 app.get('/recipes', async (req, res) => {
   try {
-    const recipes = await getRecipes();
-    res.json({ success: 'get call succeed!', recipes });
+    const { Items: recipes } = await getRecipes();
+    res.json({ msg: 'get call succeed!', data: recipes });
   } catch (error) {
-    res.json({ error: 'error retrieving get call' });
+    res.json({ msg: 'error retrieving get call' });
   };
 });
 
-app.get('/recipes/:recipeId', async (req, res) => {
+app.get('/recipes/:recipeAuthor/:recipeId', async (req, res) => {
+  const recipeAuthor = req.params.recipeAuthor;
   const recipeId = parseInt(req.params.recipeId);
-  // const recipe = recipes.find((recipeItem) => recipeItem.recipe_id === recipeId);
   try {
-    const recipe = await getRecipeById(recipeId);
-    res.json({ success: 'get call succeed!', recipe });
+    const { Item: recipe } = await getRecipeById(recipeAuthor, recipeId);
+    res.json({ msg: 'get call succeed!', data: recipe });
   } catch (error) {
-    res.json({ error: 'error retrieving get call' });
+    res.json({ msg: 'error retrieving get call' });
   }
 });
 
@@ -59,13 +59,12 @@ app.get('/recipes/:recipeId', async (req, res) => {
 ****************************/
 
 app.post('/recipes', async (req, res) => {
-  // Add your code here
   const recipe = req.body;
   try {
     await addOrUpdateRecipe(recipe);
-    res.json({success: 'post call succeed!' });
+    res.json({ msg: 'post call succeed!' });
   } catch (error) {
-    res.json({ error: 'error processing data' });
+    res.json({ msg: 'error processing data' });
   };
 });
 
@@ -74,13 +73,12 @@ app.post('/recipes', async (req, res) => {
 ****************************/
 
 app.put('/recipes', async (req, res) => {
-  // Add your code here
   const recipe = req.body;
   try {
     await addOrUpdateRecipe(recipe);
-    res.json({success: 'put call succeed!', url: req.url, body: req.body})
+    res.json({ msg: 'put call succeed!' })
   } catch (error) {
-    res.json({ error: 'error processing request' });
+    res.json({ msg: 'error processing request' });
   };
 });
 
@@ -88,14 +86,14 @@ app.put('/recipes', async (req, res) => {
 * Example delete method *
 ****************************/
 
-app.delete('/recipes/:recipeId', async (req, res) => {
-  // Add your code here
-  const recipeId = req.params.recipeId;
+app.delete('/recipes/:recipeAuthor/:recipeId', async (req, res) => {
+  const recipeAuthor = req.params.recipeAuthor;
+  const recipeId = parseInt(req.params.recipeId);
   try {
-    await deleteRecipe(recipeId);
-    res.json({success: 'delete call succeed!'});
+    await deleteRecipe(recipeAuthor, recipeId);
+    res.json({ msg: 'delete call succeed!' });
   } catch (error) {
-    res.json({ error: 'could not delete recipe' });
+    res.json({ msg: 'could not delete recipe' });
   };
 });
 
