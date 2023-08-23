@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { API } from "aws-amplify";
+import { useReactRouter } from "../utils/customhooks";
 import imgPlaceholder from "../assets/images/img_unavailable.jpg"
 import { OrderedList, UnorderedList } from "../components/lists";
 
 const RecipeViewerPage = () => {
   const [recipe, setRecipe] = useState({});
+  const { locationState: { recipe_id, recipe_author } } = useReactRouter();
 
   const getRecipe = async () => {
-    const { recipe } = await API.get('recipes', '/recipes/1');
+    const { data: recipe } = await API.get('recipes', `/recipes/${recipe_author}/${recipe_id}`);
     await setRecipe(recipe);
   };
 

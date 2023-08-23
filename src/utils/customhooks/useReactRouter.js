@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 const useReactRouter = () => {
   const nav = useNavigate();
   const location = useLocation();
+  const locationState = location.state;
   const routerPath = location.pathname;
 
   const checkRtMatch = (pathname) => routerPath === pathname;
@@ -16,6 +17,7 @@ const useReactRouter = () => {
     navTo,
     goBack,
     routerPath,
+    locationState,
   }
 }
 
