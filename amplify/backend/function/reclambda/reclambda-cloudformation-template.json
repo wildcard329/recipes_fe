@@ -15,6 +15,26 @@
     },
     "s3Key": {
       "Type": "String"
+    },
+    "apirecipesApiName": {
+      "Type": "String",
+      "Default": "apirecipesApiName"
+    },
+    "apirecipesApiId": {
+      "Type": "String",
+      "Default": "apirecipesApiId"
+    },
+    "storagerecipesName": {
+      "Type": "String",
+      "Default": "storagerecipesName"
+    },
+    "storagerecipesArn": {
+      "Type": "String",
+      "Default": "storagerecipesArn"
+    },
+    "storagerecipesStreamArn": {
+      "Type": "String",
+      "Default": "storagerecipesStreamArn"
     }
   },
   "Conditions": {
@@ -69,6 +89,21 @@
             },
             "REGION": {
               "Ref": "AWS::Region"
+            },
+            "API_RECIPES_APINAME": {
+              "Ref": "apirecipesApiName"
+            },
+            "API_RECIPES_APIID": {
+              "Ref": "apirecipesApiId"
+            },
+            "STORAGE_RECIPES_NAME": {
+              "Ref": "storagerecipesName"
+            },
+            "STORAGE_RECIPES_ARN": {
+              "Ref": "storagerecipesArn"
+            },
+            "STORAGE_RECIPES_STREAMARN": {
+              "Ref": "storagerecipesStreamArn"
             }
           }
         },
@@ -160,6 +195,31 @@
                   }
                 ]
               }
+            },
+            {
+              "Sid": "ReadWriteTable",
+              "Effect": "Allow",
+              "Action": [
+                "dynamodb:GetItem",
+                "dynamodb:Query",
+                "dynamodb:Scan",
+                "dynamodb:PutItem",
+                "dynamodb:DeleteItem"
+              ],
+              "Resource": "arn:aws:dynamodb:us-west-2:655708725371:table/recipes-dev"
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+              ],
+              "Resource": "arn:aws:dynamodb:us-west-2:655708725371"
+            },
+            {
+              "Effect": "Allow",
+              "Action": "logs:CreateLogGroup",
+              "Resource": "*"
             }
           ]
         }
