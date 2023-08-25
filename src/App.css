@@ -76,13 +76,7 @@
 }
 
 .recipes-container {
-  background-image: url('./assets/images/ingredients.jpg');
-  background-position: center;
-  background-size: cover;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  padding: 2rem;
+
 }
 
 .recipe-card {
