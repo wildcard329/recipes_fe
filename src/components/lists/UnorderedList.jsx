@@ -1,7 +1,7 @@
 const UnorderedList = ({ title, data }) => 
   <div>
-    <h5>{title}</h5>
-    <ul>
+    <h3>{title}</h3>
+    <ul className="highlight-line">
       {data?.map((item) => <li>{item}</li>)}
     </ul>
   </div>
