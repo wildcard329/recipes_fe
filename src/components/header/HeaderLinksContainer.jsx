@@ -1,6 +1,7 @@
 import Divider from "./Divider";
 import HeaderLink from "./HeaderLink";
 import HeaderLinkTrigger from "./HeaderLinkTrigger";
+import "./header.css";
 
 const recipeLinkConfig = [
   {

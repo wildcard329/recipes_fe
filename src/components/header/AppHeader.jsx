@@ -3,7 +3,7 @@ import HeaderLinksContainer from "./HeaderLinksContainer";
 import "./header.css";
 
 const AppHeader = () => 
-  <header className="app-header spaced-apart align-flex-end">
+  <header className="app-header">
     <AppLogo />
     <HeaderLinksContainer />
   </header>

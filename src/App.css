@@ -75,59 +75,6 @@
   height: min-content;
 }
 
-.recipes-container {
-
-}
-
-.recipe-card {
-  border: 2px solid whitesmoke;
-  background-image: linear-gradient(lightblue, whitesmoke);
-
-}
-
-.recipe-card:hover, :focus {
-  border: 2px solid black;
-  cursor: pointer;
-}
-
-.recipe-data-cluster {
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-  width: min-content;
-  white-space: nowrap;
-}
-
-.recipe-list-cluster {
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.recipe-info-image {
-  float: left;
-}
-
-.recipe-info {
-  float: right;
-  max-width: 50%;
-}
-
-.recipe-info-image {
-  margin-right: 1.5rem;
-}
-
-.recipe-viewer-section {
-  margin-top: 3.1rem;
-}
-
-.card-text p {
-  padding-bottom: 0.5rem;
-}
-
-.card-text {
-  padding-left: 0.5rem;
-}
-
 .bg-alice-blue {
   background-color: aliceblue;
 }

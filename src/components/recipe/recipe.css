@@ -1,0 +1,22 @@
+.recipe-card {
+  border: 2px solid whitesmoke;
+  background-image: linear-gradient(lightblue, whitesmoke);
+}
+
+.recipe-card:hover, :focus {
+  border: 2px solid black;
+  cursor: pointer;
+}
+
+.recipe-card-image {
+  max-width: 100%;
+  height: auto;
+}
+
+.recipe-card-text {
+  padding-left: 1rem;
+}
+
+@media (min-width: 768px) {
+
+}

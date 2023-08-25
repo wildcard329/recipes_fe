@@ -24,7 +24,7 @@ const RecipeViewerPage = () => {
     <div className="recipe-info-page">
       <h1>{recipe?.recipe_name}</h1>
       <section id="recipe-data" className="recipe-viewer-section">
-        <img src={imgPlaceholder} alt='recipe-image' className="recipe-info-image" width={500} height={250} />
+        <img src={imgPlaceholder} alt='recipe-image' className="recipe-info-image" />
         <aside className="recipe-info">
           <div className="recipe-data-cluster highlight-line bg-alice-blue">
             <span>Prep time: {prepTime}</span>
