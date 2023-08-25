@@ -81,7 +81,7 @@
 .recipe-info {
   margin-top: 1rem;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .recipe-info-image {
@@ -92,6 +92,11 @@
 .recipe-list-cluster {
   display: flex;
   flex-direction: column;
+  gap: 1rem;
+}
+
+#recipe-instructions {
+  margin-top: 1rem;
 }
 
 @media (min-width: 480px) {
