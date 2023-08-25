@@ -1,7 +1,3 @@
-.app-header {
-  padding: 1rem;
-}
-
 .header-links {
   display: flex;
   flex-direction: row;
@@ -10,4 +6,11 @@
 
 .header-menu {
   position: relative;
+}
+
+.app-header {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  padding: 3.125rem 0;
 }
