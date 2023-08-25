@@ -1,0 +1,51 @@
+.home-page-header {
+  margin-bottom: 3.125rem;
+  text-shadow: black 1px 0 10px;
+}
+
+#home-page-hero {
+  background-image: url('../assets/images/rec-app-home-hero.jpg');
+  background-position: center;
+  background-size: cover;
+  color: white;
+  height: 300px;
+  padding: 3.125rem;
+  font-weight: 800;
+}
+
+.hero-text {
+  text-shadow: black 1px 0 10px;
+  font-size: 1.2rem;
+}
+
+#home-page-ad-1 {
+  background-color: aliceblue;
+}
+
+#home-page-ad-2 {
+  background-color: whitesmoke;
+  height: 25rem;
+}
+
+#home-page-ad-3:first-child {
+  display: inline-block;
+}
+
+.home-page-sec-img {
+  height: 300px;
+  width: 300px;
+}
+
+.page-section {
+  margin-bottom: 3.125rem;
+  padding: 3.125rem;
+  line-height: 1.75rem;
+}
+
+.page-section h2 {
+  margin-bottom: 2rem;
+}
+
+.section-ad-content {
+  margin: 3.125rem;
+}

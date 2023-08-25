@@ -8,16 +8,47 @@
   justify-content: space-between;
 }
 
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+.space-buffer-left {
+  margin-left: 3.125rem;
+}
+
+.space-buffer-right {
+  margin-right: 3.125rem;
+}
+
+.app-container {
+  padding: 3.125rem;
+  position: relative;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
 .recipes-container {
+  background-image: url('./assets/images/ingredients.jpg');
+  background-position: center;
+  background-size: cover;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  margin: 2rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  padding: 2rem;
 }
 
 .recipe-card {
-  padding: 1rem;
-  background-color: whitesmoke;
   border: 2px solid whitesmoke;
+  background-image: linear-gradient(lightblue, whitesmoke);
+
 }
 
 .recipe-card:hover, :focus {
@@ -38,4 +69,12 @@
 
 .recipe-info-image {
   float: left;
+}
+
+.card-text p {
+  padding-bottom: 0.5rem;
+}
+
+.card-text {
+  padding-left: 0.5rem;
 }

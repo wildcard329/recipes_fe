@@ -1,7 +1,7 @@
 import { AppHeader } from "./components/header";
 
 const AppLayout = ({ children }) =>
-  <div>
+  <div className="app-container">
     <AppHeader />
     {children}
   </div>
