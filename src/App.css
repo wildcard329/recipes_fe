@@ -3,9 +3,24 @@
   right: 0;
 }
 
+.header-link-menu {
+  position: absolute;
+  background-color: white;
+  padding: 0.25rem 1rem;
+}
+
+.header-link-menu:hover {
+  background-color: whitesmoke;
+}
+
 .spaced-apart {
   display: flex;
   justify-content: space-between;
+}
+
+.align-flex-end {
+  display: flex;
+  align-content: flex-end;
 }
 
 .float-left {
@@ -14,6 +29,23 @@
 
 .float-right {
   float: right;
+}
+
+.clear-float {
+  clear: both;
+}
+
+.pb-1 {
+  padding-bottom: 1rem;
+}
+
+.ml-1-5 {
+  margin-left: 1.5rem;
+}
+
+.line-highlight {
+  padding: 1rem 2rem;
+  max-width: 60rem;
 }
 
 .space-buffer-left {
@@ -33,6 +65,14 @@
   display: flex;
   flex-direction: row;
   gap: 1rem;
+}
+
+.highlight-line {
+  padding: 1rem 2rem;
+}
+
+.min-height {
+  height: min-content;
 }
 
 .recipes-container {
@@ -60,6 +100,8 @@
   display: flex;
   flex-direction: row;
   gap: 1rem;
+  width: min-content;
+  white-space: nowrap;
 }
 
 .recipe-list-cluster {
@@ -71,10 +113,41 @@
   float: left;
 }
 
+.recipe-info {
+  float: right;
+  max-width: 50%;
+}
+
+.recipe-info-image {
+  margin-right: 1.5rem;
+}
+
+.recipe-viewer-section {
+  margin-top: 3.1rem;
+}
+
 .card-text p {
   padding-bottom: 0.5rem;
 }
 
 .card-text {
   padding-left: 0.5rem;
+}
+
+.bg-alice-blue {
+  background-color: aliceblue;
+}
+
+.bg-white-smoke {
+  background-color: whitesmoke;
+}
+
+.bg-navy {
+  background-color: navy;
+  color: white;
+}
+
+.bg-slate {
+  background-color: slategray;
+  color: white;
 }

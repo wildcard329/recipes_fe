@@ -31,6 +31,10 @@
   display: inline-block;
 }
 
+#recipe-data {
+  height: 15rem;
+}
+
 .home-page-sec-img {
   height: 300px;
   width: 300px;

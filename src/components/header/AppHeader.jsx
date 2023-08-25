@@ -1,13 +1,11 @@
 import AppLogo from "../logo/AppLogo";
 import HeaderLinksContainer from "./HeaderLinksContainer";
-import HeaderMenu from "./HeaderMenu";
 import "./header.css";
 
 const AppHeader = () => 
-  <header className="app-header spaced-apart">
+  <header className="app-header spaced-apart align-flex-end">
     <AppLogo />
     <HeaderLinksContainer />
-    {/* <HeaderMenu /> */}
   </header>
 
 export default AppHeader;
