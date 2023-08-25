@@ -31,6 +31,17 @@
   display: inline-block;
 }
 
+#recipes-section {
+  background-image: url('../assets/images/ingredients.jpg');
+  background-position: center;
+  background-size: cover;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  padding: 2rem;
+  margin: 0 auto;
+}
+
 #recipe-data {
   height: 15rem;
 }
