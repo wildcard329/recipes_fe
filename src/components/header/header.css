@@ -23,6 +23,10 @@
   align-content: center;
 }
 
+.header-link-menu {
+  display: none;
+}
+
 .divider {
   display: none;
 }
@@ -46,5 +50,15 @@
   }
   .header-links {
     flex-direction: row;
+  }
+  .header-link-menu {
+    display: block;
+    position: absolute;
+    background-color: white;
+    padding: 0.25rem 1rem;
+  }
+  
+  .header-link-menu:hover {
+    background-color: whitesmoke;
   }
 }

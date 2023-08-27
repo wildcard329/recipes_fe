@@ -3,16 +3,6 @@
   right: 0;
 }
 
-.header-link-menu {
-  position: absolute;
-  background-color: white;
-  padding: 0.25rem 1rem;
-}
-
-.header-link-menu:hover {
-  background-color: whitesmoke;
-}
-
 .spaced-apart {
   display: flex;
   justify-content: space-between;
