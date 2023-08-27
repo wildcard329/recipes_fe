@@ -33,7 +33,9 @@ const RecipeViewerPage = () => {
     <>
       {
         isLoading ?
-          <AppLoader />
+          <div className="space-buffer">
+            <AppLoader />
+          </div>
         : 
           <div className="recipe-info-page">
             <h1>{recipe?.recipe_name}</h1>

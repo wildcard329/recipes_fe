@@ -26,7 +26,9 @@ const RecipesPage = () => {
   return (
     <>
       {isLoading ?
-        <AppLoader />
+        <div className="space-buffer">
+          <AppLoader />
+        </div>
       :
         <div className="recipes-container">
           <h1>Browse Recipes</h1>
