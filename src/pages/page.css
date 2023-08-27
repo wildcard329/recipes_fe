@@ -99,6 +99,10 @@
   margin-top: 1rem;
 }
 
+.space-buffer {
+  margin-top: 8rem;
+}
+
 @media (min-width: 480px) {
   .mobile-hidden {
     display: block;
