@@ -1,5 +1,4 @@
 import React from "react";
-import homePageConfig from "../assets/configs/home.json";
 import section1Img from "../assets/images/rec-app-home-section-1.jpg";
 import section2Img from "../assets/images/rec-app-home-section-2.jpg"
 import "./page.css";
