@@ -1,7 +1,7 @@
 import "./loader.css";
 
-const AppLoader = () => 
-  <div class="loader">
+const AppLoader = ({ size="large" }) => 
+  <div className={`loader ${size}`}>
     <span></span>
     <span></span>
     <span></span>

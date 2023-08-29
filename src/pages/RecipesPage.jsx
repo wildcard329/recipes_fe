@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { API } from "aws-amplify";
+import { API, Storage } from "aws-amplify";
 import { RecipeCard } from "../components/recipe";
 import { useBool } from "../utils/customhooks";
 import AppLoader from "../components/loader/AppLoader";
@@ -12,10 +12,15 @@ const RecipesPage = () => {
     setNotTruthy: setIsNotLoading,
   } = useBool();
 
+  const addImgAttr = async (recs) => await Promise.all(recs?.map(async (recipe) => await ({ ...recipe, recipe_image: recipe?.recipe_image_key ? await Storage.get(recipe?.recipe_image_key) : null })));
+
   const getRecipes = async () => {
     setIsLoading();
     const { data: recipes } = await API.get('recipes', '/recipes');
     await setRecipes(recipes);
+    const updatedRecipes = await addImgAttr(recipes);
+    console.log('data ', updatedRecipes);
+    await setRecipes(updatedRecipes);
     setIsNotLoading();
   };
 

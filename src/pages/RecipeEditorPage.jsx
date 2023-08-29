@@ -16,7 +16,8 @@ const RecipeEditorPage = () => {
   }
 
   return(
-    <RecipeForm recipeData={recipe} />
+    <p>form coming soon!</p>
+    // <RecipeForm recipeData={recipe} />
   )
 }
 
