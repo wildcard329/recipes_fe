@@ -5,7 +5,7 @@ import { useBool } from "../../utils/customhooks";
 import RecipeForm from "./RecipeForm";
 import { AppButton } from "../button";
 
-const RecipeViewer = ({ recipe }) => {
+const RecipeViewer = ({ recipe, recipeImage }) => {
   const {
     isTruthy: isEditing,
     setTruthy: setIsEditing,
@@ -15,12 +15,13 @@ const RecipeViewer = ({ recipe }) => {
   return(
     <div className="recipe-info-page">
       {isEditing ?
-        <RecipeForm recipeData={recipe} />
+        <p>Form coming soon!</p>
+        // <RecipeForm recipeData={recipe} />
       :
       <>
         <h1>{recipe?.recipe_name}</h1>
         <section id="recipe-data" className="recipe-viewer-section">
-          <img src={imgPlaceholder} alt='recipe-image' className="recipe-info-image" />
+          <img src={recipeImage ? recipeImage : imgPlaceholder} alt='recipe-image' className="recipe-info-image" loading="lazy" />
           <aside className="recipe-info">
             <div className="recipe-data-cluster highlight-line bg-alice-blue">
               <span>Prep time: {formatMinutes(recipe?.recipe_prep_time)}</span>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { API, Storage } from "aws-amplify";
 import { ListEditor } from "../lists";
 import { AppButton } from "../button";
 import imgUplPlchldr from "../../assets/images/upload_image.png";
@@ -7,12 +8,20 @@ import "./recipe.css";
 const RecipeForm = ({ recipeData }) => {
   const [recipe, setRecipe] = useState(recipeData);
 
-  const [recImg, setRecImg] = useState(null);
+  const [recImg, setRecImg] = useState(recipeData?.recipe_image_key || null);
 
   const handleChange = (e) => setRecipe({ ...recipe, [e.target.name]: e.target.value });
 
   const handleImgUpld = (e) => {
-    setRecImg(URL.createObjectURL(e.target.files[0]));
+    const file = e.target.files[0];
+    if (file.name.match(/\.(jpg|jpeg|png|gif)$/i)) {
+      Storage.put(`${recipe?.recipe_author}-${file.name}`, file, { resumable: true });
+      setRecipe({ ...recipe, recipe_image_key: `${recipe?.recipe_author}-${file.name}`});
+      setRecImg(URL.createObjectURL(e.target.files[0]));
+    } else {
+      alert('That is not an image');
+      setRecImg(null);
+    }
   };
 
   const handleCategories = (categories) => {
@@ -33,6 +42,8 @@ const RecipeForm = ({ recipeData }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    API.put('recipes', '/recipes/');
+    alert('recipe updated')
   }
 
   useEffect(() => {
