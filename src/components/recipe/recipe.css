@@ -17,6 +17,69 @@
   padding-left: 1rem;
 }
 
+.recipe-form {
+  padding-top: 1rem;
+  display: grid;
+  grid-template-areas: 
+    "a a a a a a"
+    "b c c c c c"
+    "b c c c c c" 
+    "g g d d d d"
+    "g g d d d d"
+    "e e e f f f"
+    "h h h h h h"
+    "i i i i i i";
+  background-color: slategray;
+  gap: 2rem;
+}
+
+.recipe-name {
+  grid-area: a;
+}
+
+.recipe-description {
+  grid-area: c;
+}
+
+.recipe-time {
+  grid-area: b;
+}
+
+.recipe-image {
+  grid-area: d;
+}
+
+.recipe-ingredients {
+  grid-area: e;
+}
+
+.recipe-tools {
+  grid-area: f;
+}
+
+.recipe-categories {
+  grid-area: g;
+}
+
+.recipe-instructions {
+  grid-area: h;
+}
+
+.form-action {
+  grid-area: i;
+}
+
+.recipe-image-asset {
+  height: auto;
+  width: 100%;
+}
+
+.form-input {
+  display: flex;
+  flex-direction: column;
+  padding: 0 1rem;
+}
+
 @media (min-width: 768px) {
 
 }

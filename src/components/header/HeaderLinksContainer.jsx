@@ -9,6 +9,11 @@ const recipeLinkConfig = [
     classname: "header-link",
     label: "my recipes"
   },
+  {
+    path: "/recipes/new",
+    classname: "header-link",
+    label: "new recipe",
+  },
 ];
 
 const ingredientsLinksConfig = [
