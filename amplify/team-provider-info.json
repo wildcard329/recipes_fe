@@ -22,7 +22,11 @@
         "recipes": {}
       },
       "storage": {
-        "recipes": {}
+        "recipes": {},
+        "imgStorage": {}
+      },
+      "auth": {
+        "recbackend6df4553c": {}
       }
     }
   }

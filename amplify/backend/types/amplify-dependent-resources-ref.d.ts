@@ -6,6 +6,17 @@ export type AmplifyDependentResourcesAttributes = {
       "RootUrl": "string"
     }
   },
+  "auth": {
+    "recbackend6df4553c": {
+      "AppClientID": "string",
+      "AppClientIDWeb": "string",
+      "IdentityPoolId": "string",
+      "IdentityPoolName": "string",
+      "UserPoolArn": "string",
+      "UserPoolId": "string",
+      "UserPoolName": "string"
+    }
+  },
   "function": {
     "reclambda": {
       "Arn": "string",
@@ -16,6 +27,10 @@ export type AmplifyDependentResourcesAttributes = {
     }
   },
   "storage": {
+    "imgStorage": {
+      "BucketName": "string",
+      "Region": "string"
+    },
     "recipes": {
       "Arn": "string",
       "Name": "string",

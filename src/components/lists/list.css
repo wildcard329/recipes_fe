@@ -5,3 +5,8 @@
 .unordered-list li {
   margin: 0.25rem 0;
 }
+
+.list-input {
+  display: flex;
+  flex-direction: column;
+}
