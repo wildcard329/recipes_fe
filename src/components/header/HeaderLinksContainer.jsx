@@ -45,7 +45,7 @@ const HeaderLinksContainer = ({ isShowingLinks }) => {
   }, [isShowingLinks])
   return(
     <div className="header-links" ref={linksElement}>
-      <HeaderLink path={'/'} classname={'header-link'} label={'home'} />
+      <HeaderLinkTrigger path={'/'} classname={'header-link'} label={'home'} />
       <Divider />
       <HeaderLinkTrigger path={"/recipes"} classname={"header-link"} label={"recipes"} linkConfigs={recipeLinkConfig} />
       <Divider />

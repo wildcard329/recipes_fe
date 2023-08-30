@@ -12,7 +12,9 @@
 #home-page-hero {
   background-image: url('../assets/images/rec-app-home-hero.jpg');
   background-position: center;
+  background-color: gray;
   background-size: cover;
+  background-blend-mode: multiply;
   color: white;
   padding: 3.125rem;
   font-weight: 800;
