@@ -10,7 +10,7 @@ const HeaderLinkTrigger = ({ path, classname, label, linkConfigs }) => {
   } = useBool();
   return(
     <div onMouseEnter={showMenu} onMouseLeave={hideMenu}>
-      <HeaderLink path={path} classname={classname + " pb-1"} label={label} />
+      <HeaderLink path={path} classname={classname} label={label} />
       {isShowMenu ?
         linkConfigs?.map((item) => <div key={item.path} className="header-link-menu"><RouterLink path={item.path} classname={item.classname} label={item.label} /></div>)
       :
