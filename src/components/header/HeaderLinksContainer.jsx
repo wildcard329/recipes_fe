@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import Divider from "./Divider";
 import HeaderLink from "./HeaderLink";
 import HeaderLinkTrigger from "./HeaderLinkTrigger";
@@ -32,15 +33,27 @@ const authLinksConfig = [
   },
 ]
 
-const HeaderLinksContainer = () => 
-  <div className="header-links">
-    <HeaderLink path={'/'} classname={'header-link'} label={'home'} />
-    <Divider />
-    <HeaderLinkTrigger path={"/recipes"} classname={"header-link"} label={"recipes"} linkConfigs={recipeLinkConfig} />
-    <Divider />
-    <HeaderLinkTrigger path={"/ingredients"} classname={"header-link"} label={"ingredients"} linkConfigs={ingredientsLinksConfig} />
-    <Divider />
-    <HeaderLinkTrigger path={"/login"} classname={"header-link"} label={"log in"} linkConfigs={authLinksConfig} />
-  </div>
+const HeaderLinksContainer = ({ isShowingLinks }) => {
+  const linksElement = useRef();
+
+  useEffect(() => {
+    if (isShowingLinks) {
+      linksElement.current.classList.remove('mobile-hide');
+    } else {
+      linksElement.current.classList.add('mobile-hide');
+    }
+  }, [isShowingLinks])
+  return(
+    <div className="header-links" ref={linksElement}>
+      <HeaderLink path={'/'} classname={'header-link'} label={'home'} />
+      <Divider />
+      <HeaderLinkTrigger path={"/recipes"} classname={"header-link"} label={"recipes"} linkConfigs={recipeLinkConfig} />
+      <Divider />
+      <HeaderLinkTrigger path={"/ingredients"} classname={"header-link"} label={"ingredients"} linkConfigs={ingredientsLinksConfig} />
+      <Divider />
+      <HeaderLinkTrigger path={"/login"} classname={"header-link"} label={"log in"} linkConfigs={authLinksConfig} />
+    </div>
+  )
+}
 
 export default HeaderLinksContainer;
