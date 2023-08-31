@@ -73,6 +73,11 @@
   background-color: whitesmoke;
 }
 
+.bg-slate-gray {
+  background-color: slategray;
+  color: white;
+}
+
 .bg-navy {
   background-color: navy;
   color: white;
