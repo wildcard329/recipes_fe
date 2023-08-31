@@ -27,12 +27,13 @@
 }
 
 #home-page-ad-1 {
-  background-color: skyblue;
+  background-color: var(--chocolate-cosmos);
+  color: white;
   overflow: auto;
 }
 
 #home-page-ad-2 {
-  background-color: lightgray;
+  background-color: var(--vanilla);
   overflow: auto;
 }
 
@@ -45,10 +46,6 @@
   gap: 1.5rem;
   padding: 2rem;
   margin-top: 3.125rem;
-}
-
-#recipe-data {
-  overflow: auto;
 }
 
 .home-page-sec-img {
@@ -74,34 +71,6 @@
   display: none;
 }
 
-.recipe-data-cluster {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  white-space: nowrap;
-}
-
-.recipe-info {
-  margin-top: 1rem;
-  display: flex;
-  flex-direction: column;
-}
-
-.recipe-info-image {
-  max-width: 100%;
-  height: auto;
-}
-
-.recipe-list-cluster {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-#recipe-instructions {
-  margin-top: 1rem;
-}
-
 .space-buffer {
   margin-top: 8rem;
 }
@@ -121,9 +90,6 @@
   }
   .section-ad-content {
     margin: 3.125rem;
-  }    
-  .recipe-info-image {
-    margin-right: 1.5rem;
   }
   .recipe-list-cluster {
     flex-direction: row;
@@ -136,9 +102,6 @@
     align-items: flex-start;
     gap: 1rem;
   }
-  .recipe-viewer-section {
-    margin-top: 3.1rem;
-  }
 }
 
 @media (min-width: 1024px) {
@@ -148,19 +111,5 @@
   }
   .page-flex-container {
     flex-direction: row;
-  }
-  .recipe-data-cluster {
-    flex-direction: row;
-    width: min-content;
-    white-space: nowrap;
-  }
-  .recipe-info {
-    float: right;
-    display: inline;
-    max-width: 55%;
-  }
-  .recipe-info-image {
-    float: left;
-    width: 450px;
   }
 }

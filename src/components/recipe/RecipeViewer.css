@@ -1,0 +1,74 @@
+.recipe-info-page {
+  display: grid;
+  grid-template-areas: 
+    "recipe-name"
+    "recipe-image"
+    "recipe-time"
+    "recipe-details"
+    "recipe-prep"
+    "recipe-instructions"
+    "action-items";
+  gap: 2rem;
+}
+
+.recipe-info-image {
+  max-width: 100%;
+  height: auto;
+  background-image: url("../assets/images/bg_buffer.jpg");
+  margin: auto;
+}
+
+.recipe-data-cluster {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  white-space: nowrap;
+  width: min-content;
+}
+
+#recipe-time {
+  grid-area: recipe-time;
+  margin: 2rem 0;
+}
+
+.recipe-details {
+  grid-area: recipe-details;
+}
+
+#recipe-instructions {
+  grid-area: recipe-instructions;
+}
+
+#recipe-prep {
+  grid-area: recipe-prep;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.recipe-info-page h1 {
+  grid-area: recipe-name;  
+}
+
+.recipe-info-image {
+  grid-area: recipe-image;
+}
+
+#page-action-row {
+  grid-area: action-items;
+}
+
+@media (min-width: 1024px) {
+  .recipe-data-cluster {
+    flex-direction: row;
+  }
+  .recipe-info-page {
+    grid-template-areas: 
+    "recipe-name recipe-name"
+    "recipe-image recipe-prep"
+    "recipe-time recipe-prep"
+    "recipe-details recipe-prep"
+    "recipe-instructions recipe-instructions"
+    "action-items action-items";
+  }
+}

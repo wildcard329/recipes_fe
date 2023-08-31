@@ -44,15 +44,17 @@ const HeaderLinksContainer = ({ isShowingLinks }) => {
     }
   }, [isShowingLinks])
   return(
-    <div className="header-links" ref={linksElement}>
-      <HeaderLinkTrigger path={'/'} classname={'header-link'} label={'home'} />
-      <Divider />
-      <HeaderLinkTrigger path={"/recipes"} classname={"header-link"} label={"recipes"} linkConfigs={recipeLinkConfig} />
-      <Divider />
-      <HeaderLinkTrigger path={"/ingredients"} classname={"header-link"} label={"ingredients"} linkConfigs={ingredientsLinksConfig} />
-      <Divider />
-      <HeaderLinkTrigger path={"/login"} classname={"header-link"} label={"log in"} linkConfigs={authLinksConfig} />
-    </div>
+    <nav>
+      <ul className="header-links" ref={linksElement}>
+        <li><HeaderLinkTrigger path={'/'} classname={'header-link'} label={'home'} /></li>
+        <li><Divider /></li>
+        <li><HeaderLinkTrigger path={"/recipes"} classname={"header-link"} label={"recipes"} linkConfigs={recipeLinkConfig} /></li>
+        <li><Divider /></li>
+        <li><HeaderLinkTrigger path={"/ingredients"} classname={"header-link"} label={"ingredients"} linkConfigs={ingredientsLinksConfig} /></li>
+        <li><Divider /></li>
+        <li><HeaderLinkTrigger path={"/login"} classname={"header-link"} label={"log in"} linkConfigs={authLinksConfig} /></li>
+      </ul>
+    </nav>
   )
 }
 

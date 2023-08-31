@@ -1,0 +1,21 @@
+.bg-auburn {
+  background-color: var(--auburn);
+  color: white;
+}
+
+.bg-chocolate-cosmos {
+  background-color: var(--chocolate-cosmos);
+  color: white;
+}
+
+.bg-vanilla {
+  background-color: var(--vanilla);
+}
+
+.bg-dark-slate-gray {
+  background-color: var(--dark-slate-gray);
+}
+
+.bg-hyundai-yellow {
+  background-color: var(--hyundai-yellow);
+}

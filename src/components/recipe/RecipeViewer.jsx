@@ -4,6 +4,7 @@ import { formatMinutes } from "../../utils/functions/format";
 import { useBool } from "../../utils/customhooks";
 import RecipeForm from "./RecipeForm";
 import { AppButton } from "../button";
+import "./RecipeViewer.css";
 
 const RecipeViewer = ({ recipe, recipeImage }) => {
   const {
@@ -22,26 +23,22 @@ const RecipeViewer = ({ recipe, recipeImage }) => {
         <h1>{recipe?.recipe_name}</h1>
         <section id="recipe-data" className="recipe-viewer-section">
           <img src={recipeImage ? recipeImage : imgPlaceholder} alt='recipe-image' className="recipe-info-image" loading="lazy" />
-          <aside className="recipe-info">
-            <div className="recipe-data-cluster highlight-line bg-alice-blue">
-              <span>Prep time: {formatMinutes(recipe?.recipe_prep_time)}</span>
-              <span>Cook time: {formatMinutes(recipe?.recipe_cook_time)}</span>
-              <span>Total time: {formatMinutes(recipe?.recipe_total_time)}</span>
-            </div>
-            <p className="highlight-line bg-white-smoke">{recipe?.recipe_description}</p>
-          </aside>
+          <div id="recipe-time" className="recipe-data-cluster highlight-line bg-vanilla">
+            <span>Prep time: {formatMinutes(recipe?.recipe_prep_time)}</span>
+            <span>Cook time: {formatMinutes(recipe?.recipe_cook_time)}</span>
+            <span>Total time: {formatMinutes(recipe?.recipe_total_time)}</span>
+          </div>
+          <p className="recipe-details highlight-line bg-vanilla">{recipe?.recipe_description}</p>
         </section>
-        <section id="recipe-preparation" className="recipe-viewer-section clear-float">
-          <div className="recipe-list-cluster">
-            <article className="highlight-line bg-navy min-height">
-              <ListDisplay title={'Ingredients'} data={recipe?.recipe_ingredients} />
-            </article>
-            <article className="highlight-line bg-navy min-height">
-              <ListDisplay title={'Tools'} data={recipe?.recipe_tools} />
-            </article>
+        <section id="recipe-prep">
+          <div className="highlight-line bg-chocolate-cosmos">
+            <ListDisplay title={'Tools'} data={recipe?.recipe_tools} />
+          </div>
+          <div className="highlight-line bg-chocolate-cosmos">
+            <ListDisplay title={'Ingredients'} data={recipe?.recipe_ingredients} />
           </div>
         </section>
-        <section id="recipe-instructions" className="recipe-viewer-section bg-slate highlight-line">
+        <section id="recipe-instructions" className="bg-auburn highlight-line">
           <ListDisplay title={'Instructions'} data={recipe?.recipe_instructions} isOrderedList />
         </section>
         <section id="page-action-row" className="recipe-viewer-section">
