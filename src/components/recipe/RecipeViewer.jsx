@@ -5,6 +5,7 @@ import { useBool } from "../../utils/customhooks";
 import RecipeForm from "./RecipeForm";
 import { AppButton } from "../button";
 import "./RecipeViewer.css";
+import { ImageLoader } from "../image";
 
 const RecipeViewer = ({ recipe, recipeImage }) => {
   const {
@@ -22,7 +23,7 @@ const RecipeViewer = ({ recipe, recipeImage }) => {
       <>
         <h1>{recipe?.recipe_name}</h1>
         <section id="recipe-data" className="recipe-viewer-section">
-          <img src={recipeImage ? recipeImage : imgPlaceholder} alt='recipe-image' className="recipe-info-image" loading="lazy" />
+          <ImageLoader image={recipeImage ? recipeImage : imgPlaceholder} imgAlt={'recipe-image'} id="recipe-info-image" />
           <div id="recipe-time" className="recipe-data-cluster highlight-line bg-vanilla">
             <span>Prep time: {formatMinutes(recipe?.recipe_prep_time)}</span>
             <span>Cook time: {formatMinutes(recipe?.recipe_cook_time)}</span>
