@@ -11,13 +11,6 @@
   gap: 2rem;
 }
 
-.recipe-info-image {
-  max-width: 100%;
-  height: auto;
-  background-image: url("../assets/images/bg_buffer.jpg");
-  margin: auto;
-}
-
 .recipe-data-cluster {
   display: flex;
   flex-direction: column;
@@ -50,7 +43,7 @@
   grid-area: recipe-name;  
 }
 
-.recipe-info-image {
+#recipe-info-image {
   grid-area: recipe-image;
 }
 

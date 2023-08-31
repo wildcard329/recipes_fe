@@ -1,0 +1,18 @@
+.load-image {
+  animation: gradient 15s ease;
+  max-width: 100%;
+  height: auto;
+  background-image: linear-gradient(#9e2a2b, #fff3b0);
+}
+
+@keyframes gradient {
+  0%, 30%, 60%, 90% {
+    background-position: 0% 50%;
+	}
+	10%, 40%, 70%, 100% {
+    background-position: 50% 100%;
+	}
+	20%, 50%, 80% {
+    background-position: 0% 50%;
+	}
+}
