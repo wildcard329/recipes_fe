@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { API, Storage } from "aws-amplify";
 import { useBool, useReactRouter } from "../utils/customhooks";
-import AppLoader from "../components/loader/AppLoader";
 import { RecipeViewer } from "../components/recipe";
+import { Spinner1 } from "../components/loader";
 
 const RecipeViewerPage = () => {
   const {
@@ -19,7 +19,6 @@ const RecipeViewerPage = () => {
     setIsLoading();
     const { data: recipe } = await API.get('recipes', `/recipes/${recipe_author}/${recipe_id}`);
     await setRecipe(recipe);
-    console.log('data ', recipe)
     if (recipe?.recipe_image_key) {
       const asset = await Storage.get(recipe?.recipe_image_key);
       await setRecAsset(asset);
@@ -35,7 +34,7 @@ const RecipeViewerPage = () => {
       {
         isLoading ?
           <div className="space-buffer">
-            <AppLoader />
+            <Spinner1 />
           </div>
         : 
           <RecipeViewer recipe={recipe} recipeImage={recAsset} />

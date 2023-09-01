@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { API, Storage } from "aws-amplify";
 import { RecipeCard } from "../components/recipe";
 import { useBool } from "../utils/customhooks";
-import AppLoader from "../components/loader/AppLoader";
+import { Spinner1 } from "../components/loader";
 
 const RecipesPage = () => {
   const [recipes, setRecipes] = useState([]);
@@ -19,7 +19,6 @@ const RecipesPage = () => {
     const { data: recipes } = await API.get('recipes', '/recipes');
     await setRecipes(recipes);
     const updatedRecipes = await addImgAttr(recipes);
-    console.log('data ', updatedRecipes);
     await setRecipes(updatedRecipes);
     setIsNotLoading();
   };
@@ -32,7 +31,7 @@ const RecipesPage = () => {
     <>
       {isLoading ?
         <div className="space-buffer">
-          <AppLoader />
+          <Spinner1 />
         </div>
       :
         <div className="recipes-container">
