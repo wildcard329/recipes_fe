@@ -6,6 +6,7 @@ import RecipeForm from "./RecipeForm";
 import { AppButton } from "../button";
 import "./RecipeViewer.css";
 import { ImageLoader } from "../image";
+import { Spinner2 } from "../loader";
 
 const RecipeViewer = ({ recipe, recipeImage }) => {
   const {

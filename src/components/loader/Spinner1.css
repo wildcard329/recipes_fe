@@ -1,4 +1,4 @@
-.loader {
+.spinner-1 {
   position: relative;
   border-radius: 50%;
   background: linear-gradient(#f07e6e, #84cdfa, #5ad1cd);
@@ -25,31 +25,31 @@
   }
 }
 
-.loader span {
+.spinner-1 span {
   position: absolute;
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background: linear-gradient(#00ff00, #84cdfa, #5ad1cd);
+  background: linear-gradient(#9e2a2b, #fff3b0, #335c67);
 }
 
-.loader span:nth-child(1) {
+.spinner-1 span:nth-child(1) {
   filter: blur(5px);
 }
 
-.loader span:nth-child(2) {
+.spinner-1 span:nth-child(2) {
   filter: blur(10px);
 }
 
-.loader span:nth-child(3) {
+.spinner-1 span:nth-child(3) {
   filter: blur(25px);
 }
 
-.loader span:nth-child(4) {
+.spinner-1 span:nth-child(4) {
   filter: blur(50px);
 }
 
-.loader:after {
+.spinner-1:after {
   content: '';
   position: absolute;
   top: 10px;
