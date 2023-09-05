@@ -40,7 +40,7 @@ const RecipeViewer = ({ recipe, recipeImage }) => {
             <ListDisplay title={'Ingredients'} data={recipe?.recipe_ingredients} />
           </div>
         </section>
-        <section id="recipe-instructions" className="bg-auburn highlight-line">
+        <section id="recipe-instructions" className="bg-dark-slate-gray highlight-line">
           <ListDisplay title={'Instructions'} data={recipe?.recipe_instructions} isOrderedList />
         </section>
         <section id="page-action-row" className="recipe-viewer-section">
