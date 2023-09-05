@@ -3,6 +3,7 @@
   top: 0;
   background-color: white;
   padding: 1rem 0;
+  border-bottom: 2px solid var(--dark-slate-gray);
 }
 
 .header-links {
@@ -66,12 +67,13 @@
     display: block;
     position: absolute;
     background-color: white;
-    padding: 0.25rem 0;
     text-transform: capitalize;
     list-style: none;
   }
-  
-  .header-link-menu:hover {
+  .header-link-menu a {
+    padding: 1rem 2rem;
+  }  
+  .header-link-menu a:hover {
     background-color: whitesmoke;
   }
 }
