@@ -5,11 +5,13 @@ const useBool = () => {
 
   const setTruthy = () => setIsTruthy(true);
   const setNotTruthy = () => setIsTruthy(false);
+  const toggleTruthy = () => setIsTruthy(!isTruthy);
 
   return {
     isTruthy,
     setTruthy,
     setNotTruthy,
+    toggleTruthy,
   }
 }
 

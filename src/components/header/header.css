@@ -12,6 +12,12 @@
   gap: 1rem;
   text-transform: capitalize;
   list-style: none;
+  margin-top: 2rem;
+  padding-left: 0;
+}
+
+.header-links a {
+  font-size: 1.5rem;
 }
 
 .mobile-hide {
@@ -85,6 +91,9 @@
   }  
   .header-link-menu li:hover {
     background-color: var(--dark-slate-gray);
+  }
+  .header-links a {
+    font-size: 0.875rem;
   }
   .header-link-menu a:hover {
     color: white;
