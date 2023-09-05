@@ -112,6 +112,10 @@
   .page-flex-container {
     flex-direction: row;
   }
+  .home-article {
+    background-color: var(--dark-slate-gray);
+    color: white;
+  }
   .home-article h3 {
     padding-top: 1rem;
   }
