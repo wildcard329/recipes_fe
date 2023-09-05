@@ -24,20 +24,20 @@ const HomePage = () =>
       <img src={section2Img} alt="recipe-rollout-img" className="home-page-sec-img float-right space-buffer-left mobile-hidden" />
       <p className="section-ad-content">Ignite your passion for cooking and connect with a vibrant community of fellow recipe enthusiasts on Recipe Rollout! Join us to savor the joy of cooking in the company of kindred spirits who understand that the best recipes are the ones shared among friends.</p>
     </section>
-    <section id="home-page-ad-3" className="page-section">
+    <section id="home-page-ad-3 page-section">
       <h2>Utilize our amazing features!</h2>
       <div className="page-flex-container">
-        <article className="section-ad-content home-article bg-dark-slate-gray">
+        <article className="section-ad-content home-article">
           <h3>Share your recipes</h3>
           <p>Share your culinary experiences with other users on Recipe Rollout and inspire fellow food lovers!</p>
           <img src={communityImg} alt="join our community" className="home-page-sec-img mobile-hidden" />
         </article>
-        <article className="section-ad-content home-article bg-dark-slate-gray">
+        <article className="section-ad-content home-article">
           <img src={recipeImg} alt="view our recipes" className="home-page-sec-img mobile-hidden" />
           <h3>View our recipe collection</h3>
           <p>Need quick meal ideas? Take a look at other user recipes and whip up a satisfying, memorable meal!</p>
         </article>
-        <article className="section-ad-content home-article bg-dark-slate-gray">
+        <article className="section-ad-content home-article">
           <h3>Coming soon - Cookbook</h3>
           <p>We are excited to announce an upcoming new feature: Cookbook. Stay tuned for more details.</p>
           <img src={cookbookImg} alt="coming soon" className="home-page-sec-img mobile-hidden" />
