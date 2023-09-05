@@ -9,7 +9,7 @@ const HeaderLinkTrigger = ({ path, classname, label, linkConfigs }) => {
     setNotTruthy: hideMenu,
   } = useBool();
   return(
-    <div onMouseEnter={showMenu} onMouseLeave={hideMenu}>
+    <div onMouseEnter={showMenu} onMouseLeave={hideMenu} className="header-link-menu-wrapper">
       <HeaderLink path={path} classname={classname} label={label} />
       {isShowMenu ?
         <ul className="header-link-menu">
