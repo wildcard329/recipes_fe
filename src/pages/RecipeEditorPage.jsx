@@ -21,14 +21,16 @@ const RecipeEditorPage = () => {
     recipe_prep_time: "",
     recipe_cook_time: "",
     recipe_total_time: "",
-    recipe_author: "",
+    recipe_author: "Greg",
+    recipe_image_key: "",
+    recipe_image: "",
     recipe_ingredients: [],
     recipe_tools: [],
     recipe_categories: [],
     recipe_instructions: [],
   };
 
-  const fetchRecipe = async () => {
+  const assembleRecipeDefault = async () => {
     if (!recipe?.recipe_id && !!locationState) {
       await setIsLoading();
       const { data: recData } = await getRecipeByIdAuthor(locationState?.recipe_author, locationState?.recipe_id);
@@ -42,7 +44,7 @@ const RecipeEditorPage = () => {
   };
 
   useEffect(() => {
-    fetchRecipe();
+    assembleRecipeDefault();
   }, []);
 
   return(
