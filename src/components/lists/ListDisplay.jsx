@@ -7,11 +7,11 @@ const ListDisplay = ({ title, data, isEditing=false, isOrderedList=false, editIt
     <h3>{title}</h3>
     {isOrderedList ?
       <ol className="highlight-line ordered-list">
-        {data?.map((item, index) => <li>{isEditing && <MdOutlineEdit fill="yellow" onClick={() => editItemCb(index)} />}{isEditing && <TiDeleteOutline fill="red" onClick={() => deleteItemCb(index)} />}{item}</li>)}
+        {data?.map((item, index) => <li key={`${item}-${index}`}>{isEditing && <MdOutlineEdit fill="yellow" onClick={() => editItemCb(index)} />}{isEditing && <TiDeleteOutline fill="red" onClick={() => deleteItemCb(index)} />}{item}</li>)}
       </ol>
     :
       <ul className="highlight-line unordered-list">
-        {data?.map((item, index) => <li>{isEditing && <MdOutlineEdit fill="yellow" onClick={() => editItemCb(index)} />}{isEditing && <TiDeleteOutline fill="red" onClick={() => deleteItemCb(index)} />}{item}</li>)}
+        {data?.map((item, index) => <li key={`${item}-${index}`}>{isEditing && <MdOutlineEdit fill="yellow" onClick={() => editItemCb(index)} />}{isEditing && <TiDeleteOutline fill="red" onClick={() => deleteItemCb(index)} />}{item}</li>)}
       </ul>
     }
   </div>
