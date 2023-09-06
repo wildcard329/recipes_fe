@@ -1,6 +1,10 @@
+import { lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 
-import { HomePage, RecipesPage, RecipeViewerPage, RecipeEditorPage } from "./pages";
+const HomePage = lazy(() => import("../src/pages/HomePage.jsx"));
+const RecipesPage = lazy(() => import("../src/pages/RecipesPage.jsx"));
+const RecipeViewerPage = lazy(() => import("../src/pages/RecipeViewerPage.jsx"));
+const RecipeEditorPage = lazy(() => import("../src/pages/RecipeEditorPage.jsx"));
 
 const AppRouter = () =>
   <Routes>
@@ -8,6 +12,7 @@ const AppRouter = () =>
     <Route path="/recipes" element={<RecipesPage />} />
     <Route path="/recipe/:id" element={<RecipeViewerPage />} />
     <Route path="/recipes/new" element={<RecipeEditorPage />} />
+    <Route path="/recipes/:id/edit" element={<RecipeEditorPage />} />
   </Routes>
 
 export default AppRouter;

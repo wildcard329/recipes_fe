@@ -1,54 +1,44 @@
-import { ListDisplay } from "../lists";
-import imgPlaceholder from "../../assets/images/img_unavailable.jpg"
+import { useContext } from "react";
+import { recipeContext } from "../../state/contexts";
+import { useReactRouter } from "../../utils/customhooks";
 import { formatMinutes } from "../../utils/functions/format";
-import { useBool } from "../../utils/customhooks";
-import RecipeForm from "./RecipeForm";
+import { ListDisplay } from "../lists";
 import { AppButton } from "../button";
-import "./RecipeViewer.css";
 import { ImageLoader } from "../image";
-import { Spinner2 } from "../loader";
+import imgPlaceholder from "../../assets/images/img_unavailable.jpg"
+import "./RecipeViewer.css";
+import { RouterLink } from "../router";
 
-const RecipeViewer = ({ recipe, recipeImage }) => {
-  const {
-    isTruthy: isEditing,
-    setTruthy: setIsEditing,
-    setNotTruthy: setNotIsEditing,
-  } = useBool();
+const RecipeViewer = () => {
+  const { recipe, asset: recipeImage } = useContext(recipeContext);
 
   return(
     <div className="recipe-info-page">
-      {isEditing ?
-        <p>Form coming soon!</p>
-        // <RecipeForm recipeData={recipe} />
-      :
-      <>
-        <h1>{recipe?.recipe_name}</h1>
-        <section id="recipe-data" className="recipe-viewer-section">
-          <ImageLoader image={recipeImage ? recipeImage : imgPlaceholder} imgAlt={'recipe-image'} id="recipe-info-image" />
-          <div id="recipe-time" className="recipe-data-cluster highlight-line bg-vanilla">
-            <span>Prep time: {formatMinutes(recipe?.recipe_prep_time)}</span>
-            <span>Cook time: {formatMinutes(recipe?.recipe_cook_time)}</span>
-            <span>Total time: {formatMinutes(recipe?.recipe_total_time)}</span>
-          </div>
-          <p className="recipe-details highlight-line bg-vanilla">{recipe?.recipe_description}</p>
-        </section>
-        <section id="recipe-prep">
-          <div className="highlight-line bg-chocolate-cosmos">
-            <ListDisplay title={'Tools'} data={recipe?.recipe_tools} />
-          </div>
-          <div className="highlight-line bg-chocolate-cosmos">
-            <ListDisplay title={'Ingredients'} data={recipe?.recipe_ingredients} />
-          </div>
-        </section>
-        <section id="recipe-instructions" className="bg-dark-slate-gray highlight-line">
-          <ListDisplay title={'Instructions'} data={recipe?.recipe_instructions} isOrderedList />
-        </section>
-        <section id="page-action-row" className="recipe-viewer-section">
-          <AppButton btnLabel={"edit"} btnCb={setIsEditing} />
-          <AppButton btnLabel={"delete"} />
-        </section>
-      </>
-      }
+      <h1>{recipe?.recipe_name}</h1>
+      <section id="recipe-data" className="recipe-viewer-section">
+        <ImageLoader image={recipeImage ? recipeImage : imgPlaceholder} imgAlt={'recipe-image'} id="recipe-info-image" />
+        <div id="recipe-time" className="recipe-data-cluster highlight-line bg-vanilla">
+          <span>Prep time: {formatMinutes(recipe?.recipe_prep_time)}</span>
+          <span>Cook time: {formatMinutes(recipe?.recipe_cook_time)}</span>
+          <span>Total time: {formatMinutes(recipe?.recipe_total_time)}</span>
+        </div>
+        <p className="recipe-details highlight-line bg-vanilla">{recipe?.recipe_description}</p>
+      </section>
+      <section id="recipe-prep">
+        <div className="highlight-line bg-chocolate-cosmos">
+          <ListDisplay title={'Tools'} data={recipe?.recipe_tools} />
+        </div>
+        <div className="highlight-line bg-chocolate-cosmos">
+          <ListDisplay title={'Ingredients'} data={recipe?.recipe_ingredients} />
+        </div>
+      </section>
+      <section id="recipe-instructions" className="bg-dark-slate-gray highlight-line">
+        <ListDisplay title={'Instructions'} data={recipe?.recipe_instructions} isOrderedList />
+      </section>
+      <section id="page-action-row" className="recipe-viewer-section">
+        <RouterLink label={"edit"} path={`/recipes/${recipe?.recipe_id}/edit`} state={recipe} />
+        <AppButton btnLabel={"delete"} />
+      </section>
     </div>
   )
 }
