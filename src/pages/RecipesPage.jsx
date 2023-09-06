@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { API, Storage } from "aws-amplify";
-import { RecipeCard } from "../components/recipe";
+import { useAmplify } from "../utils/customhooks/";
 import { useBool } from "../utils/customhooks";
+import { RecipeCard } from "../components/recipe";
 import { Spinner1 } from "../components/loader";
 import "./page.css";
-import useFetch from "../utils/customhooks/useFetch";
-import { useAmplify } from "../utils/customhooks/";
 
 const RecipesPage = () => {
   const { getRecipes, getRecipesAssets } = useAmplify();
@@ -38,7 +36,7 @@ const RecipesPage = () => {
         <div className="recipes-container">
           <h1>Browse Recipes</h1>
           <section id="recipes-section">
-            {recipes?.map((recipe) => <RecipeCard recipe={recipe} />)}
+            {recipes?.map((recipe, index) => <RecipeCard key={`${recipe?.recipe_id}-${recipe?.recipe_name}-${index}`} recipe={recipe} />)}
           </section>
         </div>
       }
