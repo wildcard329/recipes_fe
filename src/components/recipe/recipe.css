@@ -1,6 +1,9 @@
 .recipe-card {
   border: 2px solid whitesmoke;
   background-image: linear-gradient(lightblue, whitesmoke);
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .recipe-card:hover, :focus {

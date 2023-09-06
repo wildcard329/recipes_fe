@@ -1,8 +1,21 @@
 .load-image {
   animation: gradient 15s ease;
   max-width: 100%;
+  object-fit: cover;
+  width: 100%;
+  /* width: 370px;
+  height: 250px; */
   height: auto;
+  /* width: 206px;
+  height: 137px; */
   background-image: linear-gradient(#9e2a2b, #fff3b0);
+}
+
+@media (min-width: 1024px) {
+  /* .load-image {
+    width: 370px;
+    height: 250px;
+  } */
 }
 
 @keyframes gradient {

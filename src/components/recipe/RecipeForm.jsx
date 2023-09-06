@@ -46,6 +46,7 @@ const RecipeForm = ({ submitCb }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log('submitting ', recipe);
     isNewRecipe ? addRecipe(recipe) : updateRecipe(recipe);
     alert('recipe updated');
   }

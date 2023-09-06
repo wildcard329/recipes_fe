@@ -18,7 +18,11 @@ const useAmplify = () => {
   
   const updateRecipe = async (recipe) => await API.put(myAPI, recipesPath, { body: recipe });
 
-  const addRecipe = async (recipe) => await API.post(myAPI, recipesPath, { body: recipe });
+  const addRecipe = async (recipe) => {
+    console.log('pre ', recipe);
+    const res = await API.post(myAPI, recipesPath, { body: recipe });
+    console.log('data ', res);
+  }
 
   return { getRecipeAsset, getRecipesAssets, getRecipes, getRecipeByIdAuthor, deleteRecipe, updateRecipe, addRecipe, addAsset };
 }
