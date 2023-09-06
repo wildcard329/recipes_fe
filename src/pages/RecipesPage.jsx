@@ -3,8 +3,12 @@ import { API, Storage } from "aws-amplify";
 import { RecipeCard } from "../components/recipe";
 import { useBool } from "../utils/customhooks";
 import { Spinner1 } from "../components/loader";
+import "./page.css";
+import useFetch from "../utils/customhooks/useFetch";
+import { useAmplify } from "../utils/customhooks/";
 
 const RecipesPage = () => {
+  const { getRecipes, getRecipesAssets } = useAmplify();
   const [recipes, setRecipes] = useState([]);
   const {
     isTruthy: isLoading,
@@ -12,19 +16,16 @@ const RecipesPage = () => {
     setNotTruthy: setIsNotLoading,
   } = useBool();
 
-  const addImgAttr = async (recs) => await Promise.all(recs?.map(async (recipe) => await ({ ...recipe, recipe_image: recipe?.recipe_image_key ? await Storage.get(recipe?.recipe_image_key) : null })));
-
-  const getRecipes = async () => {
-    setIsLoading();
-    const { data: recipes } = await API.get('recipes', '/recipes');
-    await setRecipes(recipes);
-    const updatedRecipes = await addImgAttr(recipes);
-    await setRecipes(updatedRecipes);
-    setIsNotLoading();
-  };
+  const retrieveData = async () => {
+    await setIsLoading();
+    const { data } = await getRecipes();
+    const updatedRecipes = await getRecipesAssets(data);
+    setRecipes(updatedRecipes);
+    await setIsNotLoading();
+  }
 
   useEffect(() => {
-    getRecipes();
+    retrieveData();
   }, []);
 
   return (

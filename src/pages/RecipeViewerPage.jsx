@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { API, Storage } from "aws-amplify";
-import { useBool, useReactRouter } from "../utils/customhooks";
+import React, { useState, useEffect, useContext } from "react";
+import { useBool, useReactRouter, useAmplify } from "../utils/customhooks";
+import { recipeContext } from "../state/contexts";
 import { RecipeViewer } from "../components/recipe";
 import { Spinner1 } from "../components/loader";
 
@@ -11,23 +11,23 @@ const RecipeViewerPage = () => {
     setNotTruthy: setNotIsLoading,
   } = useBool();
 
-  const [recipe, setRecipe] = useState({});
-  const [recAsset, setRecAsset] = useState(null);
+  const { getRecipeByIdAuthor, getRecipeAsset } = useAmplify();
   const { locationState: { recipe_id, recipe_author } } = useReactRouter();
+  const { setRecipe, setAsset } = useContext(recipeContext);
 
-  const getRecipe = async () => {
+  const retrieveData = async () => {
     setIsLoading();
-    const { data: recipe } = await API.get('recipes', `/recipes/${recipe_author}/${recipe_id}`);
+    const { data: recipe } = await getRecipeByIdAuthor(recipe_author, recipe_id);
     await setRecipe(recipe);
     if (recipe?.recipe_image_key) {
-      const asset = await Storage.get(recipe?.recipe_image_key);
-      await setRecAsset(asset);
+      const asset = await getRecipeAsset(recipe?.recipe_image_key);
+      await setAsset(asset);
     }
     setNotIsLoading();
   };
 
   useEffect(() => {
-    getRecipe();
+    retrieveData();
   }, []);
   return(
     <>
@@ -37,7 +37,7 @@ const RecipeViewerPage = () => {
             <Spinner1 />
           </div>
         : 
-          <RecipeViewer recipe={recipe} recipeImage={recAsset} />
+          <RecipeViewer />
       }
     </>
   )

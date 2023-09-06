@@ -1,11 +1,14 @@
-import { useEffect, useState } from "react";
-import { API, Storage } from "aws-amplify";
+import { useContext, useEffect, useState } from "react";
+import { recipeContext } from "../../state/contexts";
+import { useAmplify } from "../../utils/customhooks";
 import { ListEditor } from "../lists";
 import { AppButton } from "../button";
 import imgUplPlchldr from "../../assets/images/upload_image.png";
 import "./recipe.css";
 
-const RecipeForm = ({ recipeData }) => {
+const RecipeForm = ({ submitCb }) => {
+  const { recipe: recipeData, isNewRecipe } = useContext(recipeContext);
+  const { addAsset, addRecipe, updateRecipe } = useAmplify();
   const [recipe, setRecipe] = useState(recipeData);
 
   const [recImg, setRecImg] = useState(recipeData?.recipe_image_key || null);
@@ -15,8 +18,9 @@ const RecipeForm = ({ recipeData }) => {
   const handleImgUpld = (e) => {
     const file = e.target.files[0];
     if (file.name.match(/\.(jpg|jpeg|png|gif)$/i)) {
-      Storage.put(`${recipe?.recipe_author}-${file.name}`, file, { resumable: true });
-      setRecipe({ ...recipe, recipe_image_key: `${recipe?.recipe_author}-${file.name}`});
+      const filename = `${recipe?.recipe_author || 'Greg'}-${file.name}`;
+      addAsset(filename, file);
+      setRecipe({ ...recipe, recipe_image_key: filename, recipe_author: recipe?.recipe_author || 'Greg'});
       setRecImg(URL.createObjectURL(e.target.files[0]));
     } else {
       alert('That is not an image');
@@ -42,13 +46,13 @@ const RecipeForm = ({ recipeData }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    API.put('recipes', '/recipes/');
-    alert('recipe updated')
+    isNewRecipe ? addRecipe(recipe) : updateRecipe(recipe);
+    alert('recipe updated');
   }
 
   useEffect(() => {
-    console.log('data', recipe);
-  }, [recipe]);
+    setRecipe(recipeData);
+  }, [recipeData]);
   return(
     <form onSubmit={handleSubmit} className="recipe-form">
       <div className="form-input recipe-name">
