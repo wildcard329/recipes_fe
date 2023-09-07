@@ -13,16 +13,16 @@ const RecipeEditorPage = () => {
   } = useBool();
   const { getRecipeByIdAuthor } = useAmplify();
   const { recipe, setRecipe, setNewRecipe, setNotNewRecipe } = useContext(recipeContext);
-  const { locationState } = useReactRouter();
+  const { locationState: { recipe_id } } = useReactRouter();
 
   const assembleRecipeDefault = async () => {
-    if (!recipe?.recipe_id && !!locationState) {
+    if (!!recipe_id && !recipe?.recipe_id) {
       await setIsLoading();
       const { data: recData } = await getRecipeByIdAuthor(locationState?.recipe_author, locationState?.recipe_id);
       await setRecipe(recData);
       await setNotNewRecipe();
       await setNotIsLoading();
-    } else {
+    } else if (!recipe_id) {
       setRecipe(generateRecipeTemplate());
       setNewRecipe();
     };
