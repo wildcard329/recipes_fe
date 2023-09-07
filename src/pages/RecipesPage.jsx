@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useAmplify } from "../utils/customhooks/";
 import { useBool } from "../utils/customhooks";
+import { pageNavContext } from "../state/contexts";
 import { RecipeCard } from "../components/recipe";
 import { Spinner1 } from "../components/loader";
 import "./page.css";
 
 const RecipesPage = () => {
+  const { setNavLinks } = useContext(pageNavContext);
+  
   const { getRecipes, getRecipesAssets } = useAmplify();
   const [recipes, setRecipes] = useState([]);
   const {
@@ -24,6 +27,7 @@ const RecipesPage = () => {
 
   useEffect(() => {
     retrieveData();
+    setNavLinks([]);
   }, []);
 
   return (

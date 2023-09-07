@@ -1,0 +1,20 @@
+[
+    {
+      "navId": 0,
+      "navLabel": "recipe info",
+      "navLink": "recipe-info",
+      "classname": "page-nav-link"
+    },
+    {
+      "navId": 1,
+      "navLabel": "tools and ingredients",
+      "navLink": "recipe-prep",
+      "classname": "page-nav-link"
+    },
+    {
+      "navId": 2,
+      "navLabel": "instructions",
+      "navLink": "recipe-instructions",
+      "classname": "page-nav-link"
+    }
+  ]

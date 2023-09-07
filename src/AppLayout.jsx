@@ -2,10 +2,12 @@ import { Suspense } from "react";
 import { AppHeader } from "./components/header";
 import { Spinner1 } from "./components/loader";
 import { AppFooter } from "./components/footer";
+import { SubHeader } from "./components/subheader";
 
 const AppLayout = ({ children }) =>
   <div className="app-container">
     <AppHeader />
+    <SubHeader />
     <Suspense fallback={<Spinner1 />}>
       {children}
     </Suspense>

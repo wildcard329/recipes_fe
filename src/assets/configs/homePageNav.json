@@ -1,0 +1,26 @@
+[
+  {
+    "navId": 0,
+    "navLabel": "welcome",
+    "navLink": "home-page-hero",
+    "classname": "page-nav-link"
+  },
+  {
+    "navId": 1,
+    "navLabel": "thank you",
+    "navLink": "home-page-ad-1",
+    "classname": "page-nav-link"
+  },
+  {
+    "navId": 2,
+    "navLabel": "community",
+    "navLink": "home-page-ad-2",
+    "classname": "page-nav-link"
+  },
+  {
+    "navId": 4,
+    "navLabel": "features",
+    "navLink": "home-page-ad-3",
+    "classname": "page-nav-link"
+  }
+]

@@ -1,9 +1,10 @@
 import { useContext, useEffect } from "react";
 import { RecipeForm } from "../components/recipe";
 import { useAmplify, useBool, useReactRouter } from "../utils/customhooks";
-import { recipeContext } from "../state/contexts";
+import { recipeContext, pageNavContext } from "../state/contexts";
 import { Spinner1 } from "../components/loader";
 import { generateRecipeTemplate } from "../utils/functions/recipe";
+import recipeViewerPageNav from "../assets/configs/recipeViewerNav.json";
 
 const RecipeEditorPage = () => {
   const {
@@ -12,6 +13,7 @@ const RecipeEditorPage = () => {
     setNotTruthy: setNotIsLoading,
   } = useBool();
   const { getRecipeByIdAuthor } = useAmplify();
+  const { setNavLinks } = useContext(pageNavContext);
   const { recipe, setRecipe, setNewRecipe, setNotNewRecipe } = useContext(recipeContext);
   const { locationState, routerPath } = useReactRouter();
 
@@ -30,6 +32,7 @@ const RecipeEditorPage = () => {
 
   useEffect(() => {
     assembleRecipeDefault();
+    setNavLinks(recipeViewerPageNav);
   }, [routerPath]);
 
   return(
