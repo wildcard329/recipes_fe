@@ -13,7 +13,7 @@ const useScrollListener = () => {
         setIsScrolling();
         setTimeout(() => {
           setIsNotScrolling();
-        }, 500);
+        }, 5000);
       };
     
       window.addEventListener('scroll', handleScroll);
