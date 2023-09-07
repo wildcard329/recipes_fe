@@ -15,7 +15,7 @@ const RecipeViewer = () => {
   return(
     <div className="recipe-info-page">
       <h1>{recipe?.recipe_name}</h1>
-      <section id="recipe-data" className="recipe-viewer-section">
+      <section id="recipe-info" className="recipe-viewer-section">
         <ImageLoader image={recipeImage ? recipeImage : imgPlaceholder} imgAlt={'recipe-image'} id="recipe-info-image" />
         <div id="recipe-time" className="recipe-data-cluster highlight-line bg-vanilla">
           <span>Prep time: {formatMinutes(recipe?.recipe_prep_time)}</span>

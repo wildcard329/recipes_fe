@@ -47,6 +47,7 @@ const RecipeForm = () => {
   return(
     <form onSubmit={handleSubmit} className="recipe-form">
       <div className="form-input recipe-name">
+        <a id="recipe-info"></a>
         <label>recipe name</label>
         <input name="recipe_name" value={recipe?.recipe_name} onChange={handleChange} placeholder="recipe name" />
       </div>
@@ -75,6 +76,7 @@ const RecipeForm = () => {
         <input name='recipe_image' onChange={handleImgUpld} type="file" />
       </div>
       <div className="form-input recipe-ingredients">
+        <a id="recipe-prep"></a>
         <ListEditor list={recipe?.recipe_ingredients} listTitle={"ingredients"} editorCb={handleIngredients} />
       </div>
       <div className="form-input recipe-tools">
@@ -84,6 +86,7 @@ const RecipeForm = () => {
         <ListEditor list={recipe?.recipe_categories} listTitle={"categories"} editorCb={handleCategories} />
       </div>
       <div className="form-input recipe-instructions">
+        <a id="recipe-instructions"></a>
         <ListEditor list={recipe?.recipe_instructions} listTitle={"instructions"} isOrderedList isLongInput editorCb={handleInstructions} />
       </div>
       <div className="form-action">

@@ -1,14 +1,16 @@
 import './App.css'
 import AppLayout from './AppLayout'
 import AppRouter from './AppRouter'
-import { UserProvider, RecipeProvider } from './state/providers'
+import { UserProvider, RecipeProvider, PageNavProvider } from './state/providers'
 
 const App = () =>
   <UserProvider>
     <RecipeProvider>
-      <AppLayout>
-        <AppRouter />
-      </AppLayout>
+      <PageNavProvider>
+        <AppLayout>
+          <AppRouter />
+        </AppLayout>
+      </PageNavProvider>
     </RecipeProvider>
   </UserProvider>
 

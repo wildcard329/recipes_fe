@@ -1,0 +1,30 @@
+.sub-header {
+  position: sticky;
+  top: 6.9rem;
+  background-color: white;
+  width: min-content;
+  padding: 1rem;
+  border-right: 2px solid var(--dark-slate-gray);
+  border-bottom: 2px solid var(--dark-slate-gray);
+}
+
+.expanded {
+  padding: 2.125rem 2.125rem 2.125rem 0;
+  position: absolute;
+  background-color: white;
+  border-right: 2px solid var(--dark-slate-gray);
+  border-bottom: 2px solid var(--dark-slate-gray);
+  top: 0;
+  left: 0;
+}
+
+.sub-header-icon {
+  height: 25px;
+  width: 25px;
+}
+
+.right-corner {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}

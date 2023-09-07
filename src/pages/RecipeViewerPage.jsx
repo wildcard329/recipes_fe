@@ -1,10 +1,11 @@
 import React, { useEffect, useContext } from "react";
 import { useBool, useReactRouter, useAmplify } from "../utils/customhooks";
-import { recipeContext } from "../state/contexts";
+import { pageNavContext, recipeContext } from "../state/contexts";
 import { RecipeViewer } from "../components/recipe";
 import { Spinner1 } from "../components/loader";
 import { RouterLink } from "../components/router";
 import { AppButton } from "../components/button";
+import recipeViewerPageNav from "../assets/configs/recipeViewerNav.json";
 
 const RecipeViewerPage = () => {
   const {
@@ -14,12 +15,13 @@ const RecipeViewerPage = () => {
   } = useBool();
 
   const { getRecipeByIdAuthor, getRecipeAsset, deleteRecipe } = useAmplify();
-  const { locationState: { recipe_id, recipe_author } } = useReactRouter();
+  const { locationState } = useReactRouter();
   const { setRecipe, setAsset, recipe } = useContext(recipeContext);
+  const { setNavLinks } = useContext(pageNavContext);
 
   const retrieveData = async () => {
     setIsLoading();
-    const { data: recipe } = await getRecipeByIdAuthor(recipe_author, recipe_id);
+    const { data: recipe } = await getRecipeByIdAuthor(locationState?.recipe_author, locationState?.recipe_id);
     await setRecipe(recipe);
     if (recipe?.recipe_image_key) {
       const asset = await getRecipeAsset(recipe?.recipe_image_key);
@@ -29,11 +31,12 @@ const RecipeViewerPage = () => {
   };
 
   const removeRecipe = () => {
-    deleteRecipe(recipe_author, recipe_id);
+    deleteRecipe(locationState?.recipe_author, locationState?.recipe_id);
   };
 
   useEffect(() => {
     retrieveData();
+    setNavLinks(recipeViewerPageNav);
   }, []);
   return(
     <div className="page-content">
@@ -46,7 +49,7 @@ const RecipeViewerPage = () => {
           <>
             <RecipeViewer />
             <div id="page-action-row" className="recipe-viewer-section">
-              <RouterLink label={"edit"} path={`/recipes/${recipe_id}/edit`} state={recipe} />
+              <RouterLink label={"edit"} path={`/recipes/${locationState?.recipe_id}/edit`} state={recipe} />
               <AppButton btnCb={removeRecipe} btnLabel={"delete"} />
             </div>
           </>
