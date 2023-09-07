@@ -1,11 +1,14 @@
 .sub-header {
   position: sticky;
-  top: 6.9rem;
+  top: 5.2rem;
   background-color: white;
   width: min-content;
-  padding: 1rem;
+}
+
+.contracted {
   border-right: 2px solid var(--dark-slate-gray);
   border-bottom: 2px solid var(--dark-slate-gray);
+  padding: 1rem;
 }
 
 .expanded {
@@ -27,4 +30,10 @@
   position: absolute;
   bottom: 0;
   right: 0;
+}
+
+@media (min-width: 1024px) {
+  .sub-header {
+    top: 6.9rem;
+  }  
 }
