@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { recipeContext } from "../../state/contexts";
 import { useAmplify } from "../../utils/customhooks";
 import { ListEditor } from "../lists";
@@ -9,8 +9,6 @@ import "./recipe.css";
 const RecipeForm = () => {
   const { recipe, setRecipe, isNewRecipe } = useContext(recipeContext);
   const { addAsset, addRecipe, updateRecipe } = useAmplify();
-
-  const [recImg, setRecImg] = useState(recipe?.recipe_image || '');
 
   const handleChange = (e) => setRecipe({ ...recipe, [e.target.name]: e.target.value });
 
@@ -37,16 +35,15 @@ const RecipeForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('submitting ', recipe);
-    await setRecipe(delete recipe?.recipe_image);
-    
+    await setRecipe(delete recipe?.recipe_image);    
     isNewRecipe ? await addRecipe(recipe) : await updateRecipe(recipe);
     alert('recipe updated');
   }
 
   useEffect(() => {
-    console.log('data ', recipe);
+    console.log('recipe ', recipe);
   }, [recipe])
+
   return(
     <form onSubmit={handleSubmit} className="recipe-form">
       <div className="form-input recipe-name">
