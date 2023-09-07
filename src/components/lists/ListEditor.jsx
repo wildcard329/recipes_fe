@@ -4,7 +4,6 @@ import { AppButton } from "../button";
 import { useBool } from "../../utils/customhooks";
 
 const ListEditor = ({ list, listTitle, isOrderedList=false, isLongInput=false, editorCb }) => {
-  const [items, setItems] = useState(list || [])
   const [item, setItem] = useState('');
   const [editIndex, setEditIndex] = useState(null);
   const {
@@ -14,36 +13,33 @@ const ListEditor = ({ list, listTitle, isOrderedList=false, isLongInput=false, e
   } = useBool();
 
   const handleEditItem = (index) => {
-    setItem(items[index]);
+    setItem(list[index]);
     setEditIndex(index);
     setIsEditing();
   };
 
-  const handleDeleteItem = (index) => {
-    setItems(items.filter((_, itemIndex) => itemIndex !== index));
-    editorCb(items);
+  const handleDeleteItem = async (index) => {
+    await editorCb(list.filter((_, itemIndex) => itemIndex !== index));
     setEditIndex(null);
     setNotIsEditing();
     setItem('');
   };
 
-  const handleAddItem = () => {
+  const handleAddItem = async () => {
     if (isEditing) {
-      setItems(items.map((listItem, index) => index === editIndex ? item : listItem));
+      await editorCb(list.map((listItem, index) => index === editIndex ? item : listItem));
       setItem('');
-      editorCb(items);
       setEditIndex(null);
       setNotIsEditing();
     } else {
-      setItems([ ...items, item ]);
+      await editorCb([ ...list, item ]);
       setItem('');
-      editorCb(items);
     }
   };
 
   return(
     <div className="list-input">
-      <ListDisplay title={listTitle} data={items} isEditing isOrderedList={isOrderedList} editItemCb={handleEditItem} deleteItemCb={handleDeleteItem} />
+      <ListDisplay title={listTitle} data={list} isEditing isOrderedList={isOrderedList} editItemCb={handleEditItem} deleteItemCb={handleDeleteItem} />
       {isLongInput ?
         <textarea name="item" value={item} onChange={(e) => setItem(e.target.value)} placeholder="add item" />
       :

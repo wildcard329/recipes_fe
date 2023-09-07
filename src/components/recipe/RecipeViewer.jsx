@@ -35,10 +35,6 @@ const RecipeViewer = () => {
       <section id="recipe-instructions" className="bg-dark-slate-gray highlight-line">
         <ListDisplay title={'Instructions'} data={recipe?.recipe_instructions} isOrderedList />
       </section>
-      <section id="page-action-row" className="recipe-viewer-section">
-        <RouterLink label={"edit"} path={`/recipes/${recipe?.recipe_id}/edit`} state={recipe} />
-        <AppButton btnLabel={"delete"} />
-      </section>
     </div>
   )
 }

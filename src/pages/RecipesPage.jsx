@@ -33,7 +33,7 @@ const RecipesPage = () => {
           <Spinner1 />
         </div>
       :
-        <div className="recipes-container">
+        <div className="recipes-container page-content">
           <h1>Browse Recipes</h1>
           <section id="recipes-section">
             {recipes?.map((recipe, index) => <RecipeCard key={`${recipe?.recipe_id}-${recipe?.recipe_name}-${index}`} recipe={recipe} />)}
