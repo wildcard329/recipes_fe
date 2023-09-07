@@ -1,9 +1,9 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { RecipeForm } from "../components/recipe";
 import { useAmplify, useBool, useReactRouter } from "../utils/customhooks";
 import { recipeContext } from "../state/contexts";
 import { Spinner1 } from "../components/loader";
-import { generateRandomNumber } from "../utils/functions/randomNumberGenerator";
+import { generateRecipeTemplate } from "../utils/functions/recipe";
 
 const RecipeEditorPage = () => {
   const {
@@ -14,21 +14,6 @@ const RecipeEditorPage = () => {
   const { getRecipeByIdAuthor } = useAmplify();
   const { recipe, setRecipe, setNewRecipe, setNotNewRecipe } = useContext(recipeContext);
   const { locationState } = useReactRouter();
-  const recipeTemplate = {
-    recipe_id: generateRandomNumber(),
-    recipe_name: "",
-    recipe_description: "",
-    recipe_prep_time: "",
-    recipe_cook_time: "",
-    recipe_total_time: "",
-    recipe_author: "Greg",
-    recipe_image_key: "",
-    recipe_image: "",
-    recipe_ingredients: [],
-    recipe_tools: [],
-    recipe_categories: [],
-    recipe_instructions: [],
-  };
 
   const assembleRecipeDefault = async () => {
     if (!recipe?.recipe_id && !!locationState) {
@@ -38,7 +23,7 @@ const RecipeEditorPage = () => {
       await setNotNewRecipe();
       await setNotIsLoading();
     } else {
-      setRecipe(recipeTemplate);
+      setRecipe(generateRecipeTemplate());
       setNewRecipe();
     };
   };
@@ -48,10 +33,12 @@ const RecipeEditorPage = () => {
   }, []);
 
   return(
-    isLoading ?
-      <Spinner1 />
-    : 
-      <RecipeForm />
+    <div className="page-content">
+      {isLoading ?
+        <Spinner1 />
+      : 
+        <RecipeForm />}
+    </div>
   )
 }
 

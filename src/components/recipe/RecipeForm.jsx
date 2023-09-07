@@ -7,11 +7,10 @@ import imgUplPlchldr from "../../assets/images/upload_image.png";
 import "./recipe.css";
 
 const RecipeForm = () => {
-  const { recipe: recipeData, isNewRecipe } = useContext(recipeContext);
+  const { recipe, setRecipe, isNewRecipe } = useContext(recipeContext);
   const { addAsset, addRecipe, updateRecipe } = useAmplify();
-  const [recipe, setRecipe] = useState(recipeData);
 
-  const [recImg, setRecImg] = useState(recipeData?.recipe_image || '');
+  const [recImg, setRecImg] = useState(recipe?.recipe_image || '');
 
   const handleChange = (e) => setRecipe({ ...recipe, [e.target.name]: e.target.value });
 
@@ -22,44 +21,32 @@ const RecipeForm = () => {
     if (file.name.match(/\.(jpg|jpeg|png|gif)$/i)) {
       const filename = `${recipe?.recipe_author || 'Greg'}-${file.name}`;
       addAsset(filename, file);
-      setRecipe({ ...recipe, recipe_image_key: filename, recipe_author: recipe?.recipe_author || 'Greg'});
-      setRecImg(URL.createObjectURL(e.target.files[0]));
+      setRecipe({ ...recipe, recipe_image_key: filename, recipe_image: file });
     } else {
       alert('That is not an image');
-      setRecImg(null);
     }
   };
 
-  const handleCategories = (categories) => {
-    setRecipe({ ...recipe, recipe_categories: categories });
-  };
+  const handleCategories = async (categories) => await setRecipe((prevRec) => ({ ...prevRec, recipe_categories: categories }));
 
-  const handleIngredients = (ingredients) => {
-    setRecipe({ ...recipe, recipe_ingredients: ingredients });
-  };
+  const handleIngredients = async (ingredients) => await setRecipe((prevRec) => ({ ...prevRec, recipe_ingredients: ingredients }));
 
-  const handleInstructions = (instructions) => {
-    setRecipe({ ...recipe, recipe_instructions: instructions });
-  };
+  const handleInstructions = async (instructions) => await setRecipe((prevRec) => ({  ...prevRec, recipe_instructions: instructions }));
 
-  const handleTools = (tools) => {
-    setRecipe({ ...recipe, recipe_tools: tools });
-  };
+  const handleTools = async (tools) => await setRecipe((prevRec) => ({ ...prevRec, recipe_tools: tools }));
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log('submitting ', recipe);
-    setRecipe(delete recipe?.recipe_image);
+    await setRecipe(delete recipe?.recipe_image);
     
-    isNewRecipe ? addRecipe(recipe) : updateRecipe(recipe);
+    isNewRecipe ? await addRecipe(recipe) : await updateRecipe(recipe);
     alert('recipe updated');
   }
 
   useEffect(() => {
-    setRecipe(recipeData);
-    console.log('data ', recipeData);
-
-  }, [recipeData]);
+    console.log('data ', recipe);
+  }, [recipe])
   return(
     <form onSubmit={handleSubmit} className="recipe-form">
       <div className="form-input recipe-name">
@@ -87,8 +74,8 @@ const RecipeForm = () => {
       </div>
       <div className="form-input recipe-image">
         <label>recipe image</label>
-        <img src={recImg ? recImg : imgUplPlchldr} alt="recipe-image" className="recipe-image-asset" />
-        <input name='recipe_image' value={recImg} onChange={handleImgUpld} type="file" />
+        <img src={recipe?.recipe_image ? recipe?.recipe_image : imgUplPlchldr} alt="recipe-image" className="recipe-image-asset" />
+        <input name='recipe_image' onChange={handleImgUpld} type="file" />
       </div>
       <div className="form-input recipe-ingredients">
         <ListEditor list={recipe?.recipe_ingredients} listTitle={"ingredients"} editorCb={handleIngredients} />

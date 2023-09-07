@@ -1,8 +1,10 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { useBool, useReactRouter, useAmplify } from "../utils/customhooks";
 import { recipeContext } from "../state/contexts";
 import { RecipeViewer } from "../components/recipe";
 import { Spinner1 } from "../components/loader";
+import { RouterLink } from "../components/router";
+import { AppButton } from "../components/button";
 
 const RecipeViewerPage = () => {
   const {
@@ -11,9 +13,9 @@ const RecipeViewerPage = () => {
     setNotTruthy: setNotIsLoading,
   } = useBool();
 
-  const { getRecipeByIdAuthor, getRecipeAsset } = useAmplify();
+  const { getRecipeByIdAuthor, getRecipeAsset, deleteRecipe } = useAmplify();
   const { locationState: { recipe_id, recipe_author } } = useReactRouter();
-  const { setRecipe, setAsset } = useContext(recipeContext);
+  const { setRecipe, setAsset, recipe } = useContext(recipeContext);
 
   const retrieveData = async () => {
     setIsLoading();
@@ -26,20 +28,30 @@ const RecipeViewerPage = () => {
     setNotIsLoading();
   };
 
+  const removeRecipe = () => {
+    deleteRecipe(recipe_author, recipe_id);
+  };
+
   useEffect(() => {
     retrieveData();
   }, []);
   return(
-    <>
+    <div className="page-content">
       {
         isLoading ?
           <div className="space-buffer">
             <Spinner1 />
           </div>
         : 
-          <RecipeViewer />
+          <>
+            <RecipeViewer />
+            <div id="page-action-row" className="recipe-viewer-section">
+              <RouterLink label={"edit"} path={`/recipes/${recipe_id}/edit`} state={recipe} />
+              <AppButton btnCb={removeRecipe} btnLabel={"delete"} />
+            </div>
+          </>
       }
-    </>
+    </div>
   )
 }
 
