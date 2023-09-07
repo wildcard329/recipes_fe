@@ -13,7 +13,7 @@ const RecipeEditorPage = () => {
   } = useBool();
   const { getRecipeByIdAuthor } = useAmplify();
   const { recipe, setRecipe, setNewRecipe, setNotNewRecipe } = useContext(recipeContext);
-  const { locationState } = useReactRouter();
+  const { locationState, routerPath } = useReactRouter();
 
   const assembleRecipeDefault = async () => {
     if (!!locationState?.recipe_id && !recipe?.recipe_id) {
@@ -22,7 +22,7 @@ const RecipeEditorPage = () => {
       await setRecipe(recData);
       await setNotNewRecipe();
       await setNotIsLoading();
-    } else if (!recipe_id) {
+    } else if (!locationState?.recipe_id) {
       setRecipe(generateRecipeTemplate());
       setNewRecipe();
     };
@@ -30,7 +30,7 @@ const RecipeEditorPage = () => {
 
   useEffect(() => {
     assembleRecipeDefault();
-  }, []);
+  }, [routerPath]);
 
   return(
     <div className="page-content">
