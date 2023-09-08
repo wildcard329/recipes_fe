@@ -8,6 +8,8 @@ const useAmplify = () => {
 
   const getGoogleAuthUser = async () => Auth.currentAuthenticatedUser();
 
+  const signoutUser = async () => await Auth.signOut();
+
   const addAsset = async (filename, file) => await Storage.put(filename, file, { resumable: true });
 
   const getRecipesAssets = async (data) => await Promise.all(data?.map(async (recipe) => await ({ ...recipe, recipe_image: recipe?.recipe_image_key ? await Storage.get(recipe?.recipe_image_key) : null })));
@@ -22,13 +24,9 @@ const useAmplify = () => {
   
   const updateRecipe = async (recipe) => await API.put(myAPI, recipesPath, { body: recipe });
 
-  const addRecipe = async (recipe) => {
-    console.log('pre ', recipe);
-    const res = await API.post(myAPI, recipesPath, { body: recipe });
-    console.log('data ', res);
-  }
+  const addRecipe = async (recipe) => await API.post(myAPI, recipesPath, { body: recipe });
 
-  return { getRecipeAsset, getRecipesAssets, getRecipes, getRecipeByIdAuthor, deleteRecipe, updateRecipe, addRecipe, addAsset, authGoogle, getGoogleAuthUser };
+  return { getRecipeAsset, getRecipesAssets, getRecipes, getRecipeByIdAuthor, deleteRecipe, updateRecipe, addRecipe, addAsset, authGoogle, getGoogleAuthUser, signoutUser };
 }
 
 export default useAmplify;
