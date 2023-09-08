@@ -49,6 +49,7 @@
 .app-container {
   /* padding: 0 3.125rem; */
   position: relative;
+  min-height: 100vh;
 }
 
 .flex-container {
