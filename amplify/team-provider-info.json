@@ -15,7 +15,7 @@
       "function": {
         "reclambda": {
           "deploymentBucketName": "amplify-recbackend-dev-81551-deployment",
-          "s3Key": "amplify-builds/reclambda-42317a4646584e76794b-build.zip"
+          "s3Key": "amplify-builds/reclambda-7155753757434f35334e-build.zip"
         }
       },
       "api": {

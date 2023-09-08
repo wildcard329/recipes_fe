@@ -1,8 +1,12 @@
-import { API, Storage } from "aws-amplify";
+import { API, Storage, Auth } from "aws-amplify";
 
 const useAmplify = () => {
   const myAPI = "recipes";
   const recipesPath = "/recipes";
+
+  const authGoogle = async () => Auth.federatedSignIn({ provider: "Google" });
+
+  const getGoogleAuthUser = async () => Auth.currentAuthenticatedUser();
 
   const addAsset = async (filename, file) => await Storage.put(filename, file, { resumable: true });
 
@@ -24,7 +28,7 @@ const useAmplify = () => {
     console.log('data ', res);
   }
 
-  return { getRecipeAsset, getRecipesAssets, getRecipes, getRecipeByIdAuthor, deleteRecipe, updateRecipe, addRecipe, addAsset };
+  return { getRecipeAsset, getRecipesAssets, getRecipes, getRecipeByIdAuthor, deleteRecipe, updateRecipe, addRecipe, addAsset, authGoogle, getGoogleAuthUser };
 }
 
 export default useAmplify;
