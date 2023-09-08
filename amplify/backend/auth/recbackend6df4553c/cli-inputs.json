@@ -2,7 +2,7 @@
   "version": "1",
   "cognitoConfig": {
     "identityPoolName": "recbackend6df4553c_identitypool_6df4553c",
-    "allowUnauthenticatedIdentities": true,
+    "allowUnauthenticatedIdentities": false,
     "resourceNameTruncated": "recbac6df4553c",
     "userPoolName": "recbackend6df4553c_userpool_6df4553c",
     "autoVerifiedAttributes": [
@@ -36,7 +36,7 @@
     "sharedId": "6df4553c",
     "resourceName": "recbackend6df4553c",
     "authSelections": "identityPoolAndUserPool",
-    "useDefault": "default",
+    "useDefault": "defaultSocial",
     "usernameAttributes": [
       "email, phone_number"
     ],
@@ -57,6 +57,14 @@
       ]
     },
     "breakCircularDependency": true,
-    "dependsOn": []
+    "dependsOn": [],
+    "hostedUI": true,
+    "hostedUIDomainName": "recbackendae695dac-ae695dac",
+    "authProvidersUserPool": [
+      "Google"
+    ],
+    "hostedUIProviderMeta": "[{\"ProviderName\":\"Google\",\"authorize_scopes\":\"openid email profile\",\"AttributeMapping\":{\"email\":\"email\",\"username\":\"sub\"}}]",
+    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:5173/recipes/\",\"https://main.d3nres1avtnmum.amplifyapp.com/recipes/\"],\"LogoutURLs\":[\"http://localhost:5173/\",\"https://main.d3nres1avtnmum.amplifyapp.com/\"]}",
+    "authProviders": []
   }
 }
