@@ -1,15 +1,16 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useAmplify } from "../utils/customhooks/";
 import { useBool } from "../utils/customhooks";
-import { pageNavContext } from "../state/contexts";
+import { pageNavContext, userContext } from "../state/contexts";
 import { RecipeCard } from "../components/recipe";
 import { Spinner1 } from "../components/loader";
 import "./page.css";
 
 const RecipesPage = () => {
   const { setNavLinks } = useContext(pageNavContext);
+  const { loginUser } = useContext(userContext);
   
-  const { getRecipes, getRecipesAssets } = useAmplify();
+  const { getRecipes, getRecipesAssets, getGoogleAuthUser } = useAmplify();
   const [recipes, setRecipes] = useState([]);
   const {
     isTruthy: isLoading,
@@ -22,6 +23,14 @@ const RecipesPage = () => {
     const { data } = await getRecipes();
     const updatedRecipes = await getRecipesAssets(data);
     setRecipes(updatedRecipes);
+    try {
+      const user = await getGoogleAuthUser();
+      if (user?.username) {
+        await loginUser();
+      }
+    } catch (error) {
+      console.log(error);
+    }
     await setIsNotLoading();
   }
 
