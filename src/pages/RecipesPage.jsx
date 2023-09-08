@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useAmplify } from "../utils/customhooks/";
+import { useAmplify, useLocalStorage } from "../utils/customhooks/";
 import { useBool } from "../utils/customhooks";
 import { pageNavContext, userContext } from "../state/contexts";
 import { RecipeCard } from "../components/recipe";
@@ -8,9 +8,10 @@ import "./page.css";
 
 const RecipesPage = () => {
   const { setNavLinks } = useContext(pageNavContext);
-  const { loginUser } = useContext(userContext);
+  const { loginUser, isLoggedIn } = useContext(userContext);
   
   const { getRecipes, getRecipesAssets, getGoogleAuthUser } = useAmplify();
+  const { getLocalStorageVal, removeLocalStorageVal } = useLocalStorage();
   const [recipes, setRecipes] = useState([]);
   const {
     isTruthy: isLoading,
@@ -18,19 +19,27 @@ const RecipesPage = () => {
     setNotTruthy: setIsNotLoading,
   } = useBool();
 
+  const checkUserAuth = async () => {
+    const hasAttemptedLogin = getLocalStorageVal('hasAttemptedLogin');
+    if (!isLoggedIn && hasAttemptedLogin) {
+      try {
+        const user = await getGoogleAuthUser();
+        if (user?.username) {
+          await loginUser();
+          await removeLocalStorageVal('hasAttemptedLogin');
+        }
+      } catch (error) {
+        console.log(error);
+      };
+    };
+  };
+
   const retrieveData = async () => {
     await setIsLoading();
     const { data } = await getRecipes();
     const updatedRecipes = await getRecipesAssets(data);
     setRecipes(updatedRecipes);
-    try {
-      const user = await getGoogleAuthUser();
-      if (user?.username) {
-        await loginUser();
-      }
-    } catch (error) {
-      console.log(error);
-    }
+    await checkUserAuth();
     await setIsNotLoading();
   }
 
