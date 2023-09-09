@@ -26,11 +26,14 @@ const SubHeader = () => {
   return(
     <>
       {navLinks.length > 0 ?
-        <div className="sub-header" onMouseEnter={setIsFocused} onMouseLeave={setIsNotFocused}>
-          {!isExpanded && (isScrolling || isFocused) && 
-            <div className="contracted">
-              <BsArrowDownRightSquareFill fill="#335c67" onClick={setIsExpanded} className="sub-header-icon" />
-            </div>}
+        <div className="sub-header">
+          {!isExpanded && (isScrolling || isFocused ? 
+            <div className="contracted" onMouseLeave={setIsNotFocused}>
+              <BsArrowDownRightSquareFill fill="#335c67" onClick={setIsExpanded} className="sub-header-icon expanding-icon" />
+            </div>
+          :
+            <div className="contracted-trigger" onMouseEnter={setIsFocused}></div>  
+          )}
           {isExpanded && 
             <div className="expanded">
               <SubHeaderLinks navLinks={navLinks} />

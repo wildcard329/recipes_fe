@@ -9,6 +9,14 @@
   border-right: 2px solid var(--dark-slate-gray);
   border-bottom: 2px solid var(--dark-slate-gray);
   padding: 1rem;
+  position: absolute;
+  background-color: white;
+}
+
+.contracted-trigger {
+  height: 2rem;
+  width: 2rem;
+  position: absolute;
 }
 
 .expanded {
