@@ -26,7 +26,10 @@
         "imgStorage": {}
       },
       "auth": {
-        "recbackend6df4553c": {}
+        "recbackendf427d6a6f427d6a6": {
+          "googleClientId": "939730640784-lao974a2olsk6cqm1t41cul0k3qa0rau.apps.googleusercontent.com"
+        },
+        "userPoolGroups": {}
       }
     }
   }

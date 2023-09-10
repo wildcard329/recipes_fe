@@ -16,7 +16,7 @@
     }
   },
   "auth": {
-    "recbackend6df4553c": {
+    "recbackendf427d6a6f427d6a6": {
       "customAuth": false,
       "dependsOn": [],
       "frontendAuthConfig": {
@@ -39,11 +39,27 @@
           "PHONE_NUMBER"
         ],
         "verificationMechanisms": [
-          "EMAIL"
+          "PHONE_NUMBER"
         ]
       },
       "providerPlugin": "awscloudformation",
       "service": "Cognito"
+    },
+    "userPoolGroups": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId",
+            "AppClientIDWeb",
+            "AppClientID",
+            "IdentityPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "recbackendf427d6a6f427d6a6"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito-UserPool-Groups"
     }
   },
   "function": {
@@ -55,6 +71,14 @@
     }
   },
   "parameters": {
+    "AMPLIFY_auth_recbackendf427d6a6f427d6a6_googleClientId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "recbackendf427d6a6f427d6a6"
+        }
+      ]
+    },
     "AMPLIFY_function_reclambda_deploymentBucketName": {
       "usedBy": [
         {
