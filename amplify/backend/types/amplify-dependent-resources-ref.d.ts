@@ -7,9 +7,11 @@ export type AmplifyDependentResourcesAttributes = {
     }
   },
   "auth": {
-    "recbackend6df4553c": {
+    "recbackendf427d6a6f427d6a6": {
       "AppClientID": "string",
       "AppClientIDWeb": "string",
+      "CreatedSNSRole": "string",
+      "GoogleWebClient": "string",
       "HostedUIDomain": "string",
       "IdentityPoolId": "string",
       "IdentityPoolName": "string",
@@ -17,6 +19,10 @@ export type AmplifyDependentResourcesAttributes = {
       "UserPoolArn": "string",
       "UserPoolId": "string",
       "UserPoolName": "string"
+    },
+    "userPoolGroups": {
+      "adminGroupRole": "string",
+      "userGroupRole": "string"
     }
   },
   "function": {
