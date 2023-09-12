@@ -2,8 +2,8 @@ import { useContext, useEffect } from "react";
 import { useBool, useReactRouter, useScrollListener } from "../../utils/customhooks";
 import { BsArrowDownRightSquareFill, BsArrowUpLeftSquareFill } from "react-icons/bs";
 import { pageNavContext } from "../../state/contexts";
-import "./SubHeader.css";
 import SubHeaderLinks from "./SubHeaderLinks";
+import "./SubHeader.css";
 
 const SubHeader = () => {
   const {
@@ -27,7 +27,7 @@ const SubHeader = () => {
 
   useEffect(() => {
     handleMenuClose();
-  }, [routerPath]);
+  }, [routerPath, isScrolling]);
   return(
     <>
       {navLinks.length > 0 ?

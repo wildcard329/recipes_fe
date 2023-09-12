@@ -15,7 +15,7 @@
   padding: 0.7rem 0.7rem 0.4rem 0.7rem;
   position: absolute;
   background-color: white;
-  animation: expand2 0.25s;
+  animation: expand2 0.5s;
 }
 
 .contracted-trigger {
@@ -33,17 +33,17 @@
   border-radius: 6px;
   top: 0;
   left: 0;
-  animation: expand2 0.25s;
+  animation: expand2 0.5s;
 }
 
 .expanded ul {
-  animation: delayRender 0.25s;
+  animation: delayRender 0.5s;
 }
 
 .sub-header-icon {
   height: 25px;
   width: 25px;
-  animation: delayRender 0.25s;
+  animation: delayRender 0.5s;
 }
 
 .right-corner {

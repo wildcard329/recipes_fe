@@ -6,6 +6,11 @@ import "./header.css";
 
 const recipeLinkConfig = [
   {
+    path: "/recipes",
+    classname: "header-link",
+    label: "all recipes"
+  },
+  {
     path: "/recipes/user",
     classname: "header-link",
     label: "my recipes"
@@ -18,6 +23,11 @@ const recipeLinkConfig = [
 ];
 
 const ingredientsLinksConfig = [
+  {
+    path: "/ingredients",
+    classname: "header-link",
+    label: "all ingredients"
+  },
   {
     path: "/ingredients/user",
     classname: "header-link",
@@ -35,7 +45,6 @@ const HeaderLinksContainer = ({ isShowingLinks }) => {
     } else {
       linksElement.current.classList.add('mobile-hide');
     }
-    console.log('logged in ', isLoggedIn);
   }, [isShowingLinks])
   return(
     <nav>
