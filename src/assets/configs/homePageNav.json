@@ -2,25 +2,25 @@
   {
     "navId": 0,
     "navLabel": "welcome",
-    "navLink": "home-page-hero",
+    "navLink": "hero",
     "classname": "page-nav-link"
   },
   {
     "navId": 1,
     "navLabel": "thank you",
-    "navLink": "home-page-ad-1",
+    "navLink": "section-1",
     "classname": "page-nav-link"
   },
   {
     "navId": 2,
     "navLabel": "community",
-    "navLink": "home-page-ad-2",
+    "navLink": "section-2",
     "classname": "page-nav-link"
   },
   {
     "navId": 4,
     "navLabel": "features",
-    "navLink": "home-page-ad-3",
+    "navLink": "section-3",
     "classname": "page-nav-link"
   }
 ]

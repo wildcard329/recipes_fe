@@ -8,6 +8,13 @@
   width: 75px;
 }
 
+.anchor-target {
+  display: block;
+  position: relative;
+  top: -8rem;
+  visibility: hidden;
+}
+
 .spaced-apart {
   display: flex;
   justify-content: space-between;
