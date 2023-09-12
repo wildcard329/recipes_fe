@@ -22,7 +22,9 @@ const AppHeader = () => {
   return(
     <header className="app-header">
       <div className="logo-container">
-        <AppLogo />
+        <a href="/">
+          <AppLogo />
+        </a>
         <RxHamburgerMenu className="hamburger-icon" onClick={handleMenu} />
       </div>
       <HeaderLinksContainer isShowingLinks={isShowingLinks} />

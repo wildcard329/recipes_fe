@@ -6,7 +6,8 @@ import section2Img from "../assets/images/rec-app-home-section-2.jpg"
 import communityImg from "../assets/images/rec-app-home-cta-community.jpg";
 import recipeImg from "../assets/images/rec-app-home-cta-recipe.jpg";
 import cookbookImg from "../assets/images/rec-app-home-cta-cookbook.jpg";
-import "./page.css";
+import "./HomePage.css";
+// import "./page.css";
 
 const HomePage = () => {
   const { setNavLinks } = useContext(pageNavContext);
@@ -39,17 +40,17 @@ const HomePage = () => {
           <article className="section-ad-content home-article">
             <h3>Share your recipes</h3>
             <p>Share your culinary experiences with other users on Recipe Rollout and inspire fellow food lovers!</p>
-            <img src={communityImg} alt="join our community" className="home-page-sec-img mobile-hidden" />
+            <img src={communityImg} alt="join our community" className="home-article-img mobile-hidden" />
           </article>
           <article className="section-ad-content home-article">
-            <img src={recipeImg} alt="view our recipes" className="home-page-sec-img mobile-hidden" />
+            <img src={recipeImg} alt="view our recipes" className="home-article-img mobile-hidden" />
             <h3>View our recipe collection</h3>
             <p>Need quick meal ideas? Take a look at other user recipes and whip up a satisfying, memorable meal!</p>
           </article>
           <article className="section-ad-content home-article">
             <h3>Coming soon - Cookbook</h3>
             <p>We are excited to announce an upcoming new feature: Cookbook. Stay tuned for more details.</p>
-            <img src={cookbookImg} alt="coming soon" className="home-page-sec-img mobile-hidden" />
+            <img src={cookbookImg} alt="coming soon" className="home-article-img mobile-hidden" />
           </article>
         </div>
       </section>

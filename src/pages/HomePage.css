@@ -1,0 +1,76 @@
+.home-article {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.home-page-header {
+  margin-bottom: 1rem;
+  text-shadow: black 1px 0 10px;
+}
+
+#home-page-hero {
+  background-image: url('../assets/images/rec-app-home-hero.jpg');
+  background-position: center;
+  background-color: lightgray;
+  background-size: cover;
+  background-blend-mode: multiply;
+  color: white;
+  padding: 3.125rem;
+  font-weight: 800;
+  overflow: auto;
+}
+
+.hero-text {
+  text-shadow: black 1px 0 10px;
+  font-size: 1.2rem;
+}
+
+#home-page-ad-1 {
+  background-color: var(--chocolate-cosmos);
+  color: white;
+  overflow: auto;
+}
+
+#home-page-ad-2 {
+  background-color: var(--vanilla);
+  overflow: auto;
+}
+
+.home-page-sec-img {
+  height: 300px;
+  width: 300px;
+}
+
+.home-article-img {
+  width: 100%;
+  height: 225px;
+  object-fit: cover;
+}
+
+.section-ad-content {
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .home-page-header {
+    margin-bottom: 3.125rem;
+  }
+  .section-ad-content {
+    margin: 3.125rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .home-article {
+    background-color: var(--dark-slate-gray);
+    color: white;
+  }
+  .home-article h3 {
+    padding-top: 1rem;
+  }
+  .home-article h3, p {
+    padding-left: 3.125rem;
+    padding-right: 3.125rem;
+  }
+}

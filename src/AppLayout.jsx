@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import { AppHeader } from "./components/header";
-import { Spinner1 } from "./components/loader";
+import { LoadingPage } from "./pages";
 import { AppFooter } from "./components/footer";
 import { SubHeader } from "./components/subheader";
 
@@ -8,7 +8,7 @@ const AppLayout = ({ children }) =>
   <div className="app-container">
     <AppHeader />
     <SubHeader />
-    <Suspense fallback={<Spinner1 />}>
+    <Suspense fallback={<LoadingPage />}>
       {children}
     </Suspense>
     <AppFooter />
