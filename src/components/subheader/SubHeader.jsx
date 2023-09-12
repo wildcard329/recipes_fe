@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import { useBool, useScrollListener } from "../../utils/customhooks";
+import { useBool, useReactRouter, useScrollListener } from "../../utils/customhooks";
 import { BsArrowDownRightSquareFill, BsArrowUpLeftSquareFill } from "react-icons/bs";
 import { pageNavContext } from "../../state/contexts";
 import "./SubHeader.css";
@@ -16,6 +16,7 @@ const SubHeader = () => {
     setTruthy: setIsFocused,
     setNotTruthy: setIsNotFocused,
   } = useBool();
+  const { routerPath } = useReactRouter();
   const { navLinks } = useContext(pageNavContext);
   const { isScrolling } = useScrollListener();
 
@@ -23,6 +24,10 @@ const SubHeader = () => {
     setIsNotExpanded();
     setIsNotFocused();
   };
+
+  useEffect(() => {
+    handleMenuClose();
+  }, [routerPath]);
   return(
     <>
       {navLinks.length > 0 ?
@@ -32,7 +37,7 @@ const SubHeader = () => {
               <BsArrowDownRightSquareFill fill="#335c67" onClick={setIsExpanded} className="sub-header-icon expanding-icon" />
             </div>
           :
-            <div className="contracted-trigger" onMouseEnter={setIsFocused}></div>  
+            <div className="contracted-trigger" onDoubleClick={setIsExpanded} onMouseEnter={setIsFocused}></div>  
           )}
           {isExpanded && 
             <div className="expanded">

@@ -15,24 +15,26 @@ const RecipeViewer = () => {
   return(
     <div className="recipe-info-page">
       <h1>{recipe?.recipe_name}</h1>
-      <section id="recipe-info" className="recipe-viewer-section">
+      <section id="recipe-display" className="recipe-viewer-section">
         <ImageLoader image={recipeImage ? recipeImage : imgPlaceholder} imgAlt={'recipe-image'} id="recipe-info-image" />
-        <div id="recipe-time" className="recipe-data-cluster highlight-line bg-vanilla">
+      </section>
+      <section id="recipe-info">
+        <div id="recipe-time" className="recipe-data-cluster highlight-line bg-whitesmoke">
           <span>Prep time: {formatMinutes(recipe?.recipe_prep_time)}</span>
           <span>Cook time: {formatMinutes(recipe?.recipe_cook_time)}</span>
           <span>Total time: {formatMinutes(recipe?.recipe_total_time)}</span>
         </div>
-        <p className="recipe-details highlight-line bg-vanilla">{recipe?.recipe_description}</p>
+        <p id="recipe-details" className="highlight-line bg-whitesmoke">{recipe?.recipe_description}</p>
       </section>
       <section id="recipe-prep">
-        <div className="highlight-line bg-chocolate-cosmos">
+        <div className="highlight-line bg-whitesmoke">
           <ListDisplay title={'Tools'} data={recipe?.recipe_tools} />
         </div>
-        <div className="highlight-line bg-chocolate-cosmos">
+        <div className="highlight-line bg-whitesmoke">
           <ListDisplay title={'Ingredients'} data={recipe?.recipe_ingredients} />
         </div>
       </section>
-      <section id="recipe-instructions" className="bg-dark-slate-gray highlight-line">
+      <section id="recipe-instructions" className="highlight-line bg-whitesmoke">
         <ListDisplay title={'Instructions'} data={recipe?.recipe_instructions} isOrderedList />
       </section>
     </div>

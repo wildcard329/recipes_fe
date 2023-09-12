@@ -1,3 +1,6 @@
+@import url('../../animations/expand.css');
+@import url('../../animations/delayRender.css');
+
 .app-header {
   position: sticky;
   top: 0;
@@ -82,15 +85,24 @@
     list-style: none;
     padding-left: 0;
     padding-right: 0;
-    left: -1.8rem;
+    left: -0.9rem;
     top: 2rem;
   }
+  .header-menu-animation {
+    border-bottom: 2px solid var(--dark-slate-gray);
+    border-right: 2px solid var(--dark-slate-gray);
+    animation: expand 0.25s;
+  }
   .header-link-menu li {
-    padding: 1rem 2rem;
+    padding: 0.5rem 1rem;
     height: max-content;
+    animation: delayRender 0.25s;
   }  
   .header-link-menu li:hover {
     background-color: var(--dark-slate-gray);
+  }
+  .header-link-menu li:hover a {
+    color: white;
   }
   .header-links a {
     font-size: 0.875rem;
