@@ -3,8 +3,7 @@
   grid-template-areas: 
     "recipe-name"
     "recipe-image"
-    "recipe-time"
-    "recipe-details"
+    "recipe-info"
     "recipe-prep"
     "recipe-instructions"
     "action-items";
@@ -19,12 +18,17 @@
   width: min-content;
 }
 
+#recipe-info {
+  grid-area: recipe-info;
+}
+
 #recipe-time {
   grid-area: recipe-time;
   margin: 2rem 0;
+  width: 80%;
 }
 
-.recipe-details {
+#recipe-details {
   grid-area: recipe-details;
 }
 
@@ -39,12 +43,17 @@
   gap: 2rem;
 }
 
+#recipe-prep ul {
+  list-style: square;
+}
+
 .recipe-info-page h1 {
   grid-area: recipe-name;  
 }
 
-#recipe-info-image {
+#recipe-display {
   grid-area: recipe-image;
+  max-width: 650px;
 }
 
 #page-action-row {
@@ -58,10 +67,17 @@
   .recipe-info-page {
     grid-template-areas: 
     "recipe-name recipe-name"
-    "recipe-image recipe-prep"
-    "recipe-time recipe-prep"
-    "recipe-details recipe-prep"
+    "recipe-image recipe-image"
+    "recipe-info recipe-info"
+    "recipe-details recipe-details"
+    "recipe-prep recipe-prep"
     "recipe-instructions recipe-instructions"
     "action-items action-items";
+  }
+  #recipe-prep {
+    flex-direction: row;
+  }
+  #recipe-time, #recipe-details {
+    width: max-content;
   }
 }

@@ -1,6 +1,9 @@
+@import url('../../animations/expand.css');
+@import url('../../animations/delayRender.css');
+
 .sub-header {
   position: sticky;
-  top: 5.2rem;
+  top: 6.4rem;
   background-color: white;
   width: min-content;
 }
@@ -8,9 +11,11 @@
 .contracted {
   border-right: 2px solid var(--dark-slate-gray);
   border-bottom: 2px solid var(--dark-slate-gray);
-  padding: 1rem;
+  border-radius: 6px;
+  padding: 0.7rem 0.7rem 0.4rem 0.7rem;
   position: absolute;
   background-color: white;
+  animation: expand 0.25s;
 }
 
 .contracted-trigger {
@@ -20,18 +25,25 @@
 }
 
 .expanded {
-  padding: 2.125rem 2.125rem 2.125rem 0;
+  padding: 2rem 2rem 2rem 0;
   position: absolute;
   background-color: white;
   border-right: 2px solid var(--dark-slate-gray);
   border-bottom: 2px solid var(--dark-slate-gray);
+  border-radius: 6px;
   top: 0;
   left: 0;
+  animation: expand 0.25s;
+}
+
+.expanded ul {
+  animation: delayRender 0.25s;
 }
 
 .sub-header-icon {
   height: 25px;
   width: 25px;
+  animation: delayRender 0.25s;
 }
 
 .right-corner {
