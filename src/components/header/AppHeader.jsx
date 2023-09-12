@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import AppLogo from "../logo/AppLogo";
 import HeaderLinksContainer from "./HeaderLinksContainer";
 import { RxHamburgerMenu } from "react-icons/rx";
@@ -22,9 +23,9 @@ const AppHeader = () => {
   return(
     <header className="app-header">
       <div className="logo-container">
-        <a href="/">
+        <Link to="/">
           <AppLogo />
-        </a>
+        </Link>
         <RxHamburgerMenu className="hamburger-icon" onClick={handleMenu} />
       </div>
       <HeaderLinksContainer isShowingLinks={isShowingLinks} />
