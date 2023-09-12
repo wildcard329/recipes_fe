@@ -1,4 +1,4 @@
-@import url('../../animations/expand.css');
+@import url('../../animations/expand2.css');
 @import url('../../animations/delayRender.css');
 
 .sub-header {
@@ -15,7 +15,7 @@
   padding: 0.7rem 0.7rem 0.4rem 0.7rem;
   position: absolute;
   background-color: white;
-  animation: expand 0.25s;
+  animation: expand2 0.25s;
 }
 
 .contracted-trigger {
@@ -33,7 +33,7 @@
   border-radius: 6px;
   top: 0;
   left: 0;
-  animation: expand 0.25s;
+  animation: expand2 0.25s;
 }
 
 .expanded ul {
