@@ -1,5 +1,7 @@
 export { default as AuthPage } from "./AuthPage.jsx";
 export { default as HomePage } from "./HomePage.jsx";
+export { default as IngredientsPage } from "./IngredientsPage.jsx";
+export { default as LoadingPage } from "./LoadingPage.jsx";
 export { default as LogoutPage } from "./LogoutPage.jsx";
 export { default as RecipesPage } from "./RecipesPage.jsx";
 export { default as RecipeViewerPage } from "./RecipeViewerPage.jsx";
