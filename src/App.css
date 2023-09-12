@@ -3,6 +3,11 @@
   right: 0;
 }
 
+.action-icon {
+  height: 75px;
+  width: 75px;
+}
+
 .spaced-apart {
   display: flex;
   justify-content: space-between;
@@ -117,11 +122,20 @@
   gap: 1rem;
 }
 
+.page-action-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 @media (min-width: 1024px) {
   .page-flex-container {
     flex-direction: row;
   }
   .mobile-hidden {
     display: block;
+  }
+  .page-action-row {
+    width: 25%;
   }
 }
