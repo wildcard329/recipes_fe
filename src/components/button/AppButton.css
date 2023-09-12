@@ -81,6 +81,11 @@
   white-space: nowrap;
 }
 
+.passive-bg {
+  background-color: transparent;
+  border: 0;
+}
+
 .user-submit-btn {
   padding: 0.25rem 1rem;
   margin-top: 0.75rem;

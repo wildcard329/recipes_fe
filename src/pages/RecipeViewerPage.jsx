@@ -1,4 +1,6 @@
 import React, { useEffect, useContext } from "react";
+import { MdOutlineEdit } from 'react-icons/md'
+import { TiDeleteOutline } from 'react-icons/ti';
 import { useBool, useReactRouter, useAmplify } from "../utils/customhooks";
 import { pageNavContext, recipeContext } from "../state/contexts";
 import { RecipeViewer } from "../components/recipe";
@@ -48,9 +50,9 @@ const RecipeViewerPage = () => {
         : 
           <>
             <RecipeViewer />
-            <div id="page-action-row" className="recipe-viewer-section">
-              <RouterLink label={"edit"} path={`/recipes/${locationState?.recipe_id}/edit`} state={recipe} />
-              <AppButton btnCb={removeRecipe} btnLabel={"delete"} />
+            <div className="page-action-row">
+              <RouterLink label={<MdOutlineEdit className="action-icon" fill="#335c67" />} path={`/recipes/${locationState?.recipe_id}/edit`} state={recipe} />
+              <AppButton btnCb={removeRecipe} classname={"passive-bg"} btnLabel={<TiDeleteOutline className="action-icon" fill="#335c67" />} />
             </div>
           </>
       }

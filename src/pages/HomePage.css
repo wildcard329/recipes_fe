@@ -52,6 +52,12 @@
   margin: 0 auto;
 }
 
+.home-page-ad-3-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3.125rem;
+}
+
 @media (min-width: 768px) {
   .home-page-header {
     margin-bottom: 3.125rem;
@@ -72,5 +78,8 @@
   .home-article h3, p {
     padding-left: 3.125rem;
     padding-right: 3.125rem;
+  }
+  .home-page-ad-3-content {
+    flex-direction: row;
   }
 }
