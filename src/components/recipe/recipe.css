@@ -34,8 +34,12 @@
     "e e e f f f"
     "h h h h h h"
     "i i i i i i";
-  background-color: slategray;
+  background-color: white;
   gap: 2rem;
+}
+
+.form-input input, .form-input textarea {
+  background-color: whitesmoke;
 }
 
 .recipe-name {
