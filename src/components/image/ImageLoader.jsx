@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useRef } from "react";
 import { useBool } from "../../utils/customhooks";
 import { Spinner2 } from "../loader";
 import "./ImageLoader.css";
@@ -8,6 +8,12 @@ const ImageLoader = ({ image, imgAlt }) => {
     isTruthy: isImgLoaded,
     setTruthy: setIsImgLoaded,
   } = useBool();
+  const imgRef = useRef();
+  
+  const showImage = () => {
+    imgRef.current.classList.remove("unloaded-image");
+    imgRef.current.classList.add("loaded-image");
+  };
 
   setTimeout(() => {
     setIsImgLoaded();
@@ -17,7 +23,7 @@ const ImageLoader = ({ image, imgAlt }) => {
       {!isImgLoaded ?
         <Spinner2 />
       :
-      <img src={image} alt={imgAlt} className="load-image" loading="lazy" />}
+      <img ref={imgRef} onLoad={showImage} src={image} alt={imgAlt} className="load-image unloaded-image" loading="lazy" />}
   </>
   )
 }

@@ -8,6 +8,35 @@
   background-image: linear-gradient(#9e2a2b, #fff3b0);
 }
 
+.unloaded-image {
+  opacity: 0;
+}
+
+.load-image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0);
+  animation: loading 2.5s infinite;
+}
+
+.loaded-image {
+  opacity: 1;
+  animation: opacity 200ms ease-in-out;
+}
+
+@keyframes loading {
+  0% {
+    background-color: rgba(255, 255, 255, 0);
+  }
+  50% {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+  100% {
+    background-color: rgba(255, 255, 255, 0);
+  }
+}
+
 @keyframes gradient {
   0%, 30%, 60%, 90% {
     background-position: 0% 50%;
