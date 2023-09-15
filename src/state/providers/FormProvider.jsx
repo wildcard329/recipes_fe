@@ -1,5 +1,5 @@
 import { useReducer, useState } from "react";
-import { multiStepFormContext } from "../contexts";
+import { formContext } from "../contexts";
 
 const FormProvider = ({ children }) => {
   const [tabs, setTabs] = useState([]);
