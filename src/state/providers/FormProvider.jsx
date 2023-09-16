@@ -3,12 +3,18 @@ import { formContext } from "../contexts";
 
 const FormProvider = ({ children }) => {
   const [tabs, setTabs] = useState([]);
+  const [currentTabId, setCurrentTabId] = useState(0);
   const [formState, dispatch] = useReducer({});
 
+  const updateTabId = (id) => {
+    // logic to check whether tab is locked
+    setCurrentTabId(id);
+  };
+
   return(
-    <multiStepFormContext.Provider value={{ tabs, setTabs }}>
+    <formContext.Provider value={{ tabs, formState, currentTabId, setTabs, dispatch, updateTabId }}>
       {children}
-    </multiStepFormContext.Provider>
+    </formContext.Provider>
   )
 }
 
