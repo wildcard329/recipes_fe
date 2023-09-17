@@ -136,39 +136,39 @@ const RecipeForm = () => {
         </div>
           : currentTabId === 1 ?
         <div id="recipe-image">
-          <div className="form-input recipe-image">
-            <label>recipe image</label>
-            <img src={recipe?.recipe_image ? recipe?.recipe_image : imgUplPlchldr} alt="recipe-image" className="recipe-image-asset" />
-            <input name='recipe_image' onChange={handleImgUpld} type="file" />
+          <label>recipe image</label>
+          <img src={recipe?.recipe_image ? recipe?.recipe_image : imgUplPlchldr} alt="recipe-image" className="recipe-image-asset" />
+          <input name='recipe_image' onChange={handleImgUpld} type="file" />
+          <div className="btn-row">
+            <button type="button" disabled={!isNextEnabled.image.isNextAvailable} onClick={() => handleProceed(1)}>next</button>
           </div>
-          <button type="button" disabled={!isNextEnabled.image.isNextAvailable} onClick={() => handleProceed(1)}>next</button>
         </div>
           : currentTabId === 2 ?
-        <div className="list-editor">
+        <div id="recipe-categories" className="list-editor">
           <div className="form-input recipe-categories">
             <ListEditor list={recipe?.recipe_categories} listTitle={"categories"} editorCb={handleCategories} />
             <button type="button" disabled={!isNextEnabled.categories.isNextAvailable} onClick={() => handleProceed(2)}>next</button>
           </div>
         </div>
           : currentTabId === 3 ?
-        <div className="list-editor">
+        <div id="recipe-tools" className="list-editor">
           <div className="form-input recipe-tools">
             <ListEditor list={recipe?.recipe_tools} listTitle={"tools"} editorCb={handleTools} />
-            <button type="button" disabled={!isNextEnabled.tools.isNextAvailable} onClick={() => handleProceed(3)}>next</button>
+            <button className="cta-btn" type="button" disabled={!isNextEnabled.tools.isNextAvailable} onClick={() => handleProceed(3)}>next</button>
           </div>
         </div>
           : currentTabId === 4 ?
-        <div className="list-editor">
+        <div id="recipe-ingredients" className="list-editor">
           <div className="form-input recipe-ingredients">
             <ListEditor list={recipe?.recipe_ingredients} listTitle={"ingredients"} editorCb={handleIngredients} />
-            <button type="button" disabled={!isNextEnabled.ingredients.isNextAvailable} onClick={() => handleProceed(4)}>next</button>
+            <button className="cta-btn" type="button" disabled={!isNextEnabled.ingredients.isNextAvailable} onClick={() => handleProceed(4)}>next</button>
           </div>
         </div>
           : currentTabId === 5 ?
-        <div className="list-editor">
+        <div id="recipe-instructions" className="list-editor">
           <div className="form-input recipe-instructions">
             <ListEditor list={recipe?.recipe_instructions} listTitle={"instructions"} isOrderedList isLongInput editorCb={handleInstructions} />
-            <button type="button" disabled={!isNextEnabled.instructions.isNextAvailable} onClick={() => handleProceed(5)}>next</button>
+            <button className="cta-btn" type="button" disabled={!isNextEnabled.instructions.isNextAvailable} onClick={() => handleProceed(5)}>next</button>
           </div>
         </div>
           : currentTabId === 6 ?
