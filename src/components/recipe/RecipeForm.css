@@ -16,6 +16,7 @@
 .form-input input,
 .form-input textarea {
   background-color: whitesmoke;
+  border-radius: 5px;
 }
 
 .form-input {
@@ -36,6 +37,15 @@
   gap: 2rem;
 }
 
+#recipe-image {
+  display: grid;
+  grid-template-areas: 
+    "img-label"
+    "img-asset"
+    "img-input"
+    "cta-btn";
+}
+
 .list-editor {
   display: grid;
   grid-template-areas: 
@@ -53,6 +63,22 @@
   grid-area: recipe-description;
 }
 
+#recipe-image label {
+  grid-area: img-label;
+}
+
+#recipe-image img {
+  grid-area: img-asset;
+}
+
+#recipe-image input {
+  grid-area: img-input;
+}
+
+#recipe-image button {
+  grid-area: cta-btn;
+}
+
 .recipe-time {
   grid-area: recipe-time;
   display: flex;
@@ -67,7 +93,7 @@
 .list-editor ul,
 .list-editor ol {
   grid-area: list-items;
-  min-height: 50vh;
+  min-height: 40vh;
   background-color: lightgray;
   overflow-y: scroll;
 }
@@ -90,6 +116,15 @@
     grid-template-areas: 
       "recipe-name recipe-description"
       "recipe-time recipe-description";
+  }
+  #recipe-image {
+    grid-template-areas: 
+      "img-label img-label"
+      "img-asset img-input"
+      "cta-btn cta-btn";
+  }
+  #recipe-image img {
+    width: 50%;
   }
   .list-editor {
     grid-template-areas: 
