@@ -9,15 +9,22 @@
   cursor: pointer;
   text-transform: capitalize;
 }
+
+.completed:not(.current-tab) {
+  background-color: lightgray;
+}
   
 .form-tab-item:hover, 
 .form-tab-item:focus, 
 .current-tab {
   background-color: white;
-  border-bottom: 0;
+  border-bottom: 3px solid white;
 }
   
-.locked, .locked:hover, .locked:focus {
+.locked, 
+.locked:hover, 
+.locked:focus {
   background-color: slategray;
   border-bottom: 2px solid black;
+  cursor: auto;
 }

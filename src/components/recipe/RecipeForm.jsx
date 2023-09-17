@@ -5,13 +5,12 @@ import { ListEditor } from "../lists";
 import { AppButton } from "../button";
 import { recipeFormTabs } from "../../utils/constants/recipeConstants.js";
 import imgUplPlchldr from "../../assets/images/upload_image.png";
-import "./recipe.css";
-import "./RecipeForm.css";
 import FormMenu from "../form/FormMenu";
+import "./RecipeForm.css";
 
 const RecipeForm = () => {
   const { recipe, setRecipe, isNewRecipe } = useContext(recipeContext);
-  const { tabs, currentTabId, setTabs, setCurrentTabId } = useContext(formContext);
+  const { currentTabId, setTabs, updateTabId, setFormFields, completeFormSection, tabs } = useContext(formContext);
   const { addAsset, addRecipe, updateRecipe } = useAmplify();
 
   const handleChange = (e) => setRecipe({ ...recipe, [e.target.name]: e.target.value });
@@ -29,6 +28,51 @@ const RecipeForm = () => {
     };
   };
 
+  const isNextEnabled = {
+    general: {
+      index: 0,
+      section: "general",
+      isNextAvailable: recipe?.recipe_name?.length > 7 && recipe?.recipe_description?.length > 50 && !isNaN(recipe?.recipe_prep_time) && !isNaN(recipe?.recipe_cook_time) && !isNaN(recipe?.recipe_total_time),
+    },
+    image: {
+      index: 1,
+      section: "image",
+      isNextAvailable: true,
+    },
+    categories: {
+      index: 2,
+      section: "categories",
+      isNextAvailable: recipe?.recipe_categories?.length > 0,
+    },
+    tools: {
+      index: 3,
+      section: "tools",
+      isNextAvailable: true,
+    },
+    ingredients: {
+      index: 4,
+      section: "ingredients",
+      isNextAvailable: recipe?.recipe_ingredients?.length > 3,
+    },
+    instructions: {
+      index: 5,
+      section: "instructions",
+      isNextAvailable: recipe?.recipe_instructions?.length > 0,
+    },
+    review: {
+      index: 6,
+      section: "review",
+      isNextAvailable: true,
+    },
+  };
+
+  const unlockTab = (id) => {
+    console.log('id ', id);
+    const updatedTabs = tabs.map((tab) => tab.id === id ? { ...tab, isLocked: false } : tab );
+    console.log('data ', updatedTabs);
+    setTabs(updatedTabs);
+  };
+
   const handleCategories = async (categories) => await setRecipe((prevRec) => ({ ...prevRec, recipe_categories: categories }));
 
   const handleIngredients = async (ingredients) => await setRecipe((prevRec) => ({ ...prevRec, recipe_ingredients: ingredients }));
@@ -44,60 +88,97 @@ const RecipeForm = () => {
     alert('recipe updated');
   };
 
+  const handleProceed = (currIndex) => {
+    const currField = Object.values(isNextEnabled).find((field) => field.index === currIndex);
+    if (currField.isNextAvailable) {
+      updateTabId(currIndex+1);
+      completeFormSection(currField.section, true);
+      unlockTab(currIndex+1);
+    };
+  };
+
   useEffect(() => {
     setTabs(recipeFormTabs);
+    setFormFields(isNextEnabled);
   }, []);
 
   return(
     <div className="recipe-form-wrapper">
-      <FormMenu />
+      <div className="tab-row">
+        <FormMenu tabs={tabs} currentTabId={currentTabId} />
+      </div>
       <form onSubmit={handleSubmit} className="recipe-form">
-        <div className="form-input recipe-name">
-          <a id="recipe-info"></a>
-          <label>recipe name</label>
-          <input name="recipe_name" value={recipe?.recipe_name} onChange={handleChange} placeholder="recipe name" />
-        </div>
-        <div className="form-input recipe-description">
-          <label>recipe description</label>
-          <textarea name="recipe_description" value={recipe?.recipe_description} onChange={handleChange} placeholder="recipe description" />
-        </div>
-        <div className="form-input recipe-time">
-          <label>time (minutes)</label>
-          <div className="form-input">
-            <label>recipe prep time</label>
-            <input name="recipe_prep_time" value={recipe?.recipe_prep_time} onChange={handleIntChange} type="number" />
+        {currentTabId === 0 ?
+        <div id="general" className="form-section">
+          <div className="form-input recipe-name">
+            <label>recipe name</label>
+            <input name="recipe_name" value={recipe?.recipe_name} onChange={handleChange} placeholder="recipe name" />
           </div>
-          <div className="form-input">
-            <label>recipe cook time</label>
-            <input name="recipe_cook_time" value={recipe?.recipe_cook_time} onChange={handleIntChange} type="number" />
+          <div className="form-input recipe-description">
+            <label>recipe description</label>
+            <textarea name="recipe_description" value={recipe?.recipe_description} onChange={handleChange} placeholder="recipe description" />
           </div>
-          <div className="form-input">
-            <label>recipe total time</label>
-            <input name="recipe_total_time" value={recipe?.recipe_total_time} onChange={handleIntChange} type="number" />
+          <div className="form-input recipe-time">
+            <div className="form-input">
+              <label>recipe prep time</label>
+              <input name="recipe_prep_time" value={recipe?.recipe_prep_time} onChange={handleIntChange} type="number" />
+            </div>
+            <div className="form-input">
+              <label>recipe cook time</label>
+              <input name="recipe_cook_time" value={recipe?.recipe_cook_time} onChange={handleIntChange} type="number" />
+            </div>
+            <div className="form-input">
+              <label>recipe total time</label>
+              <input name="recipe_total_time" value={recipe?.recipe_total_time} onChange={handleIntChange} type="number" />
+            </div>
+          </div>
+          <button className="cta-btn" type="button" disabled={!isNextEnabled.general.isNextAvailable} onClick={() => handleProceed(0)}>next</button>
+        </div>
+          : currentTabId === 1 ?
+        <div id="recipe-image">
+          <div className="form-input recipe-image">
+            <label>recipe image</label>
+            <img src={recipe?.recipe_image ? recipe?.recipe_image : imgUplPlchldr} alt="recipe-image" className="recipe-image-asset" />
+            <input name='recipe_image' onChange={handleImgUpld} type="file" />
+          </div>
+          <button type="button" disabled={!isNextEnabled.image.isNextAvailable} onClick={() => handleProceed(1)}>next</button>
+        </div>
+          : currentTabId === 2 ?
+        <div className="list-editor">
+          <div className="form-input recipe-categories">
+            <ListEditor list={recipe?.recipe_categories} listTitle={"categories"} editorCb={handleCategories} />
+            <button type="button" disabled={!isNextEnabled.categories.isNextAvailable} onClick={() => handleProceed(2)}>next</button>
           </div>
         </div>
-        <div className="form-input recipe-image">
-          <label>recipe image</label>
-          <img src={recipe?.recipe_image ? recipe?.recipe_image : imgUplPlchldr} alt="recipe-image" className="recipe-image-asset" />
-          <input name='recipe_image' onChange={handleImgUpld} type="file" />
+          : currentTabId === 3 ?
+        <div className="list-editor">
+          <div className="form-input recipe-tools">
+            <ListEditor list={recipe?.recipe_tools} listTitle={"tools"} editorCb={handleTools} />
+            <button type="button" disabled={!isNextEnabled.tools.isNextAvailable} onClick={() => handleProceed(3)}>next</button>
+          </div>
         </div>
-        <div className="form-input recipe-ingredients">
-          <a id="recipe-prep"></a>
-          <ListEditor list={recipe?.recipe_ingredients} listTitle={"ingredients"} editorCb={handleIngredients} />
+          : currentTabId === 4 ?
+        <div className="list-editor">
+          <div className="form-input recipe-ingredients">
+            <ListEditor list={recipe?.recipe_ingredients} listTitle={"ingredients"} editorCb={handleIngredients} />
+            <button type="button" disabled={!isNextEnabled.ingredients.isNextAvailable} onClick={() => handleProceed(4)}>next</button>
+          </div>
         </div>
-        <div className="form-input recipe-tools">
-          <ListEditor list={recipe?.recipe_tools} listTitle={"tools"} editorCb={handleTools} />
+          : currentTabId === 5 ?
+        <div className="list-editor">
+          <div className="form-input recipe-instructions">
+            <ListEditor list={recipe?.recipe_instructions} listTitle={"instructions"} isOrderedList isLongInput editorCb={handleInstructions} />
+            <button type="button" disabled={!isNextEnabled.instructions.isNextAvailable} onClick={() => handleProceed(5)}>next</button>
+          </div>
         </div>
-        <div className="form-input recipe-categories">
-          <ListEditor list={recipe?.recipe_categories} listTitle={"categories"} editorCb={handleCategories} />
-        </div>
-        <div className="form-input recipe-instructions">
-          <a id="recipe-instructions"></a>
-          <ListEditor list={recipe?.recipe_instructions} listTitle={"instructions"} isOrderedList isLongInput editorCb={handleInstructions} />
-        </div>
-        <div className="form-action">
-          <AppButton btnLabel={"submit"} classname={"primary"} btnType="submit" />
-        </div>
+          : currentTabId === 6 ?
+        <>
+          <div className="form-action">
+            <AppButton btnLabel={"submit"} classname={"primary"} btnType="submit" />
+          </div>
+        </>
+          : null
+        }
       </form>
     </div>
   )

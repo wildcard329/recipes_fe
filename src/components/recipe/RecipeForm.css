@@ -1,0 +1,106 @@
+.recipe-form-wrapper {
+  background-color: lightgray;
+}
+
+.recipe-form {
+  border: 2px solid black;
+  background-color: white;
+  padding: 1rem;
+  min-height: 70vh;
+}
+
+.tab-row {
+  margin-bottom: -1.3rem;
+}
+
+.form-input input,
+.form-input textarea {
+  background-color: whitesmoke;
+}
+
+.form-input {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-section {
+  padding-top: 1rem;
+}
+
+#general {
+  display: grid;
+  grid-template-areas: 
+    "recipe-name"
+    "recipe-time"
+    "recipe-description";
+  gap: 2rem;
+}
+
+.list-editor {
+  display: grid;
+  grid-template-areas: 
+    "list-label"
+    "list-items"
+    "list-input"
+    "list-button";
+}
+
+.recipe-name {
+  grid-area: recipe-name;
+}
+
+.recipe-description {
+  grid-area: recipe-description;
+}
+
+.recipe-time {
+  grid-area: recipe-time;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.list-editor h3 {
+  grid-area: list-label;
+}
+
+.list-editor ul,
+.list-editor ol {
+  grid-area: list-items;
+  min-height: 50vh;
+  background-color: lightgray;
+  overflow-y: scroll;
+}
+
+.list-editor input,
+.list-editor textarea {
+  grid-area: list-input;
+}
+
+.cta-btn {
+  width: min-content;
+  padding: 0.5rem 1rem;
+}
+
+@media (min-width: 1024px) {
+  .tab-row {
+    margin-bottom: -2.45rem;
+  }
+  #general {
+    grid-template-areas: 
+      "recipe-name recipe-description"
+      "recipe-time recipe-description";
+  }
+  .list-editor {
+    grid-template-areas: 
+      "list-items list-label"
+      "list-items list-input"
+      "list-items list-button";
+  }
+  .recipe-description {
+    min-width: 500px;
+  }
+  .recipe-time {
+    flex-direction: row;
+  }
+}
