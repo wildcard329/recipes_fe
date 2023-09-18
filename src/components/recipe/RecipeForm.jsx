@@ -147,7 +147,7 @@ const RecipeForm = () => {
         <div id="recipe-categories" className="list-editor">
           <div className="form-input recipe-categories">
             <ListEditor list={recipe?.recipe_categories} listTitle={"categories"} editorCb={handleCategories} />
-            <button type="button" disabled={!isNextEnabled.categories.isNextAvailable} onClick={() => handleProceed(2)}>next</button>
+            <button className="cta-btn" type="button" disabled={!isNextEnabled.categories.isNextAvailable} onClick={() => handleProceed(2)}>next</button>
           </div>
         </div>
           : currentTabId === 3 ?
@@ -165,7 +165,7 @@ const RecipeForm = () => {
           </div>
         </div>
           : currentTabId === 5 ?
-        <div id="recipe-instructions" className="list-editor">
+        <div id="recipe-steps" className="list-editor">
           <div className="form-input recipe-instructions">
             <ListEditor list={recipe?.recipe_instructions} listTitle={"instructions"} isOrderedList isLongInput editorCb={handleInstructions} />
             <button className="cta-btn" type="button" disabled={!isNextEnabled.instructions.isNextAvailable} onClick={() => handleProceed(5)}>next</button>
