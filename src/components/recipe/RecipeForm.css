@@ -9,6 +9,12 @@
   min-height: 70vh;
 }
 
+.list-editor button {
+  width: min-content;
+  padding: 0.5rem 1rem;
+  white-space: nowrap;
+}
+
 .tab-row {
   margin-bottom: -1.3rem;
 }
@@ -46,19 +52,6 @@
     "cta-btn";
 }
 
-.list-editor,
-#recipe-categories,
-#recipe-tools,
-#recipe-ingredients,
-#recipe-instructions {
-  display: grid;
-  grid-template-areas: 
-    "list-label"
-    "list-items"
-    "list-input"
-    "list-button";
-}
-
 .recipe-name {
   grid-area: recipe-name;
 }
@@ -91,29 +84,16 @@
   gap: 2rem;
 }
 
-.list-editor h3 {
-  grid-area: list-label;
-}
-
 .list-editor ul,
 #recipe-categories ul,
 #recipe-tools ul,
 #recipe-ingredients ul,
-.list-editor ol
-#recipe-instructions ol {
+.list-editor ol,
+#recipe-steps ol {
   grid-area: list-items;
   min-height: 40vh;
   background-color: lightgray;
   overflow-y: scroll;
-}
-
-.list-editor input,
-#recipe-categories input,
-#recipe-tools input,
-#recipe-ingredients input,
-.list-editor textarea,
-#recipe-instructions textarea {
-  grid-area: list-input;
 }
 
 .cta-btn {
@@ -130,23 +110,28 @@
       "recipe-name recipe-description"
       "recipe-time recipe-description";
   }
-  #recipe-image {
-    grid-template-areas: 
-      "img-label img-label"
-      "img-asset img-input"
-      "cta-btn cta-btn";
-  }
   #recipe-image img {
     width: 90%;
   }
-  #recipe-image input {
-
+  .list-editor ul,
+  #recipe-categories ul,
+  #recipe-tools ul,
+  #recipe-ingredients ul,
+  .list-editor ol,
+  #recipe-steps ol {
+    min-width: 50vw;
+  }
+  #recipe-steps textarea,
+  #recipe-categories input,
+  #recipe-ingredients input,
+  #recipe-tools input {
+    min-width: 30vw;
   }
   .list-editor,
   #recipe-categories,
   #recipe-tools,
   #recipe-ingredients,
-  #recipe-instructions {
+  #recipe-steps {
     grid-template-areas: 
       "list-items list-label"
       "list-items list-input"
