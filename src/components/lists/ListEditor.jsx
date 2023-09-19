@@ -40,13 +40,11 @@ const ListEditor = ({ list, listTitle, isOrderedList=false, isLongInput=false, e
   return(
     <div className="list-input">
       <ListDisplay title={listTitle} data={list} isEditing isOrderedList={isOrderedList} editItemCb={handleEditItem} deleteItemCb={handleDeleteItem} />
-      <div className="item-input">
-        {isLongInput ?
-            <textarea name="item" value={item} onChange={(e) => setItem(e.target.value)} placeholder="add item" />
-          :
-            <input name="item" value={item} onChange={(e) => setItem(e.target.value)} placeholder="add item" />}
-        <AppButton btnLabel={"add item"} classname={"secondary"} btnCb={handleAddItem} />
-      </div>
+      {isLongInput ?
+        <textarea name="item" value={item} onChange={(e) => setItem(e.target.value)} placeholder="add item" />
+      :
+        <input name="item" value={item} onChange={(e) => setItem(e.target.value)} placeholder="add item" />}
+      <AppButton btnLabel={"add item"} classname={"secondary"} btnCb={handleAddItem} />
     </div>
   )
 }

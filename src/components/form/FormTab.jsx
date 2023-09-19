@@ -12,7 +12,7 @@ const FormTab = ({ label, isEnabled, isActive, tabId, containerEl }) => {
     // const currentActivePosition = currentActiveNode.getBoundingClientRect().left;
     // const prevActivePosition = prevActiveNode?.getBoundingClientRect().left;
     // console.log(currentActiveNode.getBoundingClientRect().right > prevActiveNode.getBoundingClientRect().right)
-    containerEl.current.scrollTo(tabEl.current.getBoundingClientRect().right, 0);
+    containerEl.current.scrollTo(tabEl.current.getBoundingClientRect().left, 0);
     // if (currentActivePosition > prevActivePosition) {
     //   containerNode.scrollTo(currentActiveNode.left, 0)
     // } else {
