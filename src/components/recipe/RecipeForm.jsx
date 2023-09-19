@@ -97,18 +97,9 @@ const RecipeForm = () => {
     };
   };
 
-  useEffect(() => {
-    setTabs(recipeFormTabs);
-    setFormFields(isNextEnabled);
-  }, []);
-
   return(
     <div className="recipe-form-wrapper">
-      <div className="tab-row">
-        <FormMenu tabs={tabs} currentTabId={currentTabId} />
-      </div>
       <form onSubmit={handleSubmit} className="recipe-form">
-        {currentTabId === 0 ?
         <div id="general" className="form-section">
           <div className="form-input recipe-name">
             <label>recipe name</label>
@@ -132,53 +123,37 @@ const RecipeForm = () => {
               <input name="recipe_total_time" value={recipe?.recipe_total_time} onChange={handleIntChange} type="number" />
             </div>
           </div>
-          <button className="cta-btn" type="button" disabled={!isNextEnabled.general.isNextAvailable} onClick={() => handleProceed(0)}>next</button>
         </div>
-          : currentTabId === 1 ?
         <div id="recipe-image">
           <label>recipe image</label>
           <img src={recipe?.recipe_image ? recipe?.recipe_image : imgUplPlchldr} alt="recipe-image" className="recipe-image-asset" />
           <input name='recipe_image' onChange={handleImgUpld} type="file" />
-          <div className="btn-row">
-            <button type="button" disabled={!isNextEnabled.image.isNextAvailable} onClick={() => handleProceed(1)}>next</button>
-          </div>
         </div>
-          : currentTabId === 2 ?
         <div id="recipe-categories" className="list-editor">
           <div className="form-input recipe-categories">
             <ListEditor list={recipe?.recipe_categories} listTitle={"categories"} editorCb={handleCategories} />
-            <button className="cta-btn" type="button" disabled={!isNextEnabled.categories.isNextAvailable} onClick={() => handleProceed(2)}>next</button>
           </div>
         </div>
-          : currentTabId === 3 ?
         <div id="recipe-tools" className="list-editor">
           <div className="form-input recipe-tools">
             <ListEditor list={recipe?.recipe_tools} listTitle={"tools"} editorCb={handleTools} />
-            <button className="cta-btn" type="button" disabled={!isNextEnabled.tools.isNextAvailable} onClick={() => handleProceed(3)}>next</button>
           </div>
         </div>
-          : currentTabId === 4 ?
         <div id="recipe-ingredients" className="list-editor">
           <div className="form-input recipe-ingredients">
             <ListEditor list={recipe?.recipe_ingredients} listTitle={"ingredients"} editorCb={handleIngredients} />
-            <button className="cta-btn" type="button" disabled={!isNextEnabled.ingredients.isNextAvailable} onClick={() => handleProceed(4)}>next</button>
           </div>
         </div>
-          : currentTabId === 5 ?
         <div id="recipe-steps" className="list-editor">
           <div className="form-input recipe-instructions">
             <ListEditor list={recipe?.recipe_instructions} listTitle={"instructions"} isOrderedList isLongInput editorCb={handleInstructions} />
-            <button className="cta-btn" type="button" disabled={!isNextEnabled.instructions.isNextAvailable} onClick={() => handleProceed(5)}>next</button>
           </div>
         </div>
-          : currentTabId === 6 ?
         <>
           <div className="form-action">
             <AppButton btnLabel={"submit"} classname={"primary"} btnType="submit" />
           </div>
         </>
-          : null
-        }
       </form>
     </div>
   )
