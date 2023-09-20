@@ -87,10 +87,9 @@
     padding-right: 0;
     left: -0.9rem;
     top: 2rem;
+    box-shadow: 5px 5px 5px lightgray;
   }
   .header-menu-animation {
-    border-bottom: 2px solid var(--dark-slate-gray);
-    border-right: 2px solid var(--dark-slate-gray);
     animation: expand 0.25s;
   }
   .header-link-menu li {
@@ -99,16 +98,18 @@
     animation: delayRender 0.25s;
   }  
   .header-link-menu li:hover {
-    background-color: var(--dark-slate-gray);
+    background-color: whitesmoke;
   }
-  .header-link-menu li:hover a {
-    color: white;
+  .header-link-menu li:focus {
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
   }
   .header-links a {
     font-size: 0.875rem;
   }
   .header-link-menu a:hover {
-    color: white;
     border-bottom: 1px solid white;
   }
 }
