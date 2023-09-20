@@ -1,42 +1,30 @@
 .recipe-form-wrapper {
   background-image: url('../../assets/images/recipe-form-bg.jpg');
   padding: 2rem 0;
-  background-color: lightgray;
+  background-color: gray;
   background-blend-mode: multiply;
 }
 
 .recipe-form {
+  background-color: white;
   border: 2px solid black;
-  background-image: radial-gradient(circle, crimson 0%, navy 100%);
-  color: goldenrod;
-  text-shadow: black 1px 0 10px;
   padding: 1rem;
   min-height: 70vh;
 }
 
-.recipe-form button {
-  width: min-content;
-  padding: 0.5rem 1rem;
-  white-space: nowrap;
-  background-color: black;
-  border: 1px solid var(--dark-slate-gray);
-  color: goldenrod;
-  text-shadow: black 1px 0 10px;
-}
-
-.recipe-form button:hover,
-.recipe-form button:focus {
-  background-color: #101010;
-  border: 1px solid goldenrod;
-  box-shadow: 3px 3px 3px 1px goldenrod;
+.form-action {
+  padding-top: 2rem;
 }
 
 .form-input input,
 .form-input textarea {
-  background-color: black;
-  color: goldenrod;
-  text-shadow: black 1px 0 10px;
   border-radius: 5px;
+  border: 1px solid black;
+}
+
+.form-input input:focus,
+.form-input textarea:focus {
+  border: 1px solid green;
 }
 
 .form-input textarea {
@@ -69,8 +57,8 @@
 }
 
 .recipe-image img {
-  grid-area: img-asset;
   width: 100%;
+  border: 1px solid black;
 }
 
 .recipe-image input {

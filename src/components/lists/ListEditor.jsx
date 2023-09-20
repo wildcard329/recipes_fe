@@ -46,7 +46,7 @@ const ListEditor = ({ list, listTitle, isOrderedList=false, isLongInput=false, e
         <textarea ref={inputRef} name="item" value={item} onChange={(e) => setItem(e.target.value)} placeholder="add item" />
       :
         <input ref={inputRef} name="item" value={item} onChange={(e) => setItem(e.target.value)} placeholder="add item" />}
-      <AppButton btnLabel={"add item"} classname={"secondary"} btnCb={handleAddItem} />
+      <AppButton btnLabel={"add item"} classname={"editor-btn"} btnCb={handleAddItem} />
     </div>
   )
 }

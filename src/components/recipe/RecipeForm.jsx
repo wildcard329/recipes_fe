@@ -7,7 +7,7 @@ import imgUplPlchldr from "../../assets/images/upload_image.png";
 import "./RecipeForm.css";
 
 const RecipeForm = () => {
-  const { recipe, setRecipe, isNewRecipe } = useContext(recipeContext);
+  const { recipe, setRecipe, isNewRecipe, asset } = useContext(recipeContext);
   const { addAsset, addRecipe, updateRecipe } = useAmplify();
 
   const handleChange = (e) => setRecipe({ ...recipe, [e.target.name]: e.target.value });
@@ -64,7 +64,7 @@ const RecipeForm = () => {
           </div>
           <div className="form-input recipe-image">
             <label>recipe image</label>
-            <img src={recipe?.recipe_image ? recipe?.recipe_image : imgUplPlchldr} alt="recipe-image" className="recipe-image-asset" />
+            <img src={asset ? asset : recipe?.recipe_image ? recipe?.recipe_image : imgUplPlchldr} alt="recipe-image" className="recipe-image-asset" />
             <input name='recipe_image' onChange={handleImgUpld} type="file" />
           </div>
           <div className="form-input recipe-description">
@@ -93,7 +93,7 @@ const RecipeForm = () => {
           </div>
         </div>
         <div className="form-action">
-          <AppButton btnLabel={"submit"} classname={"primary"} btnType="submit" />
+          <AppButton btnLabel={"submit"} classname={"recipe-submit-btn"} btnType="submit" />
         </div>
       </form>
     </div>
