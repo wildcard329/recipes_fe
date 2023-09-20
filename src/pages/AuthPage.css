@@ -1,8 +1,38 @@
 .login-container {
+  grid-area: login;
+  padding-top: 2rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   gap: 1rem;
-  padding-top: 3.125rem;
+  background-color: white;
+}
+
+.login-options {
+  list-style: none;
+  padding: 0;
+}
+
+.page-filler {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .login-page {
+    display: grid;
+    grid-template-areas: 
+      "filler login"
+      "filler login";
+    grid-template-columns: 1fr 1fr;
+  }
+  .page-filler {
+    display: block;
+    grid-area: filler;
+    background-image: url("../assets//images/login-page-asset.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 75vh;
+  }
 }
