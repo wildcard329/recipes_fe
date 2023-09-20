@@ -1,0 +1,77 @@
+.logout-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.logout-content {
+  grid-area: content;
+}
+
+.redirect-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  position: relative;
+}
+
+.redirect-counter::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0);
+  animation: flashing 500ms infinite;
+  border-radius: 50%;
+}
+
+.redirect-counter {
+  position: absolute;
+  top: 5rem;
+  z-index: 20;
+  padding: auto;
+  background-color: transparent;
+  color: navy;
+  font-size: 1rem;
+  padding: 1rem;
+  border-radius: 50%;
+  height: min-content;
+  animation: opacity 200ms ease-in-out;
+}
+
+.logout-filler {
+  display: none;
+}
+
+@keyframes flashing {
+    0% {
+      background-color: rgba(255, 255, 255, 0);
+    }
+    50% {
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+    100% {
+      background-color: rgba(255, 255, 255, 0);
+    }
+  }
+
+@media (min-width: 1024px) {
+  .redirect-counter {
+    top: 8rem;
+    font-size: 2rem;
+    padding: 2rem;
+  }
+  .logout-container {
+      display: grid;
+      grid-template-areas: 
+        "content filler";
+      grid-template-columns: 1fr 1fr;
+  }
+  .logout-filler {
+    display: block;
+    grid-area: filler;
+    background-image: url("../assets/images/logout-page-asset.jpg");
+    min-height: 75vh;
+    background-size: cover;
+  }
+}

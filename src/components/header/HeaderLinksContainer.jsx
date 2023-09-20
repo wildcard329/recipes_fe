@@ -4,6 +4,14 @@ import Divider from "./Divider";
 import HeaderLinkTrigger from "./HeaderLinkTrigger";
 import "./header.css";
 
+const unAuthRecipeLinkConfig = [
+  {
+    path: "/recipes",
+    classname: "header-link",
+    label: "all recipes"
+  },
+]
+
 const recipeLinkConfig = [
   {
     path: "/recipes",
@@ -19,6 +27,14 @@ const recipeLinkConfig = [
     path: "/recipes/new",
     classname: "header-link",
     label: "new recipe",
+  },
+];
+
+const unAuthIngredientsLinksConfig = [
+  {
+    path: "/ingredients",
+    classname: "header-link",
+    label: "all ingredients"
   },
 ];
 
@@ -45,7 +61,8 @@ const HeaderLinksContainer = ({ isShowingLinks }) => {
     } else {
       linksElement.current.classList.add('mobile-hide');
     }
-  }, [isShowingLinks])
+  }, [isShowingLinks]);
+  
   return(
     <nav>
       <ul className="header-links" ref={linksElement}>
@@ -54,12 +71,12 @@ const HeaderLinksContainer = ({ isShowingLinks }) => {
         {isLoggedIn ?
           <li><HeaderLinkTrigger path={"/recipes"} classname={"header-link"} label={"recipes"} linkConfigs={recipeLinkConfig} /></li>
         :
-          <li><HeaderLinkTrigger path={"/recipes"} classname={"header-link"} label={"recipes"} linkConfigs={[]} /></li>}
+          <li><HeaderLinkTrigger path={"/recipes"} classname={"header-link"} label={"recipes"} linkConfigs={unAuthRecipeLinkConfig} /></li>}
         <li><Divider /></li>
         {isLoggedIn ?
           <li><HeaderLinkTrigger path={"/ingredients"} classname={"header-link"} label={"ingredients"} linkConfigs={ingredientsLinksConfig} /></li>
         :
-          <li><HeaderLinkTrigger path={"/ingredients"} classname={"header-link"} label={"ingredients"} linkConfigs={[]} /></li>}
+          <li><HeaderLinkTrigger path={"/ingredients"} classname={"header-link"} label={"ingredients"} linkConfigs={unAuthIngredientsLinksConfig} /></li>}
         <li><Divider /></li>
         {!isLoggedIn ? 
           <li><HeaderLinkTrigger path={"/login"} classname={"header-link"} label={"log in"} /></li>

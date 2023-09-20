@@ -7,7 +7,6 @@ import communityImg from "../assets/images/rec-app-home-cta-community.jpg";
 import recipeImg from "../assets/images/rec-app-home-cta-recipe.jpg";
 import cookbookImg from "../assets/images/rec-app-home-cta-cookbook.jpg";
 import "./HomePage.css";
-// import "./page.css";
 
 const HomePage = () => {
   const { setNavLinks } = useContext(pageNavContext);

@@ -34,7 +34,7 @@ const SubHeader = () => {
         <div className="sub-header">
           {!isExpanded && (isScrolling || isFocused ? 
             <div className="contracted" onMouseLeave={setIsNotFocused}>
-              <BsArrowDownRightSquareFill fill="#335c67" onClick={setIsExpanded} className="sub-header-icon expanding-icon" />
+              <BsArrowDownRightSquareFill radius={0} fill="#335c67" onClick={setIsExpanded} className="sub-header-icon expanding-icon" />
             </div>
           :
             <div className="contracted-trigger" onDoubleClick={setIsExpanded} onMouseEnter={setIsFocused}></div>  
@@ -42,7 +42,7 @@ const SubHeader = () => {
           {isExpanded && 
             <div className="expanded">
               <SubHeaderLinks navLinks={navLinks} />
-              <BsArrowUpLeftSquareFill fill="#335c67" onClick={handleMenuClose} className="sub-header-icon right-corner" />
+              <BsArrowUpLeftSquareFill radius={0} fill="#335c67" onClick={handleMenuClose} className="sub-header-icon right-corner" />
             </div>}
         </div>
       :

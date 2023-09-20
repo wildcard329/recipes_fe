@@ -8,7 +8,7 @@ const useReactRouter = () => {
 
   const checkRtMatch = (pathname) => routerPath === pathname;
 
-  const navTo = (path, state=null) => nav(path, state);
+  const navTo = (path) => nav(path);
 
   const goBack = () => navTo(-1);
 
