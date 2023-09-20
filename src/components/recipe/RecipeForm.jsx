@@ -1,16 +1,13 @@
-import { useContext, useEffect } from "react";
-import { recipeContext, formContext } from "../../state/contexts";
+import { useContext } from "react";
+import { recipeContext } from "../../state/contexts";
 import { useAmplify } from "../../utils/customhooks";
 import { ListEditor } from "../lists";
 import { AppButton } from "../button";
-import { recipeFormTabs } from "../../utils/constants/recipeConstants.js";
 import imgUplPlchldr from "../../assets/images/upload_image.png";
-import FormMenu from "../form/FormMenu";
 import "./RecipeForm.css";
 
 const RecipeForm = () => {
   const { recipe, setRecipe, isNewRecipe } = useContext(recipeContext);
-  const { currentTabId, setTabs, updateTabId, setFormFields, completeFormSection, tabs } = useContext(formContext);
   const { addAsset, addRecipe, updateRecipe } = useAmplify();
 
   const handleChange = (e) => setRecipe({ ...recipe, [e.target.name]: e.target.value });
@@ -28,51 +25,6 @@ const RecipeForm = () => {
     };
   };
 
-  const isNextEnabled = {
-    general: {
-      index: 0,
-      section: "general",
-      isNextAvailable: recipe?.recipe_name?.length > 7 && recipe?.recipe_description?.length > 50 && !isNaN(recipe?.recipe_prep_time) && !isNaN(recipe?.recipe_cook_time) && !isNaN(recipe?.recipe_total_time),
-    },
-    image: {
-      index: 1,
-      section: "image",
-      isNextAvailable: true,
-    },
-    categories: {
-      index: 2,
-      section: "categories",
-      isNextAvailable: recipe?.recipe_categories?.length > 0,
-    },
-    tools: {
-      index: 3,
-      section: "tools",
-      isNextAvailable: true,
-    },
-    ingredients: {
-      index: 4,
-      section: "ingredients",
-      isNextAvailable: recipe?.recipe_ingredients?.length > 3,
-    },
-    instructions: {
-      index: 5,
-      section: "instructions",
-      isNextAvailable: recipe?.recipe_instructions?.length > 0,
-    },
-    review: {
-      index: 6,
-      section: "review",
-      isNextAvailable: true,
-    },
-  };
-
-  const unlockTab = (id) => {
-    console.log('id ', id);
-    const updatedTabs = tabs.map((tab) => tab.id === id ? { ...tab, isLocked: false } : tab );
-    console.log('data ', updatedTabs);
-    setTabs(updatedTabs);
-  };
-
   const handleCategories = async (categories) => await setRecipe((prevRec) => ({ ...prevRec, recipe_categories: categories }));
 
   const handleIngredients = async (ingredients) => await setRecipe((prevRec) => ({ ...prevRec, recipe_ingredients: ingredients }));
@@ -88,15 +40,6 @@ const RecipeForm = () => {
     alert('recipe updated');
   };
 
-  const handleProceed = (currIndex) => {
-    const currField = Object.values(isNextEnabled).find((field) => field.index === currIndex);
-    if (currField.isNextAvailable) {
-      updateTabId(currIndex+1);
-      completeFormSection(currField.section, true);
-      unlockTab(currIndex+1);
-    };
-  };
-
   return(
     <div className="recipe-form-wrapper">
       <form onSubmit={handleSubmit} className="recipe-form">
@@ -104,10 +47,6 @@ const RecipeForm = () => {
           <div className="form-input recipe-name">
             <label>recipe name</label>
             <input name="recipe_name" value={recipe?.recipe_name} onChange={handleChange} placeholder="recipe name" />
-          </div>
-          <div className="form-input recipe-description">
-            <label>recipe description</label>
-            <textarea name="recipe_description" value={recipe?.recipe_description} onChange={handleChange} placeholder="recipe description" />
           </div>
           <div className="form-input recipe-time">
             <div className="form-input">
@@ -123,11 +62,15 @@ const RecipeForm = () => {
               <input name="recipe_total_time" value={recipe?.recipe_total_time} onChange={handleIntChange} type="number" />
             </div>
           </div>
-        </div>
-        <div id="recipe-image">
-          <label>recipe image</label>
-          <img src={recipe?.recipe_image ? recipe?.recipe_image : imgUplPlchldr} alt="recipe-image" className="recipe-image-asset" />
-          <input name='recipe_image' onChange={handleImgUpld} type="file" />
+          <div className="form-input recipe-image">
+            <label>recipe image</label>
+            <img src={recipe?.recipe_image ? recipe?.recipe_image : imgUplPlchldr} alt="recipe-image" className="recipe-image-asset" />
+            <input name='recipe_image' onChange={handleImgUpld} type="file" />
+          </div>
+          <div className="form-input recipe-description">
+            <label>recipe description</label>
+            <textarea name="recipe_description" value={recipe?.recipe_description} onChange={handleChange} placeholder="recipe description" />
+          </div>
         </div>
         <div id="recipe-categories" className="list-editor">
           <div className="form-input recipe-categories">
@@ -149,11 +92,9 @@ const RecipeForm = () => {
             <ListEditor list={recipe?.recipe_instructions} listTitle={"instructions"} isOrderedList isLongInput editorCb={handleInstructions} />
           </div>
         </div>
-        <>
-          <div className="form-action">
-            <AppButton btnLabel={"submit"} classname={"primary"} btnType="submit" />
-          </div>
-        </>
+        <div className="form-action">
+          <AppButton btnLabel={"submit"} classname={"primary"} btnType="submit" />
+        </div>
       </form>
     </div>
   )
