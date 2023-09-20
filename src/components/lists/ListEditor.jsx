@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useRef } from "react"
 import { ListDisplay } from ".";
 import { AppButton } from "../button";
 import { useBool } from "../../utils/customhooks";
@@ -6,6 +6,7 @@ import { useBool } from "../../utils/customhooks";
 const ListEditor = ({ list, listTitle, isOrderedList=false, isLongInput=false, editorCb }) => {
   const [item, setItem] = useState('');
   const [editIndex, setEditIndex] = useState(null);
+  const inputRef = useRef();
   const {
     isTruthy: isEditing,
     setTruthy: setIsEditing,
@@ -34,16 +35,17 @@ const ListEditor = ({ list, listTitle, isOrderedList=false, isLongInput=false, e
     } else {
       await editorCb([ ...list, item ]);
       setItem('');
-    }
+    };
+    inputRef.current.focus();
   };
 
   return(
     <div className="list-input">
       <ListDisplay title={listTitle} data={list} isEditing isOrderedList={isOrderedList} editItemCb={handleEditItem} deleteItemCb={handleDeleteItem} />
       {isLongInput ?
-        <textarea name="item" value={item} onChange={(e) => setItem(e.target.value)} placeholder="add item" />
+        <textarea ref={inputRef} name="item" value={item} onChange={(e) => setItem(e.target.value)} placeholder="add item" />
       :
-        <input name="item" value={item} onChange={(e) => setItem(e.target.value)} placeholder="add item" />}
+        <input ref={inputRef} name="item" value={item} onChange={(e) => setItem(e.target.value)} placeholder="add item" />}
       <AppButton btnLabel={"add item"} classname={"secondary"} btnCb={handleAddItem} />
     </div>
   )

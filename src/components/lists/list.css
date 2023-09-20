@@ -9,4 +9,10 @@
 .list-input {
   display: flex;
   flex-direction: column;
+  gap: 1rem;
+}
+
+.list-display {
+  display: flex;
+  flex-direction: column;
 }
