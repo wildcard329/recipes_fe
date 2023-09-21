@@ -75,7 +75,8 @@
   .home-article h3 {
     padding-top: 1rem;
   }
-  .home-article h3, p {
+  .home-article h3, 
+  .home-article p {
     padding-left: 3.125rem;
     padding-right: 3.125rem;
   }

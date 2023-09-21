@@ -2,25 +2,25 @@
   {
     "navId": 0,
     "navLabel": "welcome",
-    "navLink": "hero",
+    "navLink": "welcome",
     "classname": "page-nav-link"
   },
   {
     "navId": 1,
     "navLabel": "thank you",
-    "navLink": "section-1",
+    "navLink": "recipe-rollout",
     "classname": "page-nav-link"
   },
   {
     "navId": 2,
     "navLabel": "community",
-    "navLink": "section-2",
+    "navLink": "community",
     "classname": "page-nav-link"
   },
   {
     "navId": 4,
     "navLabel": "features",
-    "navLink": "section-3",
+    "navLink": "features",
     "classname": "page-nav-link"
   }
 ]

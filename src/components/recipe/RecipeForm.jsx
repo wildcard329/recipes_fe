@@ -41,62 +41,60 @@ const RecipeForm = () => {
   };
 
   return(
-    <div className="recipe-form-wrapper">
-      <form onSubmit={handleSubmit} className="recipe-form">
-        <div id="general" className="form-section">
-          <div className="form-input recipe-name">
-            <label>recipe name</label>
-            <input name="recipe_name" value={recipe?.recipe_name} onChange={handleChange} placeholder="recipe name" />
+    <form onSubmit={handleSubmit} className="recipe-form">
+      <div id="general" className="form-section">
+        <div className="form-input recipe-name">
+          <label>recipe name</label>
+          <input name="recipe_name" value={recipe?.recipe_name} onChange={handleChange} placeholder="recipe name" />
+        </div>
+        <div className="form-input recipe-time">
+          <div className="form-input">
+            <label>recipe prep time</label>
+            <input name="recipe_prep_time" value={recipe?.recipe_prep_time} onChange={handleIntChange} type="number" />
           </div>
-          <div className="form-input recipe-time">
-            <div className="form-input">
-              <label>recipe prep time</label>
-              <input name="recipe_prep_time" value={recipe?.recipe_prep_time} onChange={handleIntChange} type="number" />
-            </div>
-            <div className="form-input">
-              <label>recipe cook time</label>
-              <input name="recipe_cook_time" value={recipe?.recipe_cook_time} onChange={handleIntChange} type="number" />
-            </div>
-            <div className="form-input">
-              <label>recipe total time</label>
-              <input name="recipe_total_time" value={recipe?.recipe_total_time} onChange={handleIntChange} type="number" />
-            </div>
+          <div className="form-input">
+            <label>recipe cook time</label>
+            <input name="recipe_cook_time" value={recipe?.recipe_cook_time} onChange={handleIntChange} type="number" />
           </div>
-          <div className="form-input recipe-image">
-            <label>recipe image</label>
-            <img src={asset ? asset : recipe?.recipe_image ? recipe?.recipe_image : imgUplPlchldr} alt="recipe-image" className="recipe-image-asset" />
-            <input name='recipe_image' onChange={handleImgUpld} type="file" />
-          </div>
-          <div className="form-input recipe-description">
-            <label>recipe description</label>
-            <textarea name="recipe_description" value={recipe?.recipe_description} onChange={handleChange} placeholder="recipe description" />
+          <div className="form-input">
+            <label>recipe total time</label>
+            <input name="recipe_total_time" value={recipe?.recipe_total_time} onChange={handleIntChange} type="number" />
           </div>
         </div>
-        <div id="recipe-categories" className="list-editor">
-          <div className="form-input recipe-categories">
-            <ListEditor list={recipe?.recipe_categories} listTitle={"categories"} editorCb={handleCategories} />
-          </div>
+        <div className="form-input recipe-image">
+          <label>recipe image</label>
+          <img src={asset ? asset : recipe?.recipe_image ? recipe?.recipe_image : imgUplPlchldr} alt="recipe-image" className="recipe-image-asset" />
+          <input name='recipe_image' onChange={handleImgUpld} type="file" />
         </div>
-        <div id="recipe-tools" className="list-editor">
-          <div className="form-input recipe-tools">
-            <ListEditor list={recipe?.recipe_tools} listTitle={"tools"} editorCb={handleTools} />
-          </div>
+        <div className="form-input recipe-description">
+          <label>recipe description</label>
+          <textarea name="recipe_description" value={recipe?.recipe_description} onChange={handleChange} placeholder="recipe description" />
         </div>
-        <div id="recipe-ingredients" className="list-editor">
-          <div className="form-input recipe-ingredients">
-            <ListEditor list={recipe?.recipe_ingredients} listTitle={"ingredients"} editorCb={handleIngredients} />
-          </div>
+      </div>
+      <div id="recipe-categories" className="list-editor">
+        <div className="form-input recipe-categories">
+          <ListEditor list={recipe?.recipe_categories} listTitle={"categories"} editorCb={handleCategories} />
         </div>
-        <div id="recipe-steps" className="list-editor">
-          <div className="form-input recipe-instructions">
-            <ListEditor list={recipe?.recipe_instructions} listTitle={"instructions"} isOrderedList isLongInput editorCb={handleInstructions} />
-          </div>
+      </div>
+      <div id="recipe-tools" className="list-editor">
+        <div className="form-input recipe-tools">
+          <ListEditor list={recipe?.recipe_tools} listTitle={"tools"} editorCb={handleTools} />
         </div>
-        <div className="form-action">
-          <AppButton btnLabel={"submit"} classname={"recipe-submit-btn"} btnType="submit" />
+      </div>
+      <div id="recipe-ingredients" className="list-editor">
+        <div className="form-input recipe-ingredients">
+          <ListEditor list={recipe?.recipe_ingredients} listTitle={"ingredients"} editorCb={handleIngredients} />
         </div>
-      </form>
-    </div>
+      </div>
+      <div id="recipe-steps" className="list-editor">
+        <div className="form-input recipe-instructions">
+          <ListEditor list={recipe?.recipe_instructions} listTitle={"instructions"} isOrderedList isLongInput editorCb={handleInstructions} />
+        </div>
+      </div>
+      <div className="form-action">
+        <AppButton btnLabel={"submit"} classname={"recipe-submit-btn"} btnType="submit" />
+      </div>
+    </form>
   )
 }
 
