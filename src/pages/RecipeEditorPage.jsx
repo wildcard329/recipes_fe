@@ -37,7 +37,7 @@ const RecipeEditorPage = () => {
   }, [routerPath]);
 
   return(
-    <div className="page-content">
+    <div className="page-content recipe-page">
       {isLoading ?
         <Spinner1 />
       : 

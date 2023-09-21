@@ -41,7 +41,7 @@ const RecipeViewerPage = () => {
     setNavLinks(recipeViewerPageNav);
   }, []);
   return(
-    <div className="page-content">
+    <div className="page-content recipe-page">
       {
         isLoading ?
           <div className="space-buffer">
@@ -50,10 +50,6 @@ const RecipeViewerPage = () => {
         : 
           <>
             <RecipeViewer />
-            <div className="page-action-row">
-              <RouterLink label={<MdOutlineEdit className="action-icon" fill="#335c67" />} path={`/recipes/${locationState?.recipe_id}/edit`} state={recipe} />
-              <AppButton btnCb={removeRecipe} classname={"passive-bg"} btnLabel={<TiDeleteOutline className="action-icon" fill="#335c67" />} />
-            </div>
           </>
       }
     </div>

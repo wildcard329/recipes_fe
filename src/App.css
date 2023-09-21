@@ -115,6 +115,13 @@
   margin-bottom: 2rem;
 }
 
+.recipe-page {
+  background-image: url('./assets/images/recipe-form-bg.jpg');
+  padding: 2rem 0;
+  background-color: gray;
+  background-blend-mode: multiply;
+}
+
 .mobile-hidden {
   display: none;
 }

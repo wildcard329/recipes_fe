@@ -1,24 +1,18 @@
 [
     {
       "navId": 0,
-      "navLabel": "recipe title",
-      "navLink": "recipe-title",
+      "navLabel": "general info",
+      "navLink": "recipe-info",
       "classname": "page-nav-link"
     },
     {
       "navId": 1,
-      "navLabel": "recipe info",
-      "navLink": "recipe-info-details",
-      "classname": "page-nav-link"
-    },
-    {
-      "navId": 2,
       "navLabel": "tools and ingredients",
       "navLink": "recipe-tools-ingredients",
       "classname": "page-nav-link"
     },
     {
-      "navId": 3,
+      "navId": 2,
       "navLabel": "instructions",
       "navLink": "recipe-steps",
       "classname": "page-nav-link"
