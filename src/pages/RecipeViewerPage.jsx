@@ -5,8 +5,6 @@ import { useBool, useReactRouter, useAmplify } from "../utils/customhooks";
 import { pageNavContext, recipeContext } from "../state/contexts";
 import { RecipeViewer } from "../components/recipe";
 import { Spinner1 } from "../components/loader";
-import { RouterLink } from "../components/router";
-import { AppButton } from "../components/button";
 import recipeViewerPageNav from "../assets/configs/recipeViewerNav.json";
 
 const RecipeViewerPage = () => {
@@ -18,7 +16,7 @@ const RecipeViewerPage = () => {
 
   const { getRecipeByIdAuthor, getRecipeAsset, deleteRecipe } = useAmplify();
   const { locationState } = useReactRouter();
-  const { setRecipe, setAsset, recipe } = useContext(recipeContext);
+  const { setRecipe, setAsset } = useContext(recipeContext);
   const { setNavLinks } = useContext(pageNavContext);
 
   const retrieveData = async () => {
@@ -30,10 +28,6 @@ const RecipeViewerPage = () => {
       await setAsset(asset);
     }
     setNotIsLoading();
-  };
-
-  const removeRecipe = () => {
-    deleteRecipe(locationState?.recipe_author, locationState?.recipe_id);
   };
 
   useEffect(() => {

@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/ingredients": {
+      "name": "/ingredients",
+      "lambdaFunction": "ingredientsLambda",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "resourceName": "ingredients",
+  "tableName": "ingredients",
+  "partitionKey": {
+    "fieldName": "ingredient_id",
+    "fieldType": "string"
+  },
+  "sortKey": {
+    "fieldName": "ingredient_name",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": [
+    "ingredientsLambda"
+  ]
+}
