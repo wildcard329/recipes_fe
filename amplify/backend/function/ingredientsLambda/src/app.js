@@ -12,6 +12,7 @@ See the License for the specific language governing permissions and limitations 
 const express = require('express')
 const bodyParser = require('body-parser')
 const awsServerlessExpressMiddleware = require('aws-serverless-express/middleware')
+const { getIngredients, getIngredientById, addOrUpdateIngredient, deleteIngredient } = require('./handlers/ing-handler.js');
 
 // declare a new express app
 const app = express()
@@ -32,12 +33,19 @@ app.use(function(req, res, next) {
 
 app.get('/ingredients', function(req, res) {
   // Add your code here
-  res.json({success: 'get call succeed!', url: req.url});
+  const { Items: ingredients } = getIngredients();
+  res.json({ msg: 'get call succeed!', data: ingredients });
 });
 
-app.get('/ingredients/*', function(req, res) {
+app.get('/ingredients/:ingredientId', function(req, res) {
   // Add your code here
-  res.json({success: 'get call succeed!', url: req.url});
+  const ingredientId = req.params.ingredientId;
+  try {
+    const { Item: ingredient } = getIngredientById(ingredientId);
+    res.json({ msg: 'get call succeed!', data: ingredient });
+  } catch (error) {
+    res.json({ msg: 'error retrieving get call' })
+  }
 });
 
 /****************************
@@ -46,12 +54,13 @@ app.get('/ingredients/*', function(req, res) {
 
 app.post('/ingredients', function(req, res) {
   // Add your code here
-  res.json({success: 'post call succeed!', url: req.url, body: req.body})
-});
-
-app.post('/ingredients/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'post call succeed!', url: req.url, body: req.body})
+  const ingredient = req.body;
+  try {
+    addOrUpdateIngredient(ingredient);
+    res.json({ msg: 'post call succeed!' })
+  } catch (error) {
+    res.json({ msg: 'error processing data' });
+  }
 });
 
 /****************************
@@ -60,26 +69,28 @@ app.post('/ingredients/*', function(req, res) {
 
 app.put('/ingredients', function(req, res) {
   // Add your code here
-  res.json({success: 'put call succeed!', url: req.url, body: req.body})
-});
-
-app.put('/ingredients/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'put call succeed!', url: req.url, body: req.body})
+  const ingredient = req.body;
+  try {
+    addOrUpdateIngredient(ingredient);
+    res.json({ msg: 'put call succeed!' })
+  } catch (error) {
+    res.json({ msg: 'error processing request' });
+  }
 });
 
 /****************************
 * Example delete method *
 ****************************/
 
-app.delete('/ingredients', function(req, res) {
+app.delete('/ingredients:ingredientId', function(req, res) {
   // Add your code here
-  res.json({success: 'delete call succeed!', url: req.url});
-});
-
-app.delete('/ingredients/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'delete call succeed!', url: req.url});
+  const ingredientId = req.params.ingredientId;
+  try {
+    deleteIngredient(ingredientId);
+    res.json({ msg: 'delete call succeed!' });
+  } catch (error) {
+    res.json({ msg: 'error processing request' });
+  }
 });
 
 app.listen(3000, function() {
