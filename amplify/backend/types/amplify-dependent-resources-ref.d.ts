@@ -1,6 +1,16 @@
 export type AmplifyDependentResourcesAttributes = {
   "api": {
+    "ingredients": {
+      "ApiId": "string",
+      "ApiName": "string",
+      "RootUrl": "string"
+    },
     "recipes": {
+      "ApiId": "string",
+      "ApiName": "string",
+      "RootUrl": "string"
+    },
+    "users": {
       "ApiId": "string",
       "ApiName": "string",
       "RootUrl": "string"
@@ -26,7 +36,21 @@ export type AmplifyDependentResourcesAttributes = {
     }
   },
   "function": {
+    "ingredientsLambda": {
+      "Arn": "string",
+      "LambdaExecutionRole": "string",
+      "LambdaExecutionRoleArn": "string",
+      "Name": "string",
+      "Region": "string"
+    },
     "reclambda": {
+      "Arn": "string",
+      "LambdaExecutionRole": "string",
+      "LambdaExecutionRoleArn": "string",
+      "Name": "string",
+      "Region": "string"
+    },
+    "usersTrigger3c9a3160": {
       "Arn": "string",
       "LambdaExecutionRole": "string",
       "LambdaExecutionRoleArn": "string",
@@ -39,7 +63,27 @@ export type AmplifyDependentResourcesAttributes = {
       "BucketName": "string",
       "Region": "string"
     },
+    "ingredients": {
+      "Arn": "string",
+      "Name": "string",
+      "PartitionKeyName": "string",
+      "PartitionKeyType": "string",
+      "Region": "string",
+      "SortKeyName": "string",
+      "SortKeyType": "string",
+      "StreamArn": "string"
+    },
     "recipes": {
+      "Arn": "string",
+      "Name": "string",
+      "PartitionKeyName": "string",
+      "PartitionKeyType": "string",
+      "Region": "string",
+      "SortKeyName": "string",
+      "SortKeyType": "string",
+      "StreamArn": "string"
+    },
+    "users": {
       "Arn": "string",
       "Name": "string",
       "PartitionKeyName": "string",
