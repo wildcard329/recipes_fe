@@ -19,23 +19,17 @@
         },
         "usersTrigger3c9a3160": {
           "deploymentBucketName": "amplify-recbackend-dev-81551-deployment",
-          "s3Key": "amplify-builds/usersTrigger3c9a3160-3544445777394a73644c-build.zip"
-        },
-        "ingredientsLambda": {
-          "deploymentBucketName": "amplify-recbackend-dev-81551-deployment",
-          "s3Key": "amplify-builds/ingredientsLambda-4f6361556a706945336d-build.zip"
+          "s3Key": "amplify-builds/usersTrigger3c9a3160-6b6f555a635873483834-build.zip"
         }
       },
       "api": {
         "recipes": {},
-        "users": {},
-        "ingredients": {}
+        "users": {}
       },
       "storage": {
         "recipes": {},
         "imgStorage": {},
-        "users": {},
-        "ingredients": {}
+        "users": {}
       },
       "auth": {
         "recbackendf427d6a6f427d6a6": {
