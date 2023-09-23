@@ -14,8 +14,8 @@ const getUsers = async () => {
   };
 };
 
-const getUserById = async (author, id) => {
-  const specParams = { ...params, Key: { recipe_id: id, recipe_author: author } };
+const getUserById = async (username, user_id) => {
+  const specParams = { ...params, Key: { user_id: user_id, username: username } };
   try {
     return await docClient.get(specParams).promise();
   } catch (error) {
@@ -23,8 +23,8 @@ const getUserById = async (author, id) => {
   };
 };
 
-const addOrUpdateUser = async (recipe) => {
-  const updParams = { ...params, Item: recipe };
+const addOrUpdateUser = async (user) => {
+  const updParams = { ...params, Item: user };
   try {
     return await docClient.put(updParams).promise();
   } catch (error) {

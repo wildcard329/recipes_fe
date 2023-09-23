@@ -4,6 +4,11 @@ const useAmplify = () => {
   const myAPI = "recipes";
   const recipesPath = "/recipes";
 
+  const ingsAPI = "ingredients";
+  const ingsPath = "/ingredients";
+
+  const getIngredients = async () => await API.get(ingsAPI, ingsPath);
+
   const authGoogle = async () => Auth.federatedSignIn({ provider: "Google" });
 
   const getGoogleAuthUser = async () => Auth.currentAuthenticatedUser();
@@ -26,7 +31,7 @@ const useAmplify = () => {
 
   const addRecipe = async (recipe) => await API.post(myAPI, recipesPath, { body: recipe });
 
-  return { getRecipeAsset, getRecipesAssets, getRecipes, getRecipeByIdAuthor, deleteRecipe, updateRecipe, addRecipe, addAsset, authGoogle, getGoogleAuthUser, signoutUser };
+  return { getRecipeAsset, getRecipesAssets, getRecipes, getRecipeByIdAuthor, deleteRecipe, updateRecipe, addRecipe, addAsset, authGoogle, getGoogleAuthUser, signoutUser, getIngredients };
 }
 
 export default useAmplify;

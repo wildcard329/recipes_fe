@@ -1,19 +1,5 @@
 {
   "api": {
-    "ingredients": {
-      "dependsOn": [
-        {
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "category": "function",
-          "resourceName": "ingredientsLambda"
-        }
-      ],
-      "providerPlugin": "awscloudformation",
-      "service": "API Gateway"
-    },
     "recipes": {
       "dependsOn": [
         {
@@ -91,22 +77,6 @@
     }
   },
   "function": {
-    "ingredientsLambda": {
-      "build": true,
-      "dependsOn": [
-        {
-          "attributes": [
-            "Name",
-            "Arn",
-            "StreamArn"
-          ],
-          "category": "storage",
-          "resourceName": "ingredients"
-        }
-      ],
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    },
     "reclambda": {
       "build": true,
       "dependsOn": [],
@@ -136,22 +106,6 @@
         {
           "category": "auth",
           "resourceName": "recbackendf427d6a6f427d6a6"
-        }
-      ]
-    },
-    "AMPLIFY_function_ingredientsLambda_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "ingredientsLambda"
-        }
-      ]
-    },
-    "AMPLIFY_function_ingredientsLambda_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "ingredientsLambda"
         }
       ]
     },
@@ -193,10 +147,6 @@
       "dependsOn": [],
       "providerPlugin": "awscloudformation",
       "service": "S3"
-    },
-    "ingredients": {
-      "providerPlugin": "awscloudformation",
-      "service": "DynamoDB"
     },
     "recipes": {
       "providerPlugin": "awscloudformation",

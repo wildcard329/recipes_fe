@@ -1,10 +1,5 @@
 export type AmplifyDependentResourcesAttributes = {
   "api": {
-    "ingredients": {
-      "ApiId": "string",
-      "ApiName": "string",
-      "RootUrl": "string"
-    },
     "recipes": {
       "ApiId": "string",
       "ApiName": "string",
@@ -36,13 +31,6 @@ export type AmplifyDependentResourcesAttributes = {
     }
   },
   "function": {
-    "ingredientsLambda": {
-      "Arn": "string",
-      "LambdaExecutionRole": "string",
-      "LambdaExecutionRoleArn": "string",
-      "Name": "string",
-      "Region": "string"
-    },
     "reclambda": {
       "Arn": "string",
       "LambdaExecutionRole": "string",
@@ -62,16 +50,6 @@ export type AmplifyDependentResourcesAttributes = {
     "imgStorage": {
       "BucketName": "string",
       "Region": "string"
-    },
-    "ingredients": {
-      "Arn": "string",
-      "Name": "string",
-      "PartitionKeyName": "string",
-      "PartitionKeyType": "string",
-      "Region": "string",
-      "SortKeyName": "string",
-      "SortKeyType": "string",
-      "StreamArn": "string"
     },
     "recipes": {
       "Arn": "string",
