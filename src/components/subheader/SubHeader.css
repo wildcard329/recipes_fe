@@ -12,7 +12,7 @@
 .contracted {
   border-right: 2px solid var(--dark-slate-gray);
   border-bottom: 2px solid var(--dark-slate-gray);
-  padding: 0.7rem 0.7rem 0.4rem 0.7rem;
+  padding: 0.45rem;
   position: absolute;
   background-color: white;
   /* animation: expand2 0.5s; */
@@ -35,6 +35,11 @@
   top: 0;
   left: 0;
   /* animation: expand2 0.5s; */
+}
+
+.react-icon {
+  stroke-width: 2;
+  color: white;
 }
 
 /* .expanded ul {

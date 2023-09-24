@@ -19,7 +19,7 @@ const recipeLinkConfig = [
     label: "all recipes"
   },
   {
-    path: "/recipes/user",
+    path: "/recipes/:user",
     classname: "header-link",
     label: "my recipes"
   },
@@ -45,7 +45,7 @@ const ingredientsLinksConfig = [
     label: "all ingredients"
   },
   {
-    path: "/ingredients/user",
+    path: "/ingredients/:user",
     classname: "header-link",
     label: "my pantry"
   },
@@ -62,19 +62,30 @@ const HeaderLinksContainer = ({ isShowingLinks }) => {
       linksElement.current.classList.add('mobile-hide');
     }
   }, [isShowingLinks]);
-  
+
   return(
     <nav>
       <ul className="header-links" ref={linksElement}>
         <li><HeaderLinkTrigger path={'/'} classname={'header-link'} label={'home'} /></li>
         <li><Divider /></li>
         {isLoggedIn ?
-          <li><HeaderLinkTrigger path={"/recipes"} classname={"header-link"} label={"recipes"} linkConfigs={recipeLinkConfig} /></li>
+          <>
+            <li><HeaderLinkTrigger path={"/recipes"} classname={"header-link"} label={"recipes"} linkConfigs={recipeLinkConfig} /></li>
+            <li className="desktop-hide"><Divider /></li>
+            <li className="desktop-hide"><HeaderLinkTrigger path={"/recipes/:user"} classname={"header-link-mobile"} label={"my recipes"} /></li>
+            <li className="desktop-hide"><Divider /></li>
+            <li className="desktop-hide"><HeaderLinkTrigger path={"/recipes/new"} classname={"header-link-mobile"} label={"new recipe"} /></li>
+          </>
+
         :
           <li><HeaderLinkTrigger path={"/recipes"} classname={"header-link"} label={"recipes"} linkConfigs={unAuthRecipeLinkConfig} /></li>}
         <li><Divider /></li>
         {isLoggedIn ?
-          <li><HeaderLinkTrigger path={"/ingredients"} classname={"header-link"} label={"ingredients"} linkConfigs={ingredientsLinksConfig} /></li>
+          <>
+            <li><HeaderLinkTrigger path={"/ingredients"} classname={"header-link"} label={"ingredients"} linkConfigs={ingredientsLinksConfig} /></li>
+            <li className="desktop-hide"><Divider /></li>
+            <li className="desktop-hide"><HeaderLinkTrigger path={"/ingredients/:user"} classname={"header-link-mobile"} label={"my pantry"} /></li>
+          </>
         :
           <li><HeaderLinkTrigger path={"/ingredients"} classname={"header-link"} label={"ingredients"} linkConfigs={unAuthIngredientsLinksConfig} /></li>}
         <li><Divider /></li>

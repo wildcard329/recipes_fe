@@ -1,9 +1,10 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, Fragment } from "react";
 import { useBool, useReactRouter, useScrollListener } from "../../utils/customhooks";
-import { BsArrowDownRightSquareFill, BsArrowUpLeftSquareFill } from "react-icons/bs";
+import { BsArrowDownRight, BsArrowUpLeft } from "react-icons/bs";
 import { pageNavContext } from "../../state/contexts";
 import SubHeaderLinks from "./SubHeaderLinks";
 import "./SubHeader.css";
+import { AppButton } from "../button";
 
 const SubHeader = () => {
   const {
@@ -34,7 +35,7 @@ const SubHeader = () => {
         <div className="sub-header">
           {!isExpanded && (isScrolling || isFocused ? 
             <div className="contracted" onMouseLeave={setIsNotFocused}>
-              <BsArrowDownRightSquareFill radius={0} fill="#335c67" onClick={setIsExpanded} className="sub-header-icon expanding-icon" />
+              <AppButton classname={"sub-header-btn"} btnCb={setIsExpanded} btnLabel={<BsArrowDownRight className="react-icon" fill="white" />} />
             </div>
           :
             <div className="contracted-trigger" onDoubleClick={setIsExpanded} onMouseEnter={setIsFocused}></div>  
@@ -42,7 +43,9 @@ const SubHeader = () => {
           {isExpanded && 
             <div className="expanded">
               <SubHeaderLinks navLinks={navLinks} />
-              <BsArrowUpLeftSquareFill radius={0} fill="#335c67" onClick={handleMenuClose} className="sub-header-icon right-corner" />
+              <div className="right-corner">
+                <AppButton classname={"sub-header-btn"} btnCb={setIsNotExpanded} btnLabel={<BsArrowUpLeft className="react-icon" fill="white" />} />
+              </div>
             </div>}
         </div>
       :

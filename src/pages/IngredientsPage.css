@@ -1,7 +1,3 @@
-.ingredients-data {
-  padding: 2rem;
-}
-
 .ingredients-page-wrapper {
   display: grid;
   grid-template-areas: 
@@ -9,27 +5,9 @@
     "options";
 }
 
-.ingredients-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  overflow-y: scroll;
-  height: fit-content;
-}
-
-.ingredients-list-item button {
-  width: 100%;
-  height: 100%;
-  padding: 1rem 0;
-}
-
 @media (min-width: 1024px) {
-  .ingredients-list {
-    width: 500px;
-  }
   .ingredients-page-wrapper {
     height: 75vh;
-    /* overflow: scroll; */
     grid-template-areas: "options data";
     grid-template-columns: 1fr 1fr;
   }

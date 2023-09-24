@@ -79,7 +79,6 @@
 .editor-btn:focus {
   background-color: green;
   color: white;
-  box-shadow: 3px 3px 3px 1px green;
 }
 
 .recipe-submit-btn {
@@ -90,7 +89,6 @@
 
 .recipe-submit-btn:hover,
 .recipe-submit-btn:focus {
-  box-shadow: 3px 3px 3px 1px green;
   background-color: white;
   color: green;
 }
@@ -106,6 +104,12 @@
   border: 2px solid black;
   height: 25px;
   width: 25px;
+}
+
+.sub-header-btn {
+  background-color: var(--dark-slate-gray);
+  height: 35px;
+  width: 35px;
 }
 
 .menu-btn {
