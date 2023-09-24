@@ -2,51 +2,61 @@
   {
     "ingredient_id": "3131e44e-59bc-11ee-8c99-0242ac120002",
     "ingredient_name": "salt",
+    "ingredient_img_key": null,
     "ingredient_description": "Table salt is a fine, crystalline substance with a pure white appearance. It is prized for its ability to season and enhance the natural flavors of foods, making it an indispensable ingredient in culinary preparations. This versatile salt is typically harvested from salt mines or obtained through the evaporation of seawater, resulting in a product that is both natural and abundant."
   },
   {
     "ingredient_id": "855a2a3c-59c0-11ee-8c99-0242ac120002",
     "ingredient_name": "sugar",
+    "ingredient_img_key": null,
     "ingredient_description": "Sugar is a crystalline substance that can take various forms, including granulated, powdered, brown, and specialty sugars like demerara and turbinado. It is derived from various sources, with the most common being sugar cane and sugar beets. Sugar's natural sweetness and unique ability to interact with other ingredients make it an essential and multifaceted element in cooking and baking."
   },
   {
     "ingredient_id": "8fc54998-59c0-11ee-8c99-0242ac120002",
     "ingredient_name": "flour",
+    "ingredient_img_key": null,
     "ingredient_description": "Flour is a fine, powdery substance made by milling grains, legumes, or starchy vegetables into a finely ground form. The most common source of flour is wheat, but it can also be derived from sources like rice, corn, oats, rye, and various other grains. Flour is a pantry staple in kitchens around the world and comes in various types, including all-purpose, bread, cake, pastry, and specialty flours, each with distinct properties."
   },
   {
     "ingredient_id": "98b31166-59c0-11ee-8c99-0242ac120002",
     "ingredient_name": "butter",
+    "ingredient_img_key": null,
     "ingredient_description": "Butter is a dairy product made from churning cream or milk. It has a smooth, creamy consistency and a pale yellow to golden hue, depending on the diet of the cows and the processing method. Butter is prized for its unmistakable taste, which combines a delicate sweetness with a subtle hint of saltiness. It is available in various forms, including salted and unsalted (also known as sweet butter), and can be found in different textures, such as regular, clarified, and cultured butter."
   },
   {
     "ingredient_id": "a402d4de-59c0-11ee-8c99-0242ac120002",
     "ingredient_name": "beef",
+    "ingredient_img_key": null,
     "ingredient_description": "Beef is the meat obtained from cattle, particularly cows and bulls. It comes in a variety of cuts, each with distinct textures and flavors, ranging from lean to marbled, depending on the muscle and fat content. The color of beef can vary from bright red to deep red, with marbling contributing to the overall appearance."
   },
   {
     "ingredient_id": "b3ae7726-59c0-11ee-8c99-0242ac120002",
     "ingredient_name": "chicken",
+    "ingredient_img_key": null,
     "ingredient_description": "Chicken is the meat obtained from domesticated chickens, specifically raised for their meat and eggs. It is known for its pale pink to white flesh, which is tender and lean. Chicken comes in various cuts, including breasts, thighs, drumsticks, wings, and the whole bird, each with its unique characteristics and uses in cooking."
   },
   {
     "ingredient_id": "bd1419c4-59c0-11ee-8c99-0242ac120002",
     "ingredient_name": "cheese",
+    "ingredient_img_key": null,
     "ingredient_description": "Cheese is a dairy product that comes in various forms, textures, and flavors. It is created by coagulating milk, typically from cows, goats, sheep, or other animals, and then aging it to develop its distinct characteristics. The coagulation process separates the curd (solid) from the whey (liquid), which is drained or pressed, resulting in cheese. The types of milk, coagulants, aging methods, and regional influences all contribute to the diverse world of cheese."
   },
   {
     "ingredient_id": "c67da390-59c0-11ee-8c99-0242ac120002",
     "ingredient_name": "baking powder",
+    "ingredient_img_key": null,
     "ingredient_description": "Baking powder is a white, odorless, and finely ground powder that plays a pivotal role in baking by introducing carbon dioxide gas into batters and doughs. This gas is produced through a chemical reaction between acidic and alkaline components within the baking powder when activated by liquid and heat. The carbon dioxide gas forms bubbles in the batter or dough, causing it to expand and rise, resulting in a light and airy texture in the finished baked goods."
   },
   {
     "ingredient_id": "d08d3b66-59c0-11ee-8c99-0242ac120002",
     "ingredient_name": "baking soda",
+    "ingredient_img_key": null,
     "ingredient_description": "Baking soda is a fine, white, and water-soluble powder that plays a crucial role in the culinary arts, particularly in baking. It is a chemical compound composed of sodium, hydrogen, carbon, and oxygen, and it is known for its ability to produce carbon dioxide gas when exposed to acidic ingredients, such as vinegar, yogurt, buttermilk, or citrus juice. This gas production creates bubbles in batters and dough, causing them to expand and rise, leading to the characteristic texture and structure of various baked goods."
   },
   {
     "ingredient_id": "da8059d2-59c0-11ee-8c99-0242ac120002",
     "ingredient_name": "sour cream",
+    "ingredient_img_key": null,
     "ingredient_description": "Sour cream is a thick and creamy dairy product with a smooth, off-white appearance. It has a luxurious texture that is velvety and slightly viscous, making it easy to dollop or incorporate into both sweet and savory recipes. Sour cream gets its name from its characteristic tangy or sour flavor, which is the result of lactic acid fermentation during its production."
   }
 ]

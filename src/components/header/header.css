@@ -68,6 +68,9 @@
     font-size: 1.75rem;
     display: block;
   }
+  .desktop-hide {
+    display: none;
+  }
   .header-links {
     display: flex;
     flex-direction: row;

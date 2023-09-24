@@ -1,4 +1,5 @@
-.header-link {
+.header-link,
+.header-link-mobile {
   color: black;
   text-decoration: none;
   font-size: 0.875rem;
@@ -9,11 +10,13 @@
   padding-bottom: 0.5rem;
 }
 
-.header-link:visited {
+.header-link:visited,
+.header-link-mobile:visited {
   color: black;
 }
 
-.header-link:hover {
+.header-link:hover,
+.header-link-mobile:hover {
   color: black;
   border-bottom: 2px solid black;
 }
@@ -22,8 +25,15 @@
   border-bottom: 2px solid black;
 }
 
-.header-link:focus {
+.header-link:focus,
+.header-link-mobile:focus {
   border-top: none;
   border-left: none;
   border-right: none;
+}
+
+@media (min-width: 1024px) {
+  .header-link-mobile {
+    display: none;
+  }
 }
