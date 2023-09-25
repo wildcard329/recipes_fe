@@ -1,5 +1,19 @@
 {
   "api": {
+    "ingredients": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "ingredientsLambda"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    },
     "recipes": {
       "dependsOn": [
         {
@@ -9,20 +23,6 @@
           ],
           "category": "function",
           "resourceName": "reclambda"
-        }
-      ],
-      "providerPlugin": "awscloudformation",
-      "service": "API Gateway"
-    },
-    "users": {
-      "dependsOn": [
-        {
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "category": "function",
-          "resourceName": "usersTrigger3c9a3160"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -77,13 +77,7 @@
     }
   },
   "function": {
-    "reclambda": {
-      "build": true,
-      "dependsOn": [],
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    },
-    "usersTrigger3c9a3160": {
+    "ingredientsLambda": {
       "build": true,
       "dependsOn": [
         {
@@ -93,9 +87,15 @@
             "StreamArn"
           ],
           "category": "storage",
-          "resourceName": "users"
+          "resourceName": "ingredients"
         }
       ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "reclambda": {
+      "build": true,
+      "dependsOn": [],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     }
@@ -106,6 +106,22 @@
         {
           "category": "auth",
           "resourceName": "recbackendf427d6a6f427d6a6"
+        }
+      ]
+    },
+    "AMPLIFY_function_ingredientsLambda_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "ingredientsLambda"
+        }
+      ]
+    },
+    "AMPLIFY_function_ingredientsLambda_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "ingredientsLambda"
         }
       ]
     },
@@ -124,22 +140,6 @@
           "resourceName": "reclambda"
         }
       ]
-    },
-    "AMPLIFY_function_usersTrigger3c9a3160_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "usersTrigger3c9a3160"
-        }
-      ]
-    },
-    "AMPLIFY_function_usersTrigger3c9a3160_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "usersTrigger3c9a3160"
-        }
-      ]
     }
   },
   "storage": {
@@ -147,6 +147,10 @@
       "dependsOn": [],
       "providerPlugin": "awscloudformation",
       "service": "S3"
+    },
+    "ingredients": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
     },
     "recipes": {
       "providerPlugin": "awscloudformation",

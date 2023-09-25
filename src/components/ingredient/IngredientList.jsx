@@ -7,7 +7,7 @@ const IngredientList = () => {
 
   return(
     <ul className="ingredients-list">
-      {ingredients.map((ingredient) => <li className="ingredients-list-item" onClick={() => handleSelectIngredient(ingredient)} key={ingredient.ingredient_id}><button>{ingredient.ingredient_name}</button></li>)}
+      {ingredients?.map((ingredient) => <li className="ingredients-list-item" onClick={() => handleSelectIngredient(ingredient)} key={ingredient.ingredient_id}><button>{ingredient.ingredient_name}</button></li>)}
     </ul>
   )
 }

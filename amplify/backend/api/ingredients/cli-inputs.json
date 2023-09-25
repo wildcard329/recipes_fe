@@ -1,9 +1,9 @@
 {
   "version": 1,
   "paths": {
-    "/users": {
-      "name": "/users",
-      "lambdaFunction": "usersTrigger3c9a3160",
+    "/ingredients": {
+      "name": "/ingredients",
+      "lambdaFunction": "ingredientsLambda",
       "permissions": {
         "setting": "open"
       }
