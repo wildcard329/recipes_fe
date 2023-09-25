@@ -1,6 +1,6 @@
 import { IngredientProvider } from "../state/providers";
-import "./IngredientsPage.css";
 import { IngredientDisplay, IngredientList } from "../components/ingredient";
+import "./IngredientsPage.css";
 
 const IngredientsPage = () => {  
   // will make api call for ingredients here

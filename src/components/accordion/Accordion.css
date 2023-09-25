@@ -1,0 +1,14 @@
+.accordion-drawer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.accordion-container {
+  position: relative;
+}
+
+.accordion-collapse {
+  position: absolute;
+  right: 0;
+  top: 10px;
+}
