@@ -1,7 +1,4 @@
-/* Amplify Params - DO NOT EDIT
-	ENV
-	REGION
-Amplify Params - DO NOT EDIT *//*
+/*
 Copyright 2017 - 2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with the License. A copy of the License is located at
     http://aws.amazon.com/apache2.0/
@@ -15,7 +12,7 @@ See the License for the specific language governing permissions and limitations 
 const express = require('express')
 const bodyParser = require('body-parser')
 const awsServerlessExpressMiddleware = require('aws-serverless-express/middleware')
-const { getUsers, getUserById, addOrUpdateUser, deleteUser } = require('./handlers/user-handler.js');
+const { getIngredients, getIngredientById, addOrUpdateIngredient, deleteIngredient } = require("./handlers/ing-handler.js");
 
 // declare a new express app
 const app = express()
@@ -29,39 +26,38 @@ app.use(function(req, res, next) {
   next()
 });
 
+
 /**********************
  * Example get method *
  **********************/
 
-app.get('/users', async (req, res) => {
+app.get('/ingredients', async (req, res) => {
   try {
-    const { Items: users } = await getUsers();
-    res.json({ msg: 'get call succeed!', data: users });
+    const { Items: ingredients } = await getIngredients();
+    res.json({ msg: 'get call succeed!', data: ingredients });
   } catch (error) {
-    res.json(error);
-    res.json({ msg: 'error retrieving get call' });
+    res.json({ msg: 'error retrieving data' });
   };
 });
 
-app.get('/users/:username/:userId', async (req, res) => {
-  const username = req.params.username;
-  const userId = req.params.userId;
+app.get('/ingredients/:ingredientId', async (req, res) => {
+  const id = req.params.ingredientId;
   try {
-    const { Item: user } = await getUserById(username, userId);
-    res.json({ msg: 'get call succeed!', data: user });
+    const { Item: ingredient} = await getIngredientById(id);
+    res.json({ msg: 'get call succeed!', data: ingredient });
   } catch (error) {
-    res.json({ msg: 'error retrieving get call' });
-  }
+    res.json({ msg: 'error retrieving data' });
+  };
 });
 
 /****************************
 * Example post method *
 ****************************/
 
-app.post('/users', async (req, res) => {
-  const user = req.body;
+app.post('/ingredients', async (req, res) => {
+  const ingredient = req.body;
   try {
-    await addOrUpdateUser(user);
+    await addOrUpdateIngredient(ingredient);
     res.json({ msg: 'post call succeed!' });
   } catch (error) {
     res.json({ msg: 'error processing data' });
@@ -72,13 +68,13 @@ app.post('/users', async (req, res) => {
 * Example put method *
 ****************************/
 
-app.put('/users', async (req, res) => {
-  const user = req.body;
+app.put('/ingredients', async (req, res) => {
+  const ingredient = req.body;
   try {
-    await addOrUpdateRecipe(user);
-    res.json({ msg: 'put call succeed!' })
+    await addOrUpdateIngredient(ingredient);
+    res.json({ msg: 'put call succeed!' });
   } catch (error) {
-    res.json({ msg: 'error processing request' });
+    res.json({ msg: 'error processing data' });
   };
 });
 
@@ -86,14 +82,13 @@ app.put('/users', async (req, res) => {
 * Example delete method *
 ****************************/
 
-app.delete('/users/:username/:userId', async (req, res) => {
-  const username = req.params.username;
-  const userId = req.params.userId;
+app.delete('/ingredients/:ingredientId', async (req, res) => {
+  const id = req.params.ingredientId;
   try {
-    await deleteRecipe(username, userId);
+    await deleteIngredient(id);
     res.json({ msg: 'delete call succeed!' });
   } catch (error) {
-    res.json({ msg: 'could not delete recipe' });
+    res.json({ msg: 'error processing request' });
   };
 });
 

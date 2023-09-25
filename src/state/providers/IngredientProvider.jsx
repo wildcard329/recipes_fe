@@ -1,15 +1,26 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ingredientContext } from "../contexts";
-import INGREDIENTS_JSON from "../../assets/configs/ingredients.json";
+import { useAmplify } from "../../utils/customhooks";
 
 const IngredientProvider = ({ children }) => {
-  const [ingredients, setIngredients] = useState(INGREDIENTS_JSON);
+  const [ingredients, setIngredients] = useState([]);
   const [selectedIngredient, setSelectedIngredient] = useState({});
+  const { getIngredients, getIngredientsAssets } = useAmplify();
 
   const handleSelectIngredient = (ingredient) => setSelectedIngredient(ingredient);
 
+  const fetchIngredients = async () => {
+    const { data } = await getIngredients();
+    const updatedData = await getIngredientsAssets(data);
+    setIngredients(updatedData);
+  };
+
+  useEffect(() => {
+    fetchIngredients();
+  }, []);
+
   return(
-    <ingredientContext.Provider value={{ ingredients, selectedIngredient, handleSelectIngredient }}>
+    <ingredientContext.Provider value={{ ingredients, selectedIngredient, handleSelectIngredient, setIngredients }}>
       {children}
     </ingredientContext.Provider>
   )

@@ -2,26 +2,31 @@
   "AWSTemplateFormatVersion": "2010-09-09",
   "Description": "{\"createdOn\":\"Windows\",\"createdBy\":\"Amplify\",\"createdWith\":\"12.4.0\",\"stackType\":\"function-Lambda\",\"metadata\":{}}",
   "Parameters": {
-    "env": {
-      "Type": "String"
-    },
-    "storageusersName": {
+    "CloudWatchRule": {
       "Type": "String",
-      "Default": "storageusersName"
-    },
-    "storageusersArn": {
-      "Type": "String",
-      "Default": "storageusersArn"
-    },
-    "storageusersStreamArn": {
-      "Type": "String",
-      "Default": "storageusersArn"
+      "Default": "NONE",
+      "Description": " Schedule Expression"
     },
     "deploymentBucketName": {
       "Type": "String"
     },
+    "env": {
+      "Type": "String"
+    },
     "s3Key": {
       "Type": "String"
+    },
+    "storageingredientsName": {
+      "Type": "String",
+      "Default": "storageingredientsName"
+    },
+    "storageingredientsArn": {
+      "Type": "String",
+      "Default": "storageingredientsArn"
+    },
+    "storageingredientsStreamArn": {
+      "Type": "String",
+      "Default": "storageingredientsArn"
     }
   },
   "Conditions": {
@@ -42,16 +47,24 @@
         "aws:asset:property": "Code"
       },
       "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Ref": "deploymentBucketName"
+          },
+          "S3Key": {
+            "Ref": "s3Key"
+          }
+        },
         "Handler": "index.handler",
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "usersTrigger3c9a3160",
+            "ingredientsLambda",
             {
               "Fn::Join": [
                 "",
                 [
-                  "usersTrigger3c9a3160",
+                  "ingredientsLambda",
                   "-",
                   {
                     "Ref": "env"
@@ -65,6 +78,9 @@
           "Variables": {
             "ENV": {
               "Ref": "env"
+            },
+            "REGION": {
+              "Ref": "AWS::Region"
             }
           }
         },
@@ -75,15 +91,8 @@
           ]
         },
         "Runtime": "nodejs18.x",
-        "Timeout": 25,
-        "Code": {
-          "S3Bucket": {
-            "Ref": "deploymentBucketName"
-          },
-          "S3Key": {
-            "Ref": "s3Key"
-          }
-        }
+        "Layers": [],
+        "Timeout": 25
       }
     },
     "LambdaExecutionRole": {
@@ -92,12 +101,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "usersLambdaRole3c9a3160",
+            "recbackendLambdaRolef74f1267",
             {
               "Fn::Join": [
                 "",
                 [
-                  "usersLambdaRole3c9a3160",
+                  "recbackendLambdaRolef74f1267",
                   "-",
                   {
                     "Ref": "env"
@@ -163,18 +172,30 @@
                   }
                 ]
               }
+            },
+            {
+              "Sid": "ReadWriteTable",
+              "Effect": "Allow",
+              "Action": [
+                "dynamodb:GetItem",
+                "dynamodb:Query",
+                "dynamodb:Scan",
+                "dynamodb:PutItem",
+                "dynamodb:DeleteItem"
+              ],
+              "Resource": "arn:aws:dynamodb:us-west-2:655708725371:table/ingredients-dev"
             }
           ]
         }
       }
     },
-    "usersTriggerPolicy": {
+    "ingredientsTriggerPolicy": {
       "DependsOn": [
         "LambdaExecutionRole"
       ],
       "Type": "AWS::IAM::Policy",
       "Properties": {
-        "PolicyName": "lambda-trigger-policy-users",
+        "PolicyName": "lambda-trigger-policy-ingredients",
         "Roles": [
           {
             "Ref": "LambdaExecutionRole"
@@ -193,7 +214,7 @@
               ],
               "Resource": [
                 {
-                  "Ref": "storageusersStreamArn"
+                  "Ref": "storageingredientsStreamArn"
                 }
               ]
             }
@@ -201,16 +222,16 @@
         }
       }
     },
-    "usersTrigger": {
+    "ingredientsTrigger": {
       "Type": "AWS::Lambda::EventSourceMapping",
       "DependsOn": [
-        "usersTriggerPolicy"
+        "ingredientsTriggerPolicy"
       ],
       "Properties": {
         "BatchSize": 100,
         "Enabled": true,
         "EventSourceArn": {
-          "Ref": "storageusersStreamArn"
+          "Ref": "storageingredientsStreamArn"
         },
         "FunctionName": {
           "Fn::GetAtt": [

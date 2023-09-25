@@ -2,10 +2,10 @@ const AWS = require('aws-sdk');
 const docClient = new AWS.DynamoDB.DocumentClient();
 
 const params = {
-  TableName: 'users-dev',
+  TableName: 'ingredients-dev',
 };
 
-const getUsers = async () => {
+const getIngredients = async () => {
   try {
     const data = await docClient.scan(params).promise();
     return data;
@@ -14,8 +14,8 @@ const getUsers = async () => {
   };
 };
 
-const getUserById = async (username, user_id) => {
-  const specParams = { ...params, Key: { user_id: user_id, username: username } };
+const getIngredientById = async (id) => {
+  const specParams = { ...params, Key: { ingredient_id: id } };
   try {
     return await docClient.get(specParams).promise();
   } catch (error) {
@@ -23,8 +23,8 @@ const getUserById = async (username, user_id) => {
   };
 };
 
-const addOrUpdateUser = async (user) => {
-  const updParams = { ...params, Item: user };
+const addOrUpdateIngredient = async (ingredient) => {
+  const updParams = { ...params, Item: ingredient };
   try {
     return await docClient.put(updParams).promise();
   } catch (error) {
@@ -32,8 +32,8 @@ const addOrUpdateUser = async (user) => {
   };
 };
 
-const deleteUser = async (username, user_id) => {
-  const delParams = { ...params, Key: { user_id: user_id, username: username } };
+const deleteIngredient = async (id) => {
+  const delParams = { ...params, Key: { ingredient_id: id } };
   try {
     return await docClient.delete(delParams).promise();
   } catch (error) {
@@ -42,8 +42,8 @@ const deleteUser = async (username, user_id) => {
 };
 
 module.exports = {
-  getUsers,
-  getUserById,
-  addOrUpdateUser,
-  deleteUser,
-}
+  getIngredients,
+  getIngredientById,
+  addOrUpdateIngredient,
+  deleteIngredient,
+};
