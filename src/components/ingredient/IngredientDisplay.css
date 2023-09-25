@@ -16,6 +16,8 @@
 @media (min-width: 1024px) {
   .ingredients-data {
     position: initial;
+    height: 75vh;
+    overflow-y: scroll;
   }
 }
   

@@ -4,7 +4,6 @@ import { useAmplify, useBool, useReactRouter } from "../utils/customhooks";
 import { recipeContext, pageNavContext } from "../state/contexts";
 import { Spinner1 } from "../components/loader";
 import { generateRecipeTemplate } from "../utils/functions/recipe";
-import { FormProvider } from "../state/providers/";
 import recipeViewerPageNav from "../assets/configs/recipeViewerNav.json";
 
 const RecipeEditorPage = () => {
@@ -41,9 +40,7 @@ const RecipeEditorPage = () => {
       {isLoading ?
         <Spinner1 />
       : 
-        <FormProvider>
-          <RecipeForm />  
-        </FormProvider>}
+        <RecipeForm />}
     </div>
   )
 }
