@@ -5,6 +5,7 @@ import { recipeContext, pageNavContext } from "../state/contexts";
 import { Spinner1 } from "../components/loader";
 import { generateRecipeTemplate } from "../utils/functions/recipe";
 import recipeViewerPageNav from "../assets/configs/recipeViewerNav.json";
+import { AccordionProvider } from "../state/providers";
 
 const RecipeEditorPage = () => {
   const {
@@ -40,7 +41,9 @@ const RecipeEditorPage = () => {
       {isLoading ?
         <Spinner1 />
       : 
-        <RecipeForm />}
+        <AccordionProvider numDrawers={5}>
+          <RecipeForm />  
+        </AccordionProvider>}
     </div>
   )
 }
