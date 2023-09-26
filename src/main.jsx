@@ -3,7 +3,7 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import './index.css'
-import { theme } from './utils/constants/materialThem'
+import { theme } from './utils/constants/materialTheme'
 import { Amplify } from 'aws-amplify';
 import { ThemeProvider, createTheme } from "@mui/material";
 import awsConfig from './aws-exports';

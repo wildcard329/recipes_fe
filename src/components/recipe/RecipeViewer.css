@@ -19,6 +19,19 @@
 
 .header-row {
   grid-area: recipe-title;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-row h1:first-child {
+  flex-grow: 4;
+}
+
+.viewer-btn {
+  height: min-content;
+  width: 8rem;
 }
 
 .action-row {
@@ -26,25 +39,11 @@
   justify-content: space-evenly;
 }
 
-.action-row a {
-  color: green;
-  text-decoration: none;
-}
-
-.action-row a:hover,
-.action-row a:focus {
-  border-bottom: 2px solid green;
-}
-
 .action-row a,
 .action-row button {
   text-transform: capitalize;
 }
 
-.header-row a:hover,
-.header-row a:focus {
-  border-bottom: 2px solid green;
-}
 
 .header-row button {
   text-transform: capitalize;

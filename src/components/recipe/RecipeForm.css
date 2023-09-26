@@ -78,6 +78,10 @@
   list-style: none;
 }
 
+.recipe-submit-btn {
+  width: 8rem;
+}
+
 @media (min-width: 1024px) {
   .recipe-form {
     padding: 2rem;
