@@ -6,6 +6,7 @@ import { AppButton } from "../button";
 import imgUplPlchldr from "../../assets/images/upload_image.png";
 import "./RecipeForm.css";
 import { AccordionControll, AccordionDrawer } from "../accordion";
+import { Button } from "@mui/material";
 // import Accordion from "../accordion/Accordion";
 
 const RecipeForm = () => {
@@ -110,7 +111,9 @@ const RecipeForm = () => {
         </div>
       </AccordionDrawer>
       <div className="form-action">
-        <AppButton btnLabel={"submit"} classname={"recipe-submit-btn"} btnType="submit" />
+        <Button variant="contained" type="submit" className="recipe-submit-btn">
+          submit
+        </Button>
       </div>
     </form>
   )

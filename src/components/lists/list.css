@@ -12,6 +12,19 @@
   gap: 1rem;
 }
 
+.editor-btn {
+  width: 8rem;
+}
+
+.editor-item {
+  border: 0.25px solid black;
+  padding: 1rem;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .list-display {
   display: flex;
   flex-direction: column;

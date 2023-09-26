@@ -4,7 +4,10 @@ export const theme = {
       main: "#000"
     },
     secondary: {
-      main: "#2AAA8A"
+      main: "#228B22"
+    },
+    danger: {
+      main: "#B20000"
     }
   }
 }

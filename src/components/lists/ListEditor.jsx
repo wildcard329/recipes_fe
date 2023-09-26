@@ -2,6 +2,7 @@ import { useState, useRef } from "react"
 import { ListDisplay } from ".";
 import { AppButton } from "../button";
 import { useBool } from "../../utils/customhooks";
+import { Button } from "@mui/material";
 
 const ListEditor = ({ list, listTitle, isOrderedList=false, isLongInput=false, editorCb }) => {
   const [item, setItem] = useState('');
@@ -17,6 +18,7 @@ const ListEditor = ({ list, listTitle, isOrderedList=false, isLongInput=false, e
     setItem(list[index]);
     setEditIndex(index);
     setIsEditing();
+    inputRef.current.focus();
   };
 
   const handleDeleteItem = async (index) => {
@@ -46,7 +48,10 @@ const ListEditor = ({ list, listTitle, isOrderedList=false, isLongInput=false, e
         <textarea ref={inputRef} name="item" value={item} onChange={(e) => setItem(e.target.value)} placeholder="add item" />
       :
         <input ref={inputRef} name="item" value={item} onChange={(e) => setItem(e.target.value)} placeholder="add item" />}
-      <AppButton btnLabel={"add item"} classname={"editor-btn"} btnCb={handleAddItem} />
+      {/* <AppButton btnLabel={"add item"} classname={"editor-btn"} btnCb={handleAddItem} /> */}
+      <Button variant="outlined" className="editor-btn" onClick={handleAddItem}>
+        add item
+      </Button>
     </div>
   )
 }

@@ -10,6 +10,12 @@
   padding-bottom: 0.5rem;
 }
 
+.btn-link {
+  color: #228B22;
+  width: 100%;
+  height: 100%;
+}
+
 .header-link:visited,
 .header-link-mobile:visited {
   color: black;

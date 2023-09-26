@@ -1,0 +1,16 @@
+.danger-message {
+  color: #B20000;
+  position: absolute;
+  top: -30px;
+}
+
+.intercept {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.intercept-button {
+  width: 8rem;
+}

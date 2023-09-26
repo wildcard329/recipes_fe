@@ -6,7 +6,7 @@ import "./AccordionControl.css";
 const AccordionControl = () => {
   const { openAllDrawers, closeAllDrawers } = useContext(accordionContext);
   return(
-    <div>
+    <div className="accordion-control">
       <Button variant="outlined" onClick={openAllDrawers}>expand all</Button>
       <Button variant="outlined" onClick={closeAllDrawers}>collapse all</Button>
     </div>

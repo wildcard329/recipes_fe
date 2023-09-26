@@ -1,14 +1,6 @@
-.accordion-drawer {
+.accordion-control {
   display: flex;
-  justify-content: space-between;
-}
-
-.accordion-container {
-  position: relative;
-}
-
-.accordion-collapse {
-  position: absolute;
-  right: 0;
-  top: 10px;
+  flex-direction: row;
+  gap: 1rem;
+  text-transform: capitalize;
 }
