@@ -3,7 +3,9 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import './index.css'
+import { theme } from './utils/constants/materialThem'
 import { Amplify } from 'aws-amplify';
+import { ThemeProvider, createTheme } from "@mui/material";
 import awsConfig from './aws-exports';
 
 const isLocalhost = Boolean(
@@ -15,6 +17,8 @@ const isLocalhost = Boolean(
       /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
     )
 );
+
+const muiTheme = createTheme(theme);
 
 // Assuming you have two redirect URIs, and the first is for localhost and second is for production
 const [
@@ -41,7 +45,9 @@ Amplify.configure(updatedAwsConfig);
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Router>
-      <App />
+      <ThemeProvider theme={muiTheme}>
+        <App />
+      </ThemeProvider>
     </Router>
   </React.StrictMode>,
 )

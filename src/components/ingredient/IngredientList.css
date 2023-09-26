@@ -1,22 +1,15 @@
-.ingredients-list {
-  grid-area: options;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
+.ingredients-list { 
   overflow-y: scroll;
   padding: 1rem;
+  position: static;
 }
 
-.ingredients-list-item button {
-  text-transform: capitalize;
-  width: 100%;
+.list-item {
   height: 100%;
-  padding: 1rem 0;
 }
   
 @media (min-width: 1024px) {
   .ingredients-list {
-    width: 500px;
     height: 75vh;
   }
 }

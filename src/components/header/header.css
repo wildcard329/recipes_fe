@@ -2,7 +2,9 @@
 @import url('../../animations/delayRender.css');
 
 .app-header {
-  position: sticky;
+  /* override for material ui */
+  position: sticky !important;
+  z-index: 200;
   top: 0;
   background-color: white;
   padding: 1rem 3.125rem;

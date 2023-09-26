@@ -1,14 +1,6 @@
-.ingredients-page-wrapper {
-  display: grid;
-  grid-template-areas: 
-    "data"
-    "options";
-}
-
 @media (min-width: 1024px) {
   .ingredients-page-wrapper {
     height: 75vh;
-    grid-template-areas: "options data";
-    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
   }
 }
