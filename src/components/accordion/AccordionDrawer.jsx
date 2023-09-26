@@ -1,29 +1,26 @@
-import { useBool } from "../../utils/customhooks";
+import { useContext } from "react";
+import { accordionContext } from "../../state/contexts";
 import { CgMathPlus, CgMathMinus } from "react-icons/cg";
 import { AppButton } from "../button";
 import "./AccordionDrawer.css";
 
-const AccordionDrawer = ({ children, accordionLabel, shouldRender }) => {
-  const {
-    isTruthy: shouldShow,
-    setTruthy: setShouldShow,
-    setNotTruthy: setShouldNotShow,
-  } = useBool();
+const AccordionDrawer = ({ children, accordionLabel, shouldRender, accordionState }) => {
+  const { toggleDrawer } = useContext(accordionContext);
 
   return(
     <>
       <div className="accordion-container">
-        {shouldRender || shouldShow ?
+        {accordionState?.isOpen ?
           <div className="accordion-collapse">
-            <AppButton btnCb={setShouldNotShow} classname={"icon-btn"} btnLabel={<CgMathMinus />} />
+            <AppButton btnCb={() => toggleDrawer(accordionState?.id)} classname={"icon-btn"} btnLabel={<CgMathMinus />} />
           </div>
         :
           <div className="accordion-drawer">
             <span>{accordionLabel}</span>
-            <AppButton btnCb={setShouldShow} classname={"icon-btn"} btnLabel={<CgMathPlus />} />
+            <AppButton btnCb={()  => toggleDrawer(accordionState?.id)} classname={"icon-btn"} btnLabel={<CgMathPlus />} />
           </div>}
       </div>
-      {shouldRender || shouldShow ? children : null}
+      {accordionState?.isOpen ? children : null}
     </>
   )
 }

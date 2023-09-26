@@ -1,15 +1,17 @@
-import { useContext } from "react";
-import { recipeContext } from "../../state/contexts";
+import { useContext, useEffect } from "react";
+import { accordionContext, recipeContext } from "../../state/contexts";
 import { useAmplify } from "../../utils/customhooks";
 import { ListEditor } from "../lists";
 import { AppButton } from "../button";
 import imgUplPlchldr from "../../assets/images/upload_image.png";
 import "./RecipeForm.css";
+import { AccordionControll, AccordionDrawer } from "../accordion";
 // import Accordion from "../accordion/Accordion";
 
 const RecipeForm = () => {
   const { recipe, setRecipe, isNewRecipe, asset } = useContext(recipeContext);
   const { addAsset, addRecipe, updateRecipe } = useAmplify();
+  const { accordionDrawers } = useContext(accordionContext);
 
   const handleChange = (e) => setRecipe({ ...recipe, [e.target.name]: e.target.value });
 
@@ -41,9 +43,14 @@ const RecipeForm = () => {
     alert('recipe updated');
   };
 
+  useEffect(() => {
+    console.log('data ', accordionDrawers)
+  }, [accordionDrawers]);
+
   return(
     <form onSubmit={handleSubmit} className="recipe-form">
-      {/* <Accordion accordionLabel={"general"}> */}
+      <AccordionControll />
+      <AccordionDrawer accordionLabel={"general"} accordionState={accordionDrawers[0]}>
         <div id="general" className="form-section">
           <div className="form-input recipe-name">
             <label>recipe name</label>
@@ -73,35 +80,35 @@ const RecipeForm = () => {
             <textarea name="recipe_description" value={recipe?.recipe_description} onChange={handleChange} placeholder="recipe description" />
           </div>
         </div>
-      {/* </Accordion> */}
-      {/* <Accordion accordionLabel={"categories"}> */}
+      </AccordionDrawer>
+      <AccordionDrawer accordionLabel={"categories"} accordionState={accordionDrawers[1]}>
         <div id="recipe-categories" className="list-editor">
           <div className="form-input recipe-categories">
             <ListEditor list={recipe?.recipe_categories} listTitle={"categories"} editorCb={handleCategories} />
           </div>
         </div>
-      {/* </Accordion> */}
-      {/* <Accordion accordionLabel={"tools"}> */}
+      </AccordionDrawer>
+      <AccordionDrawer accordionLabel={"tools"} accordionState={accordionDrawers[2]}>
         <div id="recipe-tools" className="list-editor">
           <div className="form-input recipe-tools">
             <ListEditor list={recipe?.recipe_tools} listTitle={"tools"} editorCb={handleTools} />
           </div>
         </div>
-      {/* </Accordion> */}
-      {/* <Accordion accordionLabel={"ingredients"}> */}
+      </AccordionDrawer>
+      <AccordionDrawer accordionLabel={"ingredients"} accordionState={accordionDrawers[3]}>
         <div id="recipe-ingredients" className="list-editor">
           <div className="form-input recipe-ingredients">
             <ListEditor list={recipe?.recipe_ingredients} listTitle={"ingredients"} editorCb={handleIngredients} />
           </div>
         </div>
-      {/* </Accordion> */}
-      {/* <Accordion accordionLabel={"instructions"}> */}
+      </AccordionDrawer>
+      <AccordionDrawer accordionLabel={"instructions"} accordionState={accordionDrawers[4]}>
         <div id="recipe-steps" className="list-editor">
           <div className="form-input recipe-instructions">
             <ListEditor list={recipe?.recipe_instructions} listTitle={"instructions"} isOrderedList isLongInput editorCb={handleInstructions} />
           </div>
         </div>
-      {/* </Accordion> */}
+      </AccordionDrawer>
       <div className="form-action">
         <AppButton btnLabel={"submit"} classname={"recipe-submit-btn"} btnType="submit" />
       </div>

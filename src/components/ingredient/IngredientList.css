@@ -4,8 +4,15 @@
   position: static;
 }
 
-.list-item {
-  height: 100%;
+.ingredient-button {
+  height: 3rem;
+}
+
+.ingredient-button:active,
+.ingredient-button:hover {
+  border-color: green;
+  color: green;
+  outline: green;
 }
   
 @media (min-width: 1024px) {
@@ -13,4 +20,3 @@
     height: 75vh;
   }
 }
-  
