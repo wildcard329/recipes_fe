@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { List, ListItem, Button } from "@mui/material";
 import { ingredientContext } from "../../state/contexts";
 import "./IngredientList.css";
 
@@ -6,9 +7,9 @@ const IngredientList = () => {
   const { ingredients, handleSelectIngredient } = useContext(ingredientContext);
 
   return(
-    <ul className="ingredients-list">
-      {ingredients?.map((ingredient) => <li className="ingredients-list-item" onClick={() => handleSelectIngredient(ingredient)} key={ingredient.ingredient_id}><button>{ingredient.ingredient_name}</button></li>)}
-    </ul>
+    <List disablePadding className="ingredients-list">
+      {ingredients?.map((ingredient) => <ListItem disablePadding><Button fullWidth variant="outlined" onClick={() => handleSelectIngredient(ingredient)}>{ingredient?.ingredient_name}</Button></ListItem>)}
+    </List>
   )
 }
 

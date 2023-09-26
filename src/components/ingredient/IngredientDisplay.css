@@ -1,17 +1,10 @@
 .ingredients-data {
   padding: 2rem;
-  grid-area: data;
   position: sticky;
   top: 110px;
   background-color: white;
 }
 
-.ingredient-image {
-  width: 60%;
-  float: right;
-  margin-left: 1rem;
-  margin-bottom: 1rem;
-}
   
 @media (min-width: 1024px) {
   .ingredients-data {
