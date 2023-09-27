@@ -1,17 +1,18 @@
+.login-page h3 {
+  padding-left: 2rem;
+  height: min-content;
+}
+
 .login-container {
   grid-area: login;
-  padding-top: 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 1rem;
-  background-color: white;
 }
 
 .login-options {
   list-style: none;
   padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .page-filler {
@@ -19,6 +20,12 @@
 }
 
 @media (min-width: 1024px) {
+  .login-container {
+    background-color: whitesmoke;
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 2rem;
+  }
   .login-page {
     display: grid;
     grid-template-areas: 
@@ -34,5 +41,8 @@
     background-repeat: no-repeat;
     background-position: center;
     min-height: 75vh;
+  }
+  .login-options {
+    margin-top: 0;
   }
 }

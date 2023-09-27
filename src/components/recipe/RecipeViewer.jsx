@@ -25,14 +25,14 @@ const RecipeViewer = () => {
         <div className="header-row">
           <h1 id="recipe-title">{recipe?.recipe_name}</h1>
           {!isInterceptVisible ?
-            <>
+            <div className="row">
               <Button variant="outlined" className="viewer-btn" color="secondary">
                 <RouterLink classname={"btn-link"} label={"edit"} path={`/recipes/${recipe?.recipe_id}/edit`} state={recipe} />
               </Button>
               <Button variant="outlined" className="viewer-btn" color="danger" onClick={setIsInterceptVisible}>
                 delete
               </Button>
-            </>
+            </div>
           :
             <FunctionIntercept proceedCb={null} cancelCb={setIntercipetIsNotVisible} interceptMessage={`Delete ${recipe?.recipe_name}?`} />}
           {/* <RouterLink label={"edit"} path={`/recipes/${recipe?.recipe_id}/edit`} state={recipe} />

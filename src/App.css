@@ -120,10 +120,7 @@
 }
 
 .recipe-page {
-  background-image: url('./assets/images/recipe-form-bg.jpg');
-  padding: 2rem 0;
-  background-color: gray;
-  background-blend-mode: multiply;
+  margin: 0 auto;
 }
 
 .mobile-hidden {
@@ -155,5 +152,11 @@
   }
   .page-action-row {
     width: 25%;
+  }
+  .recipe-page {
+    background-image: url('./assets/images/recipe-form-bg.jpg');
+    padding: 2rem 0;
+    background-color: gray;
+    background-blend-mode: multiply;
   }
 }
