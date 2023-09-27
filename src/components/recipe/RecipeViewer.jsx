@@ -35,27 +35,25 @@ const RecipeViewer = () => {
             </div>
           :
             <FunctionIntercept proceedCb={null} cancelCb={setIntercipetIsNotVisible} interceptMessage={`Delete ${recipe?.recipe_name}?`} />}
-          {/* <RouterLink label={"edit"} path={`/recipes/${recipe?.recipe_id}/edit`} state={recipe} />
-          <AppButton btnLabel={"delete"} classname={"danger"} /> */}
         </div>
         <ImageLoader image={recipeImage ? recipeImage : imgPlaceholder} imgAlt={'recipe-image'} id="recipe-info-image" />
-        <div id="recipe-time">
+        <div id="recipe-time" className="bg-whitesmoke highlight-line min-height">
           <span>Prep time: {formatMinutes(recipe?.recipe_prep_time)}</span>
           <span>Cook time: {formatMinutes(recipe?.recipe_cook_time)}</span>
           <span>Total time: {formatMinutes(recipe?.recipe_total_time)}</span>
         </div>
-        <p id="recipe-details">{recipe?.recipe_description}</p>
+        <p id="recipe-details" className="bg-whitesmoke highlight-line">{recipe?.recipe_description}</p>
       </section>
       <section id="recipe-prep">
         <a className="anchor-target" id="recipe-tools-ingredients"></a>
-        <div>
+        <div className="bg-whitesmoke highlight-line m-1">
           <ListDisplay title={'Tools'} data={recipe?.recipe_tools} />
         </div>
-        <div>
+        <div className="bg-whitesmoke highlight-line m-1">
           <ListDisplay title={'Ingredients'} data={recipe?.recipe_ingredients} />
         </div>
       </section>
-      <section id="recipe-instructions">
+      <section id="recipe-instructions" className="bg-whitesmoke highlight-line m-1">
         <a className="anchor-target" id="recipe-steps"></a>       
         <ListDisplay title={'Instructions'} data={recipe?.recipe_instructions} isOrderedList />
       </section>

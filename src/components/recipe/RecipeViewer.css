@@ -88,7 +88,7 @@
       "recipe-title recipe-title"
       "recipe-time recipe-image"
       "recipe-details recipe-details";
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 2fr;
     gap: 2rem;
   }
   #recipe-prep {

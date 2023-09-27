@@ -123,6 +123,10 @@
   margin: 0 auto;
 }
 
+.m-1 {
+  margin: 1rem;
+}
+
 .mobile-hidden {
   display: none;
 }
