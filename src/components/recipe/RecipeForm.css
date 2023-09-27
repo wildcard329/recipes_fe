@@ -94,7 +94,7 @@
       "recipe-name recipe-name"
       "recipe-time recipe-image"
       "recipe-description recipe-description";
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 2fr;
     gap: 2rem;
   }
   .recipe-description {

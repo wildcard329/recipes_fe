@@ -74,7 +74,7 @@ const RecipeForm = () => {
           <div className="form-input recipe-image">
             <label>recipe image</label>
             <img src={asset ? asset : recipe?.recipe_image ? recipe?.recipe_image : imgUplPlchldr} alt="recipe-image" className="recipe-image-asset" />
-            <input name='recipe_image' onChange={handleImgUpld} type="file" />
+            <input name='recipe_image' onChange={handleImgUpld} type="file" accept="image/*" />
           </div>
           <div className="form-input recipe-description">
             <label>recipe description</label>
