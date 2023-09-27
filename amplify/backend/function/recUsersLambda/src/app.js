@@ -1,7 +1,4 @@
-/* Amplify Params - DO NOT EDIT
-	ENV
-	REGION
-Amplify Params - DO NOT EDIT *//*
+/*
 Copyright 2017 - 2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with the License. A copy of the License is located at
     http://aws.amazon.com/apache2.0/
@@ -15,7 +12,7 @@ See the License for the specific language governing permissions and limitations 
 const express = require('express')
 const bodyParser = require('body-parser')
 const awsServerlessExpressMiddleware = require('aws-serverless-express/middleware')
-const { getRecipes, getRecipeById, addOrUpdateRecipe, deleteRecipe } = require('./handlers/rec-handler.js');
+const { getUsers, getUserById, addOrUpdateUser, deleteUser } = require('./handlers/userHandler.js');
 
 // declare a new express app
 const app = express()
@@ -29,39 +26,39 @@ app.use(function(req, res, next) {
   next()
 });
 
+
 /**********************
  * Example get method *
  **********************/
 
-app.get('/recipes', async (req, res) => {
+app.get('/users', async (req, res) => {
   try {
-    const { Items: recipes } = await getRecipes();
-    res.json({ msg: 'get call succeed!', data: recipes });
+    const { Items: users } = await getUsers();
+    res.json({ msg: 'get call succeed!', data: users });
   } catch (error) {
     res.json({ msg: 'error retrieving get call' });
   };
 });
 
-app.get('/recipes/:recipeAuthor/:recipeId', async (req, res) => {
-  const recipeAuthor = req.params.recipeAuthor;
-  const recipeId = parseInt(req.params.recipeId);
+app.get('/users/:userId', async (req, res) => {
+  const userId = req.params.userId;
   try {
-    const { Item: recipe } = await getRecipeById(recipeAuthor, recipeId);
-    res.json({ msg: 'get call succeed!', data: recipe });
+    const { Item: user } = await getUserById(userId);
+    res.json({ msg: 'get call succeed!', data: user });
   } catch (error) {
     res.json({ msg: 'error retrieving get call' });
-  }
+  };
 });
 
 /****************************
 * Example post method *
 ****************************/
 
-app.post('/recipes', async (req, res) => {
-  const recipe = req.body;
+app.post('/users', async (req, res) => {
+  const user = req.body;
   try {
-    await addOrUpdateRecipe(recipe);
-    res.json({ msg: 'post call succeed!' });
+    await addOrUpdateUser(user);
+    res.json({ msg: 'post call succeed' });
   } catch (error) {
     res.json({ msg: 'error processing data' });
   };
@@ -71,13 +68,13 @@ app.post('/recipes', async (req, res) => {
 * Example put method *
 ****************************/
 
-app.put('/recipes', async (req, res) => {
-  const recipe = req.body;
+app.put('/users', async (req, res) => {
+  const user = req.body;
   try {
-    await addOrUpdateRecipe(recipe);
-    res.json({ msg: 'put call succeed!' })
+    await addOrUpdateUser(user);
+    res.json({ msg: 'post call succeed!' });
   } catch (error) {
-    res.json({ msg: 'error processing request' });
+    res.json({ msg: 'error processing data' });
   };
 });
 
@@ -85,14 +82,13 @@ app.put('/recipes', async (req, res) => {
 * Example delete method *
 ****************************/
 
-app.delete('/recipes/:recipeAuthor/:recipeId', async (req, res) => {
-  const recipeAuthor = req.params.recipeAuthor;
-  const recipeId = parseInt(req.params.recipeId);
+app.delete('/users/:userId', async (req, res) => {
+  const userId = req.params.userId;
   try {
-    await deleteRecipe(recipeAuthor, recipeId);
+    await deleteUser(userId);
     res.json({ msg: 'delete call succeed!' });
   } catch (error) {
-    res.json({ msg: 'could not delete recipe' });
+    res.json({ msg: 'could not delete user' });
   };
 });
 
