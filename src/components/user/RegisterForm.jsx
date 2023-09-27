@@ -16,7 +16,6 @@ const RegisterForm = ({ formCb }) => {
     e.preventDefault();
     // network req for user
     formCb();
-    console.log('user: ', user);
   };
 
   return (

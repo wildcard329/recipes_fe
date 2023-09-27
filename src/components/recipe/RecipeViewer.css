@@ -55,6 +55,7 @@
 
 .header-row button {
   text-transform: capitalize;
+  border-radius: 0;
   padding: 0.5rem 1rem;
 }
 

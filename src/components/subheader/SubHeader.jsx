@@ -26,6 +26,10 @@ const SubHeader = () => {
     setIsNotFocused();
   };
 
+  const btnStyleOverRide = {
+    maxWidth: '35px'
+  };
+
   useEffect(() => {
     handleMenuClose();
   }, [routerPath, isScrolling]);
@@ -35,7 +39,7 @@ const SubHeader = () => {
         <div className="sub-header">
           {!isExpanded && (isScrolling || isFocused ? 
             <div className="contracted" onMouseLeave={setIsNotFocused}>
-              <AppButton classname={"sub-header-btn"} btnCb={setIsExpanded} btnLabel={<BsArrowDownRight className="react-icon" fill="white" />} />
+              <AppButton styleOverRide={btnStyleOverRide} variant="contained" color="accent" classname={"sub-header-btn"} btnCb={setIsExpanded} btnLabel={<BsArrowDownRight className="react-icon" fill="white" />} />
             </div>
           :
             <div className="contracted-trigger" onDoubleClick={setIsExpanded} onMouseEnter={setIsFocused}></div>  
@@ -44,7 +48,7 @@ const SubHeader = () => {
             <div className="expanded">
               <SubHeaderLinks navLinks={navLinks} />
               <div className="right-corner">
-                <AppButton classname={"sub-header-btn"} btnCb={setIsNotExpanded} btnLabel={<BsArrowUpLeft className="react-icon" fill="white" />} />
+                <AppButton styleOverRide={btnStyleOverRide} variant="contained" color="accent" classname={"sub-header-btn"} btnCb={setIsNotExpanded} btnLabel={<BsArrowUpLeft className="react-icon" fill="white" />} />
               </div>
             </div>}
         </div>

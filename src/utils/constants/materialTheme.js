@@ -6,8 +6,11 @@ export const theme = {
     secondary: {
       main: "#228B22"
     },
+    accent: {
+      main: "#335c67"
+    },
     danger: {
       main: "#B20000"
-    }
+    },
   }
 }

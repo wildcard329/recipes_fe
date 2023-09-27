@@ -23,7 +23,7 @@
         },
         "recUsersLambda": {
           "deploymentBucketName": "amplify-recbackend-dev-81551-deployment",
-          "s3Key": "amplify-builds/recUsersLambda-6435676f486d75704755-build.zip"
+          "s3Key": "amplify-builds/recUsersLambda-5a313552597542676555-build.zip"
         }
       },
       "api": {

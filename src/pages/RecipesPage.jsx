@@ -8,7 +8,7 @@ import "./page.css";
 
 const RecipesPage = () => {
   const { setNavLinks } = useContext(pageNavContext);
-  const { loginUser, isLoggedIn } = useContext(userContext);
+  const { loginUser, isLoggedIn, verifyUser } = useContext(userContext);
   
   const { getRecipes, getRecipesAssets, getGoogleAuthUser } = useAmplify();
   const { getLocalStorageVal, removeLocalStorageVal } = useLocalStorage();
@@ -26,6 +26,7 @@ const RecipesPage = () => {
         const user = await getGoogleAuthUser();
         if (user?.username) {
           await loginUser();
+          await verifyUser(user);
           await removeLocalStorageVal('hasAttemptedLogin');
         }
       } catch (error) {

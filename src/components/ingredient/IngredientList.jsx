@@ -10,7 +10,7 @@ const IngredientList = () => {
     <List disablePadding className="ingredients-list">
       {ingredients?.map(
         (ingredient) => 
-          <ListItem disablePadding>
+          <ListItem disablePadding key={ingredient?.ingredient_id}>
             <Button className="ingredient-button" fullWidth variant="outlined" onClick={() => handleSelectIngredient(ingredient)}>
               {ingredient?.ingredient_name}
             </Button>
