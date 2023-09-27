@@ -17,7 +17,6 @@ const { loginUser } = useContext(userContext);
     // network req for user
     loginUser();
     formCb();
-    console.log('user: ', user);
   };
 
   return (

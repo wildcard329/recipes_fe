@@ -2,7 +2,7 @@ const AWS = require('aws-sdk');
 const docClient = new AWS.DynamoDB.DocumentClient();
 
 const params = {
-  TableName: 'users-dev',
+  TableName: 'recUsers-dev',
 };
 
 const getUsers = async () => {
@@ -15,7 +15,7 @@ const getUsers = async () => {
 };
 
 const getUserById = async (id) => {
-  const specParams = { ...params, Key: user_id };
+  const specParams = { ...params, Key: { user_id: id } };
   try {
     return await docClient.get(specParams).promise();
   } catch (error) {

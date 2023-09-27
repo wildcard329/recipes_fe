@@ -7,7 +7,16 @@ const useAmplify = () => {
   const ingsAPI = "ingredients";
   const ingsPath = "/ingredients";
 
+  const userAPI = "recUsers";
+  const userPath = "/users";
+
   const getIngredients = async () => await API.get(ingsAPI, ingsPath);
+
+  const getUsers = async () => await API.get(userAPI, userPath);
+
+  const getUserById = async (id) => await API.get(userAPI, `${userPath}/${id}`);
+
+  const addUser = async (user) => await API.post(userAPI, userPath, { body: user });
 
   const authGoogle = async () => Auth.federatedSignIn({ provider: "Google" });
 
@@ -33,7 +42,7 @@ const useAmplify = () => {
 
   const addRecipe = async (recipe) => await API.post(myAPI, recipesPath, { body: recipe });
 
-  return { getRecipeAsset, getRecipesAssets, getIngredientsAssets, getRecipes, getRecipeByIdAuthor, deleteRecipe, updateRecipe, addRecipe, addAsset, authGoogle, getGoogleAuthUser, signoutUser, getIngredients };
+  return { getRecipeAsset, getRecipesAssets, getIngredientsAssets, getRecipes, getRecipeByIdAuthor, deleteRecipe, updateRecipe, addRecipe, addAsset, authGoogle, getGoogleAuthUser, signoutUser, getIngredients, getUsers, getUserById, addUser };
 };
 
 export default useAmplify;

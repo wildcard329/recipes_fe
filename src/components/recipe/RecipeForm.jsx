@@ -1,16 +1,14 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { accordionContext, recipeContext } from "../../state/contexts";
 import { useAmplify } from "../../utils/customhooks";
 import { ListEditor } from "../lists";
-import { AppButton } from "../button";
-import imgUplPlchldr from "../../assets/images/upload_image.png";
-import "./RecipeForm.css";
 import { AccordionControll, AccordionDrawer } from "../accordion";
+import imgUplPlchldr from "../../assets/images/upload_image.png";
 import { Button } from "@mui/material";
-// import Accordion from "../accordion/Accordion";
+import "./RecipeForm.css";
 
 const RecipeForm = () => {
-  const { recipe, setRecipe, isNewRecipe, asset } = useContext(recipeContext);
+  const { recipe, setRecipe, isNewRecipe, asset, user } = useContext(recipeContext);
   const { addAsset, addRecipe, updateRecipe } = useAmplify();
   const { accordionDrawers } = useContext(accordionContext);
 
@@ -21,7 +19,7 @@ const RecipeForm = () => {
   const handleImgUpld = (e) => {
     const file = e.target.files[0];
     if (file.name.match(/\.(jpg|jpeg|png|gif)$/i)) {
-      const filename = `${recipe?.recipe_author || 'Greg'}-${file.name}`;
+      const filename = `${recipe?.recipe_author || user?.user_id}-${file.name}`;
       addAsset(filename, file);
       setRecipe({ ...recipe, recipe_image_key: filename, recipe_image: file });
     } else {
@@ -39,14 +37,11 @@ const RecipeForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await setRecipe(delete recipe?.recipe_image);    
+    await setRecipe(delete recipe?.recipe_image); 
+    await setRecipe({ ...recipe, recipe_author: user?.user_id })   
     isNewRecipe ? await addRecipe(recipe) : await updateRecipe(recipe);
     alert('recipe updated');
   };
-
-  useEffect(() => {
-    console.log('data ', accordionDrawers)
-  }, [accordionDrawers]);
 
   return(
     <form onSubmit={handleSubmit} className="recipe-form">

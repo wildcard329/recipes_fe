@@ -11,13 +11,8 @@
 
 .form-input input,
 .form-input textarea {
-  border-radius: 5px;
+  border-radius: 0;
   border: 1px solid black;
-}
-
-.form-input input:focus,
-.form-input textarea:focus {
-  border: 1px solid green;
 }
 
 .form-input textarea {
@@ -80,6 +75,16 @@
 
 .recipe-submit-btn {
   width: 8rem;
+}
+
+.recipe-form button {
+  border-radius: 0;
+  text-transform: capitalize;
+}
+
+.recipe-form button:hover,
+.recipe-form button:focus {
+  color: black;
 }
 
 @media (min-width: 1024px) {

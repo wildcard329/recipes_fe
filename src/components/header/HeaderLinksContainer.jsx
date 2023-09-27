@@ -51,9 +51,29 @@ const ingredientsLinksConfig = [
   },
 ]
 
+const authUserLinksConfig = [
+  {
+    path: "/logout",
+    classname: "header-link",
+    label: "logout",
+  },
+]
+
 const HeaderLinksContainer = ({ isShowingLinks }) => {
   const linksElement = useRef();
-  const { isLoggedIn } = useContext(userContext);
+  const { isLoggedIn, user } = useContext(userContext);
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      console.log('user ', user);
+      const profileLinkConfig = {
+        path: `/user/${user?.username}/profile`,
+        classname: "header-link",
+        label: "profile",
+      };
+      authUserLinksConfig.unshift(profileLinkConfig);
+    };
+  }, [isLoggedIn]);
 
   useEffect(() => {
     if (isShowingLinks) {
@@ -88,11 +108,15 @@ const HeaderLinksContainer = ({ isShowingLinks }) => {
           </>
         :
           <li><HeaderLinkTrigger path={"/ingredients"} classname={"header-link"} label={"ingredients"} linkConfigs={unAuthIngredientsLinksConfig} /></li>}
-        <li><Divider /></li>
+          <li><Divider /></li>
         {!isLoggedIn ? 
           <li><HeaderLinkTrigger path={"/login"} classname={"header-link"} label={"log in"} /></li>
         :
-          <li><HeaderLinkTrigger path={"/logout"} classname={"header-link"} label={"log out"} /></li>}
+          <>
+            <li><HeaderLinkTrigger path={`/user/${user?.username}/profile`} classname={"header-link"} label={"profile"} linkConfigs={authUserLinksConfig} /></li>
+            <li className="desktop-hide"><Divider /></li>
+            <li className="desktop-hide"><HeaderLinkTrigger path={"/logout"} classname={"header-link"} label={"log out"} /></li>
+          </>}
       </ul>
     </nav>
   )

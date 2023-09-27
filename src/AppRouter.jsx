@@ -8,6 +8,7 @@ const IngredientsPage = lazy(() => import("../src/pages/IngredientsPage.jsx"));
 const RecipesPage = lazy(() => import("../src/pages/RecipesPage.jsx"));
 const RecipeViewerPage = lazy(() => import("../src/pages/RecipeViewerPage.jsx"));
 const RecipeEditorPage = lazy(() => import("../src/pages/RecipeEditorPage.jsx"));
+const UserProfile = lazy(() => import("../src/pages/UserProfile.jsx"));
 
 const AppRouter = () =>
   <Routes>
@@ -19,6 +20,7 @@ const AppRouter = () =>
     <Route path="/recipe/:id" element={<RecipeViewerPage />} />
     <Route path="/recipes/new" element={<RecipeEditorPage />} />
     <Route path="/recipes/:id/edit" element={<RecipeEditorPage />} />
+    <Route path="/user/:userId/profile" element={<UserProfile />} />
   </Routes>
 
 export default AppRouter;
