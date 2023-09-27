@@ -15,22 +15,27 @@
       "function": {
         "reclambda": {
           "deploymentBucketName": "amplify-recbackend-dev-81551-deployment",
-          "s3Key": "amplify-builds/reclambda-7155753757434f35334e-build.zip"
+          "s3Key": "amplify-builds/reclambda-563047546a343072444d-build.zip"
         },
         "ingredientsLambda": {
           "deploymentBucketName": "amplify-recbackend-dev-81551-deployment",
           "s3Key": "amplify-builds/ingredientsLambda-727161385a5a49713559-build.zip"
+        },
+        "recUsersLambda": {
+          "deploymentBucketName": "amplify-recbackend-dev-81551-deployment",
+          "s3Key": "amplify-builds/recUsersLambda-6b334c79383258646c47-build.zip"
         }
       },
       "api": {
         "recipes": {},
-        "ingredients": {}
+        "ingredients": {},
+        "recUsers": {}
       },
       "storage": {
         "recipes": {},
         "imgStorage": {},
-        "users": {},
-        "ingredients": {}
+        "ingredients": {},
+        "recUsers": {}
       },
       "auth": {
         "recbackendf427d6a6f427d6a6": {

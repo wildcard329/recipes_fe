@@ -14,6 +14,20 @@
       "providerPlugin": "awscloudformation",
       "service": "API Gateway"
     },
+    "recUsers": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "recUsersLambda"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    },
     "recipes": {
       "dependsOn": [
         {
@@ -93,6 +107,22 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
+    "recUsersLambda": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "recUsers"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "reclambda": {
       "build": true,
       "dependsOn": [],
@@ -125,6 +155,22 @@
         }
       ]
     },
+    "AMPLIFY_function_recUsersLambda_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "recUsersLambda"
+        }
+      ]
+    },
+    "AMPLIFY_function_recUsersLambda_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "recUsersLambda"
+        }
+      ]
+    },
     "AMPLIFY_function_reclambda_deploymentBucketName": {
       "usedBy": [
         {
@@ -152,11 +198,11 @@
       "providerPlugin": "awscloudformation",
       "service": "DynamoDB"
     },
-    "recipes": {
+    "recUsers": {
       "providerPlugin": "awscloudformation",
       "service": "DynamoDB"
     },
-    "users": {
+    "recipes": {
       "providerPlugin": "awscloudformation",
       "service": "DynamoDB"
     }

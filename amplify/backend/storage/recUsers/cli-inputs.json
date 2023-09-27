@@ -1,0 +1,12 @@
+{
+  "resourceName": "recUsers",
+  "tableName": "recUsers",
+  "partitionKey": {
+    "fieldName": "user_id",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": [
+    "recUsersLambda"
+  ]
+}
