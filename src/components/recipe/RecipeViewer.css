@@ -20,8 +20,16 @@
 .header-row {
   grid-area: recipe-title;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
   gap: 1rem;
 }
 
@@ -87,5 +95,9 @@
     clear: both;
     flex-direction: row;
     justify-content: space-around;
+  }
+  .header-row {
+    flex-direction: row;
+    margin-bottom: 0;
   }
 }

@@ -13,7 +13,7 @@ const AuthPage = () => {
   };
 
   return(
-    <div className="login-page page-content">
+    <div className="login-page">
       <div className="login-container">
         <h3>Login Options</h3>
         <ul className="login-options">

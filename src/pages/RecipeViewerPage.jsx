@@ -1,6 +1,4 @@
 import React, { useEffect, useContext } from "react";
-import { MdOutlineEdit } from 'react-icons/md'
-import { TiDeleteOutline } from 'react-icons/ti';
 import { useBool, useReactRouter, useAmplify } from "../utils/customhooks";
 import { pageNavContext, recipeContext } from "../state/contexts";
 import { RecipeViewer } from "../components/recipe";
@@ -14,7 +12,7 @@ const RecipeViewerPage = () => {
     setNotTruthy: setNotIsLoading,
   } = useBool();
 
-  const { getRecipeByIdAuthor, getRecipeAsset, deleteRecipe } = useAmplify();
+  const { getRecipeByIdAuthor, getRecipeAsset } = useAmplify();
   const { locationState } = useReactRouter();
   const { setRecipe, setAsset } = useContext(recipeContext);
   const { setNavLinks } = useContext(pageNavContext);
