@@ -1,10 +1,9 @@
 import { useState, useRef } from "react"
 import { ListDisplay } from ".";
-import { AppButton } from "../button";
 import { useBool } from "../../utils/customhooks";
 import { Button } from "@mui/material";
 
-const ListEditor = ({ list, listTitle, isOrderedList=false, isLongInput=false, editorCb }) => {
+const ListEditor = ({ list, listTitle, isOrderedList=false, isLongInput=false, editorCb, itemValidation, fieldValidation, itemValidationMessage, fieldValidationMessage, showFieldValidationMessage }) => {
   const [item, setItem] = useState('');
   const [editIndex, setEditIndex] = useState(null);
   const inputRef = useRef();
@@ -12,6 +11,11 @@ const ListEditor = ({ list, listTitle, isOrderedList=false, isLongInput=false, e
     isTruthy: isEditing,
     setTruthy: setIsEditing,
     setNotTruthy: setNotIsEditing,
+  } = useBool();
+  const {
+    isTruthy: hasError,
+    setTruthy: setHasError,
+    setNotTruthy: setNotHasError,
   } = useBool();
 
   const handleEditItem = (index) => {
@@ -28,27 +32,44 @@ const ListEditor = ({ list, listTitle, isOrderedList=false, isLongInput=false, e
     setItem('');
   };
 
+  const handleError = () => {
+    setHasError();
+    inputRef.current.classList.add('invalid');
+  };
+
+  const handleSuccess = () => {
+    setItem('');
+    setNotHasError();
+    inputRef.current.classList.remove('invalid');
+  };
+
   const handleAddItem = async () => {
-    if (isEditing) {
+    const isValidEntry = itemValidation(item);
+    if (isEditing && isValidEntry) {
       await editorCb(list.map((listItem, index) => index === editIndex ? item : listItem));
-      setItem('');
       setEditIndex(null);
       setNotIsEditing();
-    } else {
+      handleSuccess();
+    } else if (isValidEntry) {
       await editorCb([ ...list, item ]);
-      setItem('');
+      handleSuccess();
+    } else {
+      handleError();
     };
     inputRef.current.focus();
   };
 
   return(
     <div className="list-input">
+      {showFieldValidationMessage && !fieldValidation && <span className="list-editor-error list-field">{fieldValidationMessage}</span>}
       <ListDisplay title={listTitle} data={list} isEditing isOrderedList={isOrderedList} editItemCb={handleEditItem} deleteItemCb={handleDeleteItem} />
+      <div className="error-container">
+        {hasError && <span className="list-editor-error list-item">{itemValidationMessage}</span>}
+      </div>
       {isLongInput ?
-        <textarea ref={inputRef} name="item" value={item} onChange={(e) => setItem(e.target.value)} placeholder="add item" />
+        <textarea ref={inputRef} style={hasError ? { borderColor: "#B20000" } : { borderColor: "gray" }} name="item" value={item} onChange={(e) => setItem(e.target.value)} placeholder="add item" />
       :
-        <input ref={inputRef} name="item" value={item} onChange={(e) => setItem(e.target.value)} placeholder="add item" />}
-      {/* <AppButton btnLabel={"add item"} classname={"editor-btn"} btnCb={handleAddItem} /> */}
+        <input ref={inputRef} style={hasError ? { borderColor: "#B20000" } : { borderColor: "gray" }} name="item" value={item} onChange={(e) => setItem(e.target.value)} placeholder="add item" />}
       <Button variant="outlined" className="editor-btn" onClick={handleAddItem}>
         add item
       </Button>

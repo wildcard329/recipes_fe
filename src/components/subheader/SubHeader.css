@@ -10,8 +10,8 @@
 }
 
 .contracted {
-  border-right: 2px solid var(--dark-slate-gray);
-  border-bottom: 2px solid var(--dark-slate-gray);
+  border-right: thin solid var(--dark-slate-gray);
+  border-bottom: thin solid var(--dark-slate-gray);
   padding: 0.45rem;
   position: absolute;
   background-color: white;
@@ -29,8 +29,8 @@
   padding: 2rem 2rem 2rem 0;
   position: absolute;
   background-color: white;
-  border-right: 2px solid var(--dark-slate-gray);
-  border-bottom: 2px solid var(--dark-slate-gray);
+  border-right: thin solid var(--dark-slate-gray);
+  border-bottom: thin solid var(--dark-slate-gray);
   top: 0;
   left: 0;
 }

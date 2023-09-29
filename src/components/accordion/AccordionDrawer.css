@@ -1,7 +1,7 @@
 .accordion-drawer {
   display: flex;
   justify-content: space-between;
-  border: 0.25px solid black;
+  border: thin solid gray;
   padding: 0.5rem 0.85rem;
   text-transform: capitalize;
   margin-top: 1rem;
