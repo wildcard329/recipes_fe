@@ -8,7 +8,7 @@
   top: 0;
   background-color: white;
   padding: 1rem 3.125rem;
-  border-bottom: 2px solid var(--dark-slate-gray);
+  border-bottom: thin solid var(--dark-slate-gray);
 }
 
 .header-links {

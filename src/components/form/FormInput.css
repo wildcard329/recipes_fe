@@ -1,0 +1,28 @@
+.form-input input,
+.form-input textarea {
+  border-radius: 0;
+  margin-top: 1rem;
+  border: thin solid gray;
+}
+
+.form-input textarea {
+  padding: 1rem;
+}
+
+.form-input {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.error {
+  color: #B20000;
+  position: absolute;
+  top: 12px;
+  left: 7px;
+  font-size: small;
+}
+
+.invalid {
+  background-color: #ffcccb;
+}

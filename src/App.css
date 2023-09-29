@@ -119,6 +119,10 @@
   margin-bottom: 2rem;
 }
 
+.hidden {
+  display: none;
+}
+
 .recipe-page {
   margin: 0 auto;
 }
