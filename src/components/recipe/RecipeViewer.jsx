@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { recipeContext } from "../../state/contexts";
-import { useBool } from "../../utils/customhooks";
+import { useAmplify, useBool } from "../../utils/customhooks";
 import { formatMinutes } from "../../utils/functions/format";
 import { ListDisplay } from "../lists";
 import { ImageLoader } from "../image";
@@ -12,6 +12,7 @@ import { Button } from "@mui/material";
 
 const RecipeViewer = () => {
   const { recipe, asset: recipeImage } = useContext(recipeContext);
+  const { deleteRecipe } = useAmplify();
   const {
     isTruthy: isInterceptVisible,
     setTruthy: setIsInterceptVisible,
@@ -34,7 +35,7 @@ const RecipeViewer = () => {
               </Button>
             </div>
           :
-            <FunctionIntercept proceedCb={null} cancelCb={setIntercipetIsNotVisible} interceptMessage={`Delete ${recipe?.recipe_name}?`} />}
+            <FunctionIntercept proceedCb={() => deleteRecipe(recipe?.recipe_author, recipe?.recipe_id)} cancelCb={setIntercipetIsNotVisible} interceptMessage={`Delete ${recipe?.recipe_name}?`} />}
         </div>
         <ImageLoader image={recipeImage ? recipeImage : imgPlaceholder} imgAlt={'recipe-image'} id="recipe-info-image" />
         <div id="recipe-time" className="bg-whitesmoke highlight-line min-height">
