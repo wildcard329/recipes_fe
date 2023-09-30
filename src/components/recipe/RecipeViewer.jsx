@@ -62,5 +62,4 @@ const RecipeViewer = () => {
   )
 }
 
-
 export default RecipeViewer;

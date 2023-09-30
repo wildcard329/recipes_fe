@@ -2,7 +2,6 @@ import { useState } from "react";
 import { accordionContext } from "../contexts";
 
 const AccordionProvider = ({ children, numDrawers }) => {
-  // const [numDrawers, setNumDrawers] = useState(0);
   const [accordionDrawers, setAccordionDrawers] = useState(Array.from({ length: numDrawers}, (v, i) => ({ id: `drawer-${i}`, isOpen: true })));
 
   const toggleDrawer = (drawerId) => {
