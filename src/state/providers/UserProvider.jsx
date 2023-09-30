@@ -1,11 +1,20 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { userContext } from "../contexts";
-import { useBool, useAmplify } from "../../utils/customhooks";
+import { useBool, useAmplify, useLocalStorage } from "../../utils/customhooks";
 import { generateRandomNumber } from "../../utils/functions/randomNumberGenerator.js";
+
+export const useUserContext = () => {
+  const context = useContext(userContext);
+  if (!context) {
+    throw new Error("useUserContext must be used within a UserProvider!");
+  }
+  return context;
+}
 
 const UserProvider = ({ children }) => {
   const [user, setUser] = useState({});
-  const { getUserById, addUser } = useAmplify();
+  const { getLocalStorageVal, removeLocalStorageVal } = useLocalStorage();
+  const { getUserById, addUser, getGoogleAuthUser } = useAmplify();
   const {
     isTruthy: isLoggedIn,
     setTruthy: loginUser,
@@ -30,14 +39,31 @@ const UserProvider = ({ children }) => {
     };
   }
 
+  const checkUserAuth = async () => {
+    const hasAttemptedLogin = getLocalStorageVal('hasAttemptedLogin');
+    if (!isLoggedIn && hasAttemptedLogin) {
+      try {
+        const user = await getGoogleAuthUser();
+        if (user?.username) {
+          await loginUser();
+          await verifyUser(user);
+          await removeLocalStorageVal('hasAttemptedLogin');
+        }
+      } catch (error) {
+        throw new Error("Unable to authenticate user.");
+      };
+    };
+  };
+
   return(
     <userContext.Provider 
       value={{ 
-        user,
         isLoggedIn, 
-        setUser,
+        user,
+        checkUserAuth,
         loginUser,
         logoutUser,
+        setUser,
         verifyUser,
       }}
     >

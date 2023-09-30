@@ -10,7 +10,6 @@ const IngredientProvider = ({ children }) => {
   const handleSelectIngredient = (ingredient) => setSelectedIngredient(ingredient);
 
   const fetchIngredients = async () => {
-    console.log('fetched')
     const { data } = await getIngredients();
     const updatedData = await getIngredientsAssets(data);
     setIngredients(updatedData);
