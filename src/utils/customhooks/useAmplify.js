@@ -32,11 +32,11 @@ const useAmplify = () => {
   
   const getRecipeAsset = async (assetKey) => await Storage.get(assetKey);
 
-  const getRecipes = async () => await API.get(myAPI, recipesPath).catch((error) => console.log(error));
+  const getRecipes = async () => await API.get(myAPI, recipesPath);
   
   const getRecipeByIdAuthor = async (recipe_author, recipe_id) => await API.get(myAPI, `${recipesPath}/${recipe_author}/${recipe_id}`);
 
-  const deleteRecipe = async (recipe_author, recipe_id) => await API.del(myAPI, `${recipesPath}/${recipe_author}/${recipe_id}`).catch((error) => console.log(error));
+  const deleteRecipe = async (recipe_author, recipe_id) => await API.del(myAPI, `${recipesPath}/${recipe_author}/${recipe_id}`);
   
   const updateRecipe = async (recipe) => await API.put(myAPI, recipesPath, { body: recipe });
 

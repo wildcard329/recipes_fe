@@ -65,7 +65,6 @@ const HeaderLinksContainer = ({ isShowingLinks }) => {
 
   useEffect(() => {
     if (isLoggedIn) {
-      console.log('user ', user);
       const profileLinkConfig = {
         path: `/user/${user?.username}/profile`,
         classname: "header-link",

@@ -3,6 +3,7 @@
   border: thin solid black;
   padding: 1rem;
   min-height: 70vh;
+  max-width: 100%;
 }
 
 input::file-selector-button {

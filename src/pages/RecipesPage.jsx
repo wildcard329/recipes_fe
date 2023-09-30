@@ -1,51 +1,20 @@
-import React, { useEffect, useState, useContext } from "react";
-import { useAmplify, useLocalStorage } from "../utils/customhooks/";
-import { useBool } from "../utils/customhooks";
-import { pageNavContext, userContext } from "../state/contexts";
+import React, { useEffect, useContext } from "react";
+import { pageNavContext } from "../state/contexts";
 import { RecipeCard } from "../components/recipe";
 import { Spinner1 } from "../components/loader";
+import { useRecipeContext } from "../state/providers/RecipeProvider.jsx";
+import { useUserContext } from "../state/providers/UserProvider.jsx";
 import "./page.css";
 
 const RecipesPage = () => {
   const { setNavLinks } = useContext(pageNavContext);
-  const { loginUser, isLoggedIn, verifyUser } = useContext(userContext);
-  
-  const { getRecipes, getRecipesAssets, getGoogleAuthUser } = useAmplify();
-  const { getLocalStorageVal, removeLocalStorageVal } = useLocalStorage();
-  const [recipes, setRecipes] = useState([]);
-  const {
-    isTruthy: isLoading,
-    setTruthy: setIsLoading,
-    setNotTruthy: setIsNotLoading,
-  } = useBool();
 
-  const checkUserAuth = async () => {
-    const hasAttemptedLogin = getLocalStorageVal('hasAttemptedLogin');
-    if (!isLoggedIn && hasAttemptedLogin) {
-      try {
-        const user = await getGoogleAuthUser();
-        if (user?.username) {
-          await loginUser();
-          await verifyUser(user);
-          await removeLocalStorageVal('hasAttemptedLogin');
-        }
-      } catch (error) {
-        console.log(error);
-      };
-    };
-  };
-
-  const retrieveData = async () => {
-    await setIsLoading();
-    const { data } = await getRecipes();
-    const updatedRecipes = await getRecipesAssets(data);
-    setRecipes(updatedRecipes);
-    await checkUserAuth();
-    await setIsNotLoading();
-  }
+  const { setRecipes, recipes, isLoading } = useRecipeContext();
+  const { checkUserAuth } = useUserContext();
 
   useEffect(() => {
-    retrieveData();
+    setRecipes();
+    checkUserAuth();
     setNavLinks([]);
   }, []);
 
