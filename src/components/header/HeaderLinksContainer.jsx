@@ -7,7 +7,7 @@ import "./header.css";
 const unAuthRecipeLinkConfig = [
   {
     path: "/recipes",
-    classname: "header-link",
+    classname: "header-link sub-link",
     label: "all recipes"
   },
 ]
@@ -15,17 +15,17 @@ const unAuthRecipeLinkConfig = [
 const recipeLinkConfig = [
   {
     path: "/recipes",
-    classname: "header-link",
+    classname: "header-link sub-link",
     label: "all recipes"
   },
   {
     path: "/recipes/:user",
-    classname: "header-link",
+    classname: "header-link sub-link",
     label: "my recipes"
   },
   {
     path: "/recipes/new",
-    classname: "header-link",
+    classname: "header-link sub-link",
     label: "new recipe",
   },
 ];
@@ -33,7 +33,7 @@ const recipeLinkConfig = [
 const unAuthIngredientsLinksConfig = [
   {
     path: "/ingredients",
-    classname: "header-link",
+    classname: "header-link sub-link",
     label: "all ingredients"
   },
 ];
@@ -41,12 +41,12 @@ const unAuthIngredientsLinksConfig = [
 const ingredientsLinksConfig = [
   {
     path: "/ingredients",
-    classname: "header-link",
+    classname: "header-link sub-link",
     label: "all ingredients"
   },
   {
     path: "/ingredients/:user",
-    classname: "header-link",
+    classname: "header-link sub-link",
     label: "my pantry"
   },
 ]
@@ -54,7 +54,7 @@ const ingredientsLinksConfig = [
 const authUserLinksConfig = [
   {
     path: "/logout",
-    classname: "header-link",
+    classname: "header-link sub-link",
     label: "logout",
   },
 ]
@@ -67,7 +67,7 @@ const HeaderLinksContainer = ({ isShowingLinks }) => {
     if (isLoggedIn) {
       const profileLinkConfig = {
         path: `/user/${user?.username}/profile`,
-        classname: "header-link",
+        classname: "header-link sub-link",
         label: "profile",
       };
       authUserLinksConfig.unshift(profileLinkConfig);
