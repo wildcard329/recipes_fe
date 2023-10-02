@@ -14,7 +14,7 @@ const RecipeProvider = ({ children }) => {
   const { arr: recipes, setItems } = useArray();
   const [recipe, setRecipe] = useState({});
   const [asset, setAsset] = useState(null);
-  const { getRecipes: fetchRecipes, getRecipeByIdAuthor: fetchRecipeById, getRecipesAssets, getRecipeAsset } = useAmplify();
+  const { getRecipes: fetchRecipes, getRecipeByIdAuthor: fetchRecipeById, getRecipesAssets, getRecipeAsset, addRecipe: postRecipe, updateRecipe: putRecipe, deleteRecipe: removeRecipe } = useAmplify();
   const {
     isTruthy: isNewRecipe,
     setTruthy: setNewRecipe,
@@ -31,17 +31,66 @@ const RecipeProvider = ({ children }) => {
     setNotTruthy: setNotHasServerError,
   } = useBool();
 
-  const setRecipes = async () => {
+  const getRecipes = async () => {
+    await setIsLoading();
     try {
-      await setIsLoading();
       const { data } = await fetchRecipes();
       const updatedRecipes = await getRecipesAssets(data);
       setItems(updatedRecipes);
-      await setIsNotLoading();
       setNotHasServerError();
     } catch (error) {
       setHasServerError();
+    }
+    await setIsNotLoading();
+  };
+
+  const getRecipe = async (author, id) => {
+    await setIsLoading();
+    try {
+      const { data: recipe } = await fetchRecipeById(author, id);
+      await setRecipe(recipe);
+      if (recipe?.recipe_image_key) {
+        const asset = await getRecipeAsset(recipe?.recipe_image_key);
+        await setAsset(asset);
+      };
+      await setNotHasServerError();
+    } catch (error) {
+      await setHasServerError();
+    }
+    await setIsNotLoading();
+  };
+
+  const addRecipe = async (recipe) => {
+    await setIsLoading();
+    try {
+      await postRecipe(recipe);
+      await setNotHasServerError();
+    } catch (error) {
+      await setHasServerError();
     };
+    await setIsNotLoading();
+  };
+
+  const updateRecipe = async (recipe) => {
+    await setIsLoading();
+    try {
+      await putRecipe(recipe);
+      await setNotHasServerError();
+    } catch (error) {
+      await setHasServerError();
+    };
+    await setIsNotLoading();
+  }
+
+  const deleteRecipe = async (author, id) => {
+    await setIsLoading();
+    try {
+      await removeRecipe(author, id);
+      await setNotHasServerError();
+    } catch (error) {
+      await setHasServerError();
+    };
+    await setIsNotLoading();
   };
 
   return(
@@ -53,13 +102,17 @@ const RecipeProvider = ({ children }) => {
         isNewRecipe, 
         recipe, 
         recipes, 
+        getRecipe,
+        getRecipes, 
+        addRecipe,
+        deleteRecipe,
+        updateRecipe,
         setAsset, 
         setIsLoading,
         setIsNotLoading,
         setNewRecipe, 
         setNotNewRecipe, 
         setRecipe, 
-        setRecipes, 
       }}>
       {children}
     </recipeContext.Provider>

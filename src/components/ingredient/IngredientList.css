@@ -1,18 +1,19 @@
 .ingredients-list { 
-  overflow-y: scroll;
+  overflow-y: auto;
   padding: 1rem;
   position: static;
+}
+
+.ingredients-list button {
+  border-radius: 0;
 }
 
 .ingredient-button {
   height: 3rem;
 }
 
-.ingredient-button:active,
-.ingredient-button:hover {
-  border-color: green;
-  color: green;
-  outline: green;
+.selected button {
+  color: white;
 }
   
 @media (min-width: 1024px) {
