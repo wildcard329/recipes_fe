@@ -10,6 +10,10 @@
   padding-bottom: 0.5rem;
 }
 
+.sub-link {
+  padding: 2rem;
+}
+
 .btn-link {
   color: #228B22;
   width: 100%;

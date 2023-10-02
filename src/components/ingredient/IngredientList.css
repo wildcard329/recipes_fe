@@ -11,10 +11,6 @@
 .ingredient-button {
   height: 3rem;
 }
-
-.selected button {
-  color: white;
-}
   
 @media (min-width: 1024px) {
   .ingredients-list {
