@@ -1,6 +1,4 @@
-import { useContext } from "react";
-import { recipeContext } from "../../state/contexts";
-import { useAmplify, useBool } from "../../utils/customhooks";
+import { useBool } from "../../utils/customhooks";
 import { formatMinutes } from "../../utils/functions/format";
 import { ListDisplay } from "../lists";
 import { ImageLoader } from "../image";
@@ -9,10 +7,10 @@ import imgPlaceholder from "../../assets/images/img_unavailable.jpg"
 import "./RecipeViewer.css";
 import { RouterLink } from "../router";
 import { Button } from "@mui/material";
+import { useRecipeContext } from "../../state/providers/RecipeProvider";
 
 const RecipeViewer = () => {
-  const { recipe, asset: recipeImage } = useContext(recipeContext);
-  const { deleteRecipe } = useAmplify();
+  const { recipe, asset: recipeImage, deleteRecipe, hasServerError } = useRecipeContext();
   const {
     isTruthy: isInterceptVisible,
     setTruthy: setIsInterceptVisible,

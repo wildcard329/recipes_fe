@@ -9,11 +9,11 @@ import "./page.css";
 const RecipesPage = () => {
   const { setNavLinks } = useContext(pageNavContext);
 
-  const { setRecipes, recipes, isLoading } = useRecipeContext();
+  const { getRecipes, recipes, isLoading } = useRecipeContext();
   const { checkUserAuth } = useUserContext();
 
   useEffect(() => {
-    setRecipes();
+    getRecipes();
     checkUserAuth();
     setNavLinks([]);
   }, []);

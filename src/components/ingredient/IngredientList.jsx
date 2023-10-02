@@ -11,7 +11,13 @@ const IngredientList = () => {
       {ingredients?.map(
         (ingredient) => 
           <ListItem disablePadding key={ingredient?.ingredient_id}>
-            <Button className="ingredient-button" fullWidth variant="outlined" onClick={() => handleSelectIngredient(ingredient)}>
+            <Button 
+              style={{ color: `${ingredient === selectedIngredient ? "white" : "black"}`}}
+              className="ingredient-button" 
+              color={ingredient === selectedIngredient ? "accent" : "primary"} 
+              fullWidth variant={ingredient === selectedIngredient ? "contained" : "outlined"} 
+              onClick={() => handleSelectIngredient(ingredient)}
+            >
               {ingredient?.ingredient_name}
             </Button>
           </ListItem>
