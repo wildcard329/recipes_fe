@@ -19,11 +19,6 @@ const recipeLinkConfig = [
     label: "all recipes"
   },
   {
-    path: "/recipes/:user",
-    classname: "header-link sub-link",
-    label: "my recipes"
-  },
-  {
     path: "/recipes/new",
     classname: "header-link sub-link",
     label: "new recipe",
@@ -43,11 +38,6 @@ const ingredientsLinksConfig = [
     path: "/ingredients",
     classname: "header-link sub-link",
     label: "all ingredients"
-  },
-  {
-    path: "/ingredients/:user",
-    classname: "header-link sub-link",
-    label: "my pantry"
   },
 ]
 
@@ -70,9 +60,21 @@ const HeaderLinksContainer = ({ isShowingLinks }) => {
         classname: "header-link sub-link",
         label: "profile",
       };
+      const pantryLinkConfig = {
+        path: `/ingredients/${user?.username}`,
+        classname: "header-link sub-link",
+        label: "my pantry"
+      };
+      const userRecipeConfig = {
+        path: `/recipes/${user?.username}`,
+        classname: "header-link sub-link",
+        label: "my recipes"
+      };
       authUserLinksConfig.unshift(profileLinkConfig);
+      ingredientsLinksConfig.push(pantryLinkConfig);
+      recipeLinkConfig.push(userRecipeConfig);
     };
-  }, [isLoggedIn]);
+  }, [isLoggedIn]); 
 
   useEffect(() => {
     if (isShowingLinks) {

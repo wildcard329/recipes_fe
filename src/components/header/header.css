@@ -98,7 +98,6 @@
     animation: expand 0.25s;
   }
   .header-link-menu li {
-    /* padding: 0.5rem 1rem; */
     padding: 0.5rem 0;
     height: max-content;
     animation: delayRender 0.25s;
@@ -114,8 +113,5 @@
   }
   .header-links a {
     font-size: 0.875rem;
-  }
-  .header-link-menu a:hover {
-    border-bottom: 1px solid white;
   }
 }

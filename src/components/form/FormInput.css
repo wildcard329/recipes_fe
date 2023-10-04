@@ -1,7 +1,6 @@
 .form-input input,
 .form-input textarea {
   border-radius: 0;
-  margin-top: 1rem;
   border: thin solid gray;
 }
 
@@ -18,9 +17,9 @@
 .error {
   color: #B20000;
   position: absolute;
-  top: 12px;
   left: 7px;
   font-size: small;
+  bottom: -25px;
 }
 
 .invalid {

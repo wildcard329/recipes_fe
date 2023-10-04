@@ -49,6 +49,7 @@ input::file-selector-button {
 
 .recipe-image input {
   grid-area: img-input;
+  margin-bottom: 1rem;
 }
 
 .recipe-time {
@@ -56,6 +57,7 @@ input::file-selector-button {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  padding: 1rem 0;
 }
 
 .cta-btn {
@@ -85,6 +87,15 @@ input::file-selector-button {
   color: black;
 }
 
+.success {
+  text-transform: capitalize;
+  color: darkslategray;
+  position: absolute;
+  left: 7px;
+  font-size: small;
+  bottom: -25px;
+}
+
 @media (min-width: 1024px) {
   .recipe-form {
     padding: 2rem;
@@ -97,8 +108,14 @@ input::file-selector-button {
       "recipe-name recipe-name"
       "recipe-time recipe-image"
       "recipe-description recipe-description";
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 3fr;
     gap: 2rem;
+  }
+  .recipe-time {
+    padding: 0;
+  }
+  .recipe-image input {
+    margin-bottom: 0;
   }
   .recipe-description {
     min-width: 500px;

@@ -4,7 +4,8 @@ import { useAmplify, useBool } from "../../utils/customhooks";
 import { ListEditor } from "../lists";
 import { AccordionControll, AccordionDrawer } from "../accordion";
 import imgUplPlchldr from "../../assets/images/upload_image.png";
-import { Button } from "@mui/material";
+import { Button, CircularProgress } from "@mui/material";
+import { AiOutlineCheck } from "react-icons/ai";
 import "./RecipeForm.css";
 import { FormInput } from "../form";
 
@@ -17,6 +18,20 @@ const RecipeForm = () => {
     setTruthy: setHasFailedAttempt,
     setNotTruthy: setNotHasFailedAttempt,
   } = useBool();
+  const {
+    isTruthy: isSubmitting,
+    setTruthy: setIsSubmitting,
+    setNotTruthy: setIsNotSubmitting,
+  } = useBool();
+  const {
+    isTruthy: hasSubmitted,
+    setTruthy: setHasSubmitted,
+  } = useBool();
+  const {
+    isTruthy: isServerError,
+    setTruthy: setIsServerError,
+    setNotTruthy: setIsNotServerError,
+  } = useBool();
 
   const validFields = {
     recipeName: recipe?.recipe_name?.length > 2,
@@ -25,7 +40,7 @@ const RecipeForm = () => {
     recipeCookTime: Number.isInteger(recipe?.recipe_cook_time),
     recipeTotalTime: Number.isInteger(recipe?.recipe_total_time),
     recipeCategories: recipe?.recipe_categories?.length > 0,
-    recipeIngredients: recipe?.recipe_ingredients?.length > 2,
+    recipeIngredients: recipe?.recipe_ingredients?.length > 0,
     recipeInstructions: recipe?.recipe_instructions?.length > 0,
   };
 
@@ -52,22 +67,34 @@ const RecipeForm = () => {
 
   const handleTools = async (tools) => await setRecipe((prevRec) => ({ ...prevRec, recipe_tools: tools }));
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const formFieldsValid = Object.values(validFields);
-    const isRecipeValid = !formFieldsValid.includes(false);
-    if (isRecipeValid) {
-      setNotHasFailedAttempt();
+  const handleRequest = async () => {
+    try {
+      await setIsSubmitting();
       await setRecipe(delete recipe?.recipe_image); 
       await setRecipe({ ...recipe, recipe_author: user?.user_id })   
       isNewRecipe ? await addRecipe(recipe) : await updateRecipe(recipe);
-      alert('recipe updated');
+      await setIsNotServerError();
+      await setHasSubmitted();
+      await setIsNotSubmitting();
+    } catch {
+      setIsServerError();
+    }
+  }
+
+  const handleValidateForm = () => !Object.values(validFields).includes(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const isRecipeValid = handleValidateForm();
+    if (isRecipeValid) {
+      setNotHasFailedAttempt();
+      await handleRequest();
     } else {
       setHasFailedAttempt();
-    }
+    };
   };
 
-  const validateListItem = (item) => item.length > 2;
+  const validateListItem = (item) => item.length > 1;
 
   return(
     <form onSubmit={handleSubmit} className="recipe-form">
@@ -83,7 +110,8 @@ const RecipeForm = () => {
             inputType={"text"}
             label={"recipe name"}
             handleChangeCb={handleChange} 
-            inputId={"recipe-name"} 
+            inputId={"recipe-name"}
+            showError={hasFailedAttempt} 
           />
           <div className="form-input recipe-time">
             <FormInput 
@@ -95,6 +123,7 @@ const RecipeForm = () => {
               label={"recipe prep time"}
               handleChangeCb={handleIntChange}
               inputId={"recipe-prep-time"}
+              showError={hasFailedAttempt} 
             />
             <FormInput 
               value={recipe?.recipe_cook_time}
@@ -105,6 +134,7 @@ const RecipeForm = () => {
               label={"recipe cook time"}
               handleChangeCb={handleIntChange}
               inputId={"recipe-cook-time"}
+              showError={hasFailedAttempt} 
             />
             <FormInput 
               value={recipe?.recipe_total_time}
@@ -115,6 +145,7 @@ const RecipeForm = () => {
               label={"recipe total time"}
               handleChangeCb={handleIntChange}
               inputId={"recipe-total-time"}
+              showError={hasFailedAttempt} 
             />
           </div>
           <div className="form-input recipe-image">
@@ -133,6 +164,7 @@ const RecipeForm = () => {
             label={"recipe description"}
             handleChangeCb={handleChange} 
             inputId={"recipe-description"} 
+            showError={hasFailedAttempt} 
           />
         </div>
       </AccordionDrawer>
@@ -145,7 +177,7 @@ const RecipeForm = () => {
               editorCb={handleCategories} 
               itemValidation={validateListItem}
               fieldValidation={recipe?.recipe_categories?.length > 0}
-              itemValidationMessage={"*Please add a category that contains three or more characters."}
+              itemValidationMessage={"*Please add a category that contains two or more characters."}
               fieldValidationMessage={'*Please add at least one category'}
               showFieldValidationMessage={hasFailedAttempt}
             />
@@ -161,7 +193,7 @@ const RecipeForm = () => {
               editorCb={handleTools} 
               itemValidation={validateListItem}
               fieldValidation={true}
-              itemValidationMessage={"*Please add a tool that contains three or more characters."}
+              itemValidationMessage={"*Please add a tool that contains two or more characters."}
               fieldValidationMessage={''}
               showFieldValidationMessage={hasFailedAttempt}
             />
@@ -176,9 +208,9 @@ const RecipeForm = () => {
               listTitle={"ingredients"} 
               editorCb={handleIngredients}
               itemValidation={validateListItem}
-              fieldValidation={recipe?.recipe_ingredients?.length > 2}
-              itemValidationMessage={"*Please add an ingredient that contains three or more characters."}
-              fieldValidationMessage={'*Please add at least three ingredients'}
+              fieldValidation={recipe?.recipe_ingredients?.length > 1}
+              itemValidationMessage={"*Please add an ingredient that contains two or more characters."}
+              fieldValidationMessage={'*Please add at least one ingredient'}
               showFieldValidationMessage={hasFailedAttempt} 
             />
           </div>
@@ -195,17 +227,18 @@ const RecipeForm = () => {
               editorCb={handleInstructions} 
               itemValidation={validateListItem}
               fieldValidation={recipe?.recipe_instructions?.length > 0}
-              itemValidationMessage={"*Please add an instruction that contains three or more characters."}
+              itemValidationMessage={"*Please add an instruction that contains two or more characters."}
               fieldValidationMessage={'*Please add at least one instruction'}
               showFieldValidationMessage={hasFailedAttempt}
             />
           </div>
         </div>
       </AccordionDrawer>
+      {hasSubmitted || isServerError && <span className={hasSubmitted ? "success" : "error"}>{hasSubmitted ? "successfully added recipe" : "unable to process request at this time"}</span>}
       <div className="form-action">
         {hasFailedAttempt && <span className="error">*Please address errors before submitting.</span>}
-        <Button variant={"contained"} type="submit" color={hasFailedAttempt ? "danger" : "primary"} className="recipe-submit-btn">
-          submit
+        <Button disabled={hasSubmitted || isSubmitting} variant={"contained"} type="submit" color={hasFailedAttempt && handleValidateForm() ? "danger" : "primary"} className="recipe-submit-btn">
+          {hasSubmitted ? <AiOutlineCheck /> : isSubmitting ? <CircularProgress /> : "submit"}
         </Button>
       </div>
     </form>

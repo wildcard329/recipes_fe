@@ -34,10 +34,8 @@
   position: absolute;
   color: #B20000;
   font-size: small;
-}
-
-.list-item {
   left: 10px;
+  bottom: -25px;
 }
 
 .list-field {

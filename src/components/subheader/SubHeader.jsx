@@ -1,4 +1,4 @@
-import { useContext, useEffect, Fragment } from "react";
+import { useContext, useEffect } from "react";
 import { useBool, useReactRouter, useScrollListener } from "../../utils/customhooks";
 import { BsArrowDownRight, BsArrowUpLeft } from "react-icons/bs";
 import { pageNavContext } from "../../state/contexts";
