@@ -63,9 +63,7 @@ const ListEditor = ({ list, listTitle, isOrderedList=false, isLongInput=false, e
     <div className="list-input">
       {showFieldValidationMessage && !fieldValidation && <span className="list-editor-error list-field">{fieldValidationMessage}</span>}
       <ListDisplay title={listTitle} data={list} isEditing isOrderedList={isOrderedList} editItemCb={handleEditItem} deleteItemCb={handleDeleteItem} />
-      <div className="error-container">
-        {hasError && <span className="list-editor-error list-item">{itemValidationMessage}</span>}
-      </div>
+      {hasError && <span className="list-editor-error list-item">{itemValidationMessage}</span>}
       {isLongInput ?
         <textarea ref={inputRef} style={hasError ? { borderColor: "#B20000" } : { borderColor: "gray" }} name="item" value={item} onChange={(e) => setItem(e.target.value)} placeholder="add item" />
       :

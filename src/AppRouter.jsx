@@ -14,9 +14,11 @@ const AppRouter = () =>
   <Routes>
     <Route path="/" element={<HomePage />} />
     <Route path="/ingredients" element={<IngredientsPage />} />
+    <Route path="/ingredients/:user" element={<IngredientsPage />} />
     <Route path="/login" element={<AuthPage />} />
     <Route path="/logout" element={<LogoutPage />} />
     <Route path="/recipes" element={<RecipesPage />} />
+    <Route path="/recipes/:user" element={<RecipesPage />} />
     <Route path="/recipe/:id" element={<RecipeViewerPage />} />
     <Route path="/recipes/new" element={<RecipeEditorPage />} />
     <Route path="/recipes/:id/edit" element={<RecipeEditorPage />} />
