@@ -18,10 +18,16 @@
   color: #B20000;
   position: absolute;
   left: 7px;
-  font-size: small;
+  font-size: xx-small;
   bottom: -25px;
 }
 
 .invalid {
   background-color: #ffcccb;
+}
+
+@media (min-width: 1024px) {
+  .error {
+    font-size: small;
+  }
 }
