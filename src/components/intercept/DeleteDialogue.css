@@ -1,0 +1,31 @@
+.danger-message {
+  color: #B20000;
+}
+
+.intercept {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.dialogue button {
+  width: 8rem;
+}
+
+.dialogue-box {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  gap: 1rem;
+}
+
+.dialogue-box button {
+  width: 8rem;
+}
+
+.dialogue-message {
+  position: absolute;
+  top: -25px;
+  text-transform: capitalize;
+}

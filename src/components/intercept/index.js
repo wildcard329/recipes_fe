@@ -1,1 +1,1 @@
-export { default as FunctionIntercept } from "./FunctionIntercept.jsx";
+export { default as DeleteDialogue } from "./DeleteDialogue.jsx";
