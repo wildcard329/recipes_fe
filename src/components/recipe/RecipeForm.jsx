@@ -10,7 +10,7 @@ import "./RecipeForm.css";
 import { FormInput } from "../form";
 
 const RecipeForm = () => {
-  const { recipe, setRecipe, isNewRecipe, asset, user } = useContext(recipeContext);
+  const { recipe, setRecipe, isNewRecipe, asset, setAsset, user } = useContext(recipeContext);
   const { addAsset, addRecipe, updateRecipe } = useAmplify();
   const { accordionDrawers } = useContext(accordionContext);
   const {
@@ -32,6 +32,11 @@ const RecipeForm = () => {
     setTruthy: setIsServerError,
     setNotTruthy: setIsNotServerError,
   } = useBool();
+  const {
+    isTruthy: hasImageError,
+    setTruthy: setHasImageError,
+    setNotTruthy: setHasNotImageError,
+  } = useBool();
 
   const validFields = {
     recipeName: recipe?.recipe_name?.length > 2,
@@ -52,10 +57,13 @@ const RecipeForm = () => {
     const file = e.target.files[0];
     if (file.name.match(/\.(jpg|jpeg|png|gif)$/i)) {
       const filename = `${recipe?.recipe_author || user?.user_id}-${file.name}`;
+      setHasNotImageError();
       addAsset(filename, file);
+      setAsset(URL.createObjectURL(file));
       setRecipe({ ...recipe, recipe_image_key: filename, recipe_image: file });
     } else {
-      alert('That is not an image');
+      setRecipe({ ...recipe, recipe_image_key: null })
+      setHasImageError();
     };
   };
 
@@ -152,6 +160,7 @@ const RecipeForm = () => {
             <label>recipe image</label>
             <img src={asset ? asset : recipe?.recipe_image ? recipe?.recipe_image : imgUplPlchldr} alt="recipe-image" className="recipe-image-asset" />
             <input name='recipe_image' onChange={handleImgUpld} type="file" accept="image/*" className="file-upload" />
+            {hasImageError && <span className="error">*Please select a valid image</span>}
           </div>
           <FormInput 
             value={recipe?.recipe_description} 
