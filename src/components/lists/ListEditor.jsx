@@ -64,13 +64,20 @@ const ListEditor = ({ list, listTitle, isOrderedList=false, isLongInput=false, e
       {showFieldValidationMessage && !fieldValidation && <span className="list-editor-error list-field">{fieldValidationMessage}</span>}
       <ListDisplay title={listTitle} data={list} isEditing isOrderedList={isOrderedList} editItemCb={handleEditItem} deleteItemCb={handleDeleteItem} />
       {hasError && <span className="list-editor-error list-item">{itemValidationMessage}</span>}
-      {isLongInput ?
-        <textarea ref={inputRef} style={hasError ? { borderColor: "#B20000" } : { borderColor: "gray" }} name="item" value={item} onChange={(e) => setItem(e.target.value)} placeholder="add item" />
-      :
-        <input ref={inputRef} style={hasError ? { borderColor: "#B20000" } : { borderColor: "gray" }} name="item" value={item} onChange={(e) => setItem(e.target.value)} placeholder="add item" />}
-      <Button variant="outlined" className="editor-btn" onClick={handleAddItem}>
-        add item
-      </Button>
+        {isLongInput ?
+          <>
+            <textarea ref={inputRef} style={hasError ? { borderColor: "#B20000" } : { borderColor: "gray" }} name="item" value={item} onChange={(e) => setItem(e.target.value)} placeholder="add item" />
+            <Button variant="outlined" className="editor-btn" onClick={handleAddItem}>
+              add item
+            </Button>
+          </>
+        :
+        <div className={hasError ? "input-error" : "input-row"}>
+          <input ref={inputRef} style={hasError ? { borderColor: "#B20000" } : { borderColor: "gray" }} name="item" value={item} onChange={(e) => setItem(e.target.value)} placeholder="add item" />
+        <Button variant="outlined" className="editor-btn" onClick={handleAddItem}>
+          add item
+        </Button>
+      </div>}
     </div>
   )
 }
