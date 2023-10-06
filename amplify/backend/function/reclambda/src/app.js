@@ -42,11 +42,10 @@ app.get('/recipes', async (req, res) => {
   };
 });
 
-app.get('/recipes/:recipeAuthor/:recipeId', async (req, res) => {
-  const recipeAuthor = req.params.recipeAuthor;
-  const recipeId = parseInt(req.params.recipeId);
+app.get('/recipes/:recipeId', async (req, res) => {
+  const recipeId = req.params.recipeId;
   try {
-    const { Item: recipe } = await getRecipeById(recipeAuthor, recipeId);
+    const { Item: recipe } = await getRecipeById(recipeId);
     res.json({ msg: 'get call succeed!', data: recipe });
   } catch (error) {
     res.json({ msg: 'error retrieving get call' });
@@ -85,11 +84,10 @@ app.put('/recipes', async (req, res) => {
 * Example delete method *
 ****************************/
 
-app.delete('/recipes/:recipeAuthor/:recipeId', async (req, res) => {
-  const recipeAuthor = req.params.recipeAuthor;
-  const recipeId = parseInt(req.params.recipeId);
+app.delete('/recipes/:recipeId', async (req, res) => {
+  const recipeId = req.params.recipeId;
   try {
-    await deleteRecipe(recipeAuthor, recipeId);
+    await deleteRecipe(recipeId);
     res.json({ msg: 'delete call succeed!' });
   } catch (error) {
     res.json({ msg: 'could not delete recipe' });

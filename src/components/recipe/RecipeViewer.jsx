@@ -1,23 +1,13 @@
-import { useBool } from "../../utils/customhooks";
 import { formatMinutes } from "../../utils/functions/format";
 import { ListDisplay } from "../lists";
 import { ImageLoader } from "../image";
 import { DeleteDialogue } from "../intercept";
 import imgPlaceholder from "../../assets/images/img_unavailable.jpg"
 import "./RecipeViewer.css";
-import { RouterLink } from "../router";
-import { Button } from "@mui/material";
 import { useRecipeContext } from "../../state/providers/RecipeProvider";
 
 const RecipeViewer = () => {
-  const { recipe, asset: recipeImage, deleteRecipe, hasServerError } = useRecipeContext();
-  const {
-    isTruthy: isInterceptVisible,
-    setTruthy: setIsInterceptVisible,
-    setNotTruthy: setIntercipetIsNotVisible,
-  } = useBool();
-
-  const handleDeleteRecipe = (author, id) => deleteRecipe(author, id);
+  const { recipe, asset: recipeImage } = useRecipeContext();
 
   return(
     <div className="recipe-info-page">
@@ -26,17 +16,6 @@ const RecipeViewer = () => {
         <div className="header-row">
           <h1 id="recipe-title">{recipe?.recipe_name}</h1>
           <DeleteDialogue recipe={recipe} />
-          {/* {!isInterceptVisible ?
-            <div className="row">
-              <Button variant="outlined" className="viewer-btn" color="secondary">
-                <RouterLink classname={"btn-link"} label={"edit"} path={`/recipes/${recipe?.recipe_id}/edit`} state={recipe} />
-              </Button>
-              <Button variant="outlined" className="viewer-btn" color="danger" onClick={setIsInterceptVisible}>
-                delete
-              </Button>
-            </div>
-          :
-            <FunctionIntercept proceedCb={() => deleteRecipe(recipe?.recipe_author, recipe?.recipe_id)} cancelCb={setIntercipetIsNotVisible} interceptMessage={`Delete ${recipe?.recipe_name}?`} />} */}
         </div>
         <ImageLoader image={recipeImage ? recipeImage : imgPlaceholder} imgAlt={'recipe-image'} id="recipe-info-image" />
         <div id="recipe-time" className="bg-whitesmoke highlight-line min-height">

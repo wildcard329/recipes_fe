@@ -14,8 +14,8 @@ const getRecipes = async () => {
   };
 };
 
-const getRecipeById = async (author, id) => {
-  const specParams = { ...params, Key: { recipe_id: id, recipe_author: author } };
+const getRecipeById = async (id) => {
+  const specParams = { ...params, Key: { recipe_id: id } };
   try {
     return await docClient.get(specParams).promise();
   } catch (error) {
@@ -32,8 +32,8 @@ const addOrUpdateRecipe = async (recipe) => {
   };
 };
 
-const deleteRecipe = async (author, id) => {
-  const delParams = { ...params, Key: { recipe_id: id, recipe_author: author } };
+const deleteRecipe = async (id) => {
+  const delParams = { ...params, Key: { recipe_id: id } };
   try {
     return await docClient.delete(delParams).promise();
   } catch (error) {

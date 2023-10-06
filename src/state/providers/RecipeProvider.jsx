@@ -14,7 +14,7 @@ const RecipeProvider = ({ children }) => {
   const { arr: recipes, setItems } = useArray();
   const [recipe, setRecipe] = useState({});
   const [asset, setAsset] = useState(null);
-  const { getRecipes: fetchRecipes, getRecipeByIdAuthor: fetchRecipeById, getRecipesAssets, getRecipeAsset, addRecipe: postRecipe, updateRecipe: putRecipe, deleteRecipe: removeRecipe } = useAmplify();
+  const { getRecipes: fetchRecipes, getRecipeById: fetchRecipeById, getRecipesAssets, getRecipeAsset, addRecipe: postRecipe, updateRecipe: putRecipe, deleteRecipe: removeRecipe } = useAmplify();
   const {
     isTruthy: isNewRecipe,
     setTruthy: setNewRecipe,
@@ -44,10 +44,11 @@ const RecipeProvider = ({ children }) => {
     await setIsNotLoading();
   };
 
-  const getRecipe = async (author, id) => {
+  const getRecipe = async (id) => {
     await setIsLoading();
     try {
-      const { data: recipe } = await fetchRecipeById(author, id);
+      const { data: recipe } = await fetchRecipeById(id);
+      await console.log('data: ', recipe);
       await setRecipe(recipe);
       if (recipe?.recipe_image_key) {
         const asset = await getRecipeAsset(recipe?.recipe_image_key);
@@ -82,10 +83,10 @@ const RecipeProvider = ({ children }) => {
     await setIsNotLoading();
   }
 
-  const deleteRecipe = async (author, id) => {
+  const deleteRecipe = async (id) => {
     await setIsLoading();
     try {
-      await removeRecipe(author, id);
+      await removeRecipe(id);
       await setNotHasServerError();
     } catch (error) {
       await setHasServerError();

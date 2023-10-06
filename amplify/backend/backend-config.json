@@ -125,7 +125,17 @@
     },
     "reclambda": {
       "build": true,
-      "dependsOn": [],
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "recipes"
+        }
+      ],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     }

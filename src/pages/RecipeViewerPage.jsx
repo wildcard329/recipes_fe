@@ -12,7 +12,7 @@ const RecipeViewerPage = () => {
   const { setNavLinks } = useContext(pageNavContext);
 
   useEffect(() => {
-    getRecipe(locationState?.recipe_author, locationState?.recipe_id);
+    getRecipe(locationState?.recipe_id);
     setNavLinks(recipeViewerPageNav);
   }, []);
   return(
