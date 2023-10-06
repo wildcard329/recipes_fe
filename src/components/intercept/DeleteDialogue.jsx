@@ -26,11 +26,6 @@ const DeleteDialogue = ({ recipe }) => {
 
   const { isDelReq, isDeleting, isDeleted } = serverReq;
 
-
-  useEffect(() => {
-    console.log("del requested: ", isDelReq);
-  }, [isDelReq])
-
   return(
     <div className="dialogue-box">
       {isDelReq || isDeleted ? <span className={`dialogue-message ${isDelReq && "danger-message"}`}>{isDelReq ? `Delete ${recipe?.recipe_name}?` : isDeleted ? `${recipe?.recipe_name} deleted` : null}</span> : null}

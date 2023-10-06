@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { accordionContext } from "../../state/contexts";
-import { CgMathPlus, CgMathMinus } from "react-icons/cg";
+import { BsChevronUp, BsChevronDown } from "react-icons/bs"
 import "./AccordionDrawer.css";
 import { Button } from "@mui/material";
 
@@ -12,12 +12,12 @@ const AccordionDrawer = ({ children, accordionLabel, accordionState }) => {
       <div className="accordion-container">
         {accordionState?.isOpen ?
           <div className="accordion-collapse">
-            <Button variant="outlined" onClick={() => toggleDrawer(accordionState?.id)} className="icon-btn"><CgMathMinus fill="gray" /></Button>
+            <Button onClick={() => toggleDrawer(accordionState?.id)} className="icon-btn"><BsChevronUp fill="#335c67" /></Button>
           </div>
         :
-          <div className="accordion-drawer">
+          <div className="accordion-drawer" onClick={() => toggleDrawer(accordionState?.id)}>
             <span>{accordionLabel}</span>
-            <Button variant="outlined" onClick={() => toggleDrawer(accordionState?.id)} className="icon-btn"><CgMathPlus fill="gray" /></Button>
+            <Button className="icon-btn"><BsChevronDown fill="#335c67" /></Button>
           </div>}
       </div>
       {accordionState?.isOpen ? children : null}

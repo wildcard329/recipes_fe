@@ -1,11 +1,12 @@
 .accordion-drawer {
   display: flex;
   justify-content: space-between;
-  border: thin solid gray;
+  border: thin solid #335c67;
   padding: 0.5rem 0.85rem;
   text-transform: capitalize;
   margin-top: 1rem;
   margin-bottom: 1rem;
+  cursor: pointer;
 }
   
 .accordion-container {
@@ -16,10 +17,9 @@
   position: absolute;
   right: 14px;
   top: 10px;
+  z-index: 2;
 }
 
 .icon-btn {
   border-radius: 50%;
-  height: min-content;
-  width: min-content;
 }
