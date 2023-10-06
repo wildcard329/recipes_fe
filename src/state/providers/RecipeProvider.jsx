@@ -48,11 +48,11 @@ const RecipeProvider = ({ children }) => {
     await setIsLoading();
     try {
       const { data: recipe } = await fetchRecipeById(id);
-      await console.log('data: ', recipe);
       await setRecipe(recipe);
       if (recipe?.recipe_image_key) {
         const asset = await getRecipeAsset(recipe?.recipe_image_key);
         await setAsset(asset);
+        await setRecipe({ ...recipe, recipe_image: asset });
       };
       await setNotHasServerError();
     } catch (error) {

@@ -15,7 +15,9 @@ const RecipeEditorPage = () => {
 
   const assembleRecipeDefault = async () => {
     const urlParts = routerPath.split('/');
-    if (urlParts.length === 4 && !locationState?.recipe_id) {
+    if (locationState?.recipe_name) {
+      setRecipe(locationState);
+    } else if (urlParts.length === 4 && !locationState?.recipe_name) {
       const recipeId = routerPath.split('/')[2];
       await getRecipe(recipeId);
       await setNotNewRecipe();

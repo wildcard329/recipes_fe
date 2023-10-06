@@ -60,7 +60,7 @@
 .input-error {
   display: flex;
   flex-direction: row;
-  border: thin solid red;
+  border: thin solid #B20000;
 }
 
 .input-error input {
