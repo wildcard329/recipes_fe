@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Button } from "@mui/material";
 import { RouterLink } from "../router";
 import { useAmplify } from "../../utils/customhooks";

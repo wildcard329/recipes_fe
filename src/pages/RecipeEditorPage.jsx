@@ -9,15 +9,17 @@ import { AccordionProvider } from "../state/providers";
 import { useRecipeContext } from "../state/providers/RecipeProvider";
 
 const RecipeEditorPage = () => {
-  const { getRecipe, recipe, setRecipe, setNewRecipe, setNotNewRecipe, isLoading } = useRecipeContext();
+  const { getRecipe, setRecipe, setNewRecipe, setNotNewRecipe, isLoading } = useRecipeContext();
   const { setNavLinks } = useContext(pageNavContext);
   const { locationState, routerPath } = useReactRouter();
 
   const assembleRecipeDefault = async () => {
-    if (!!locationState?.recipe_id && !recipe?.recipe_id) {
-      await getRecipe(locationState?.recipe_author, locationState?.recipe_id);
+    const urlParts = routerPath.split('/');
+    if (urlParts.length === 4 && !locationState?.recipe_id) {
+      const recipeId = routerPath.split('/')[2];
+      await getRecipe(recipeId);
       await setNotNewRecipe();
-    } else if (!locationState?.recipe_id) {
+    } else if (urlParts.length !== 4) {
       setRecipe(generateRecipeTemplate());
       setNewRecipe();
     };

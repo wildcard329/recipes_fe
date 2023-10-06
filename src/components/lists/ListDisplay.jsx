@@ -4,7 +4,7 @@ import "./list.css";
 import { Button } from '@mui/material';
 
 const ListDisplay = ({ title, data, isEditing=false, isOrderedList=false, editItemCb, deleteItemCb }) => 
-  <div className='list-display'>
+  <div className={isEditing ? 'editor-display' : 'list-display'}>
     {isEditing ? 
       <label>{title}</label>
     : 
