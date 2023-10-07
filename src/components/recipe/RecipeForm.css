@@ -12,10 +12,6 @@ input::file-selector-button {
   cursor: pointer;
 }
 
-.img-error {
-  right: 0;
-}
-
 .file-upload {
   font-size: 1rem;
   padding: 0.5rem;

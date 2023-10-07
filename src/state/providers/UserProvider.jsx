@@ -13,7 +13,7 @@ export const useUserContext = () => {
 
 const UserProvider = ({ children }) => {
   const [user, setUser] = useState({});
-  const { getLocalStorageVal, removeLocalStorageVal } = useLocalStorage();
+  const { getLocalStorageVal, setLocalStorageKey, removeLocalStorageVal } = useLocalStorage();
   const { getUserById, addUser, getGoogleAuthUser } = useAmplify();
   const {
     isTruthy: isLoggedIn,
@@ -33,25 +33,31 @@ const UserProvider = ({ children }) => {
         username: updatedUsername,
       };
       await addUser(newUser);
+      await setLocalStorageKey("Username", userEmail);
       setUser(newUser);
     } else {
+      await setLocalStorageKey("Username", userEmail);
       setUser(authUser);
     };
-  }
+  };
+
+  const checkUser = async () => {
+    try {
+      const user = await getGoogleAuthUser();
+      if (user?.username) {
+        await loginUser();
+        await verifyUser(user);
+        await removeLocalStorageVal('hasAttemptedLogin');
+      }
+    } catch (error) {
+      throw new Error("Unable to authenticate user.");
+    };
+  };
 
   const checkUserAuth = async () => {
     const hasAttemptedLogin = getLocalStorageVal('hasAttemptedLogin');
     if (!isLoggedIn && hasAttemptedLogin) {
-      try {
-        const user = await getGoogleAuthUser();
-        if (user?.username) {
-          await loginUser();
-          await verifyUser(user);
-          await removeLocalStorageVal('hasAttemptedLogin');
-        }
-      } catch (error) {
-        throw new Error("Unable to authenticate user.");
-      };
+      await checkUser();
     };
   };
 
@@ -60,6 +66,7 @@ const UserProvider = ({ children }) => {
       value={{ 
         isLoggedIn, 
         user,
+        checkUser,
         checkUserAuth,
         loginUser,
         logoutUser,
