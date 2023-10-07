@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import AppLogo from "../logo/AppLogo";
 import HeaderLinksContainer from "./HeaderLinksContainer";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { useBool, useReactRouter } from "../../utils/customhooks";
+import { useBool, useLocalStorage, useReactRouter } from "../../utils/customhooks";
 import "./header.css";
+import { useUserContext } from "../../state/providers/UserProvider";
 
 const AppHeader = () => {
   const {
@@ -12,9 +13,20 @@ const AppHeader = () => {
     setTruthy: showLinks,
     setNotTruthy: hideLinks,
   } = useBool();
+  const { getLocalStorageVal } = useLocalStorage();
   const { routerPath } = useReactRouter();
+  const { checkUser } = useUserContext();
+
 
   const handleMenu = () => isShowingLinks ? hideLinks() : showLinks();
+
+  useEffect(() => {
+    const username = getLocalStorageVal('Username');
+    if (username) {
+      console.log('user ', username);
+      checkUser();
+    };
+  }, []);
 
   useEffect(() => {
     hideLinks();
