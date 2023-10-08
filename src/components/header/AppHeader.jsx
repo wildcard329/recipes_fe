@@ -17,13 +17,11 @@ const AppHeader = () => {
   const { routerPath } = useReactRouter();
   const { checkUser } = useUserContext();
 
-
   const handleMenu = () => isShowingLinks ? hideLinks() : showLinks();
 
   useEffect(() => {
     const username = getLocalStorageVal('Username');
     if (username) {
-      console.log('user ', username);
       checkUser();
     };
   }, []);

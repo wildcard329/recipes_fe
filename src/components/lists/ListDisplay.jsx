@@ -18,10 +18,10 @@ const ListDisplay = ({ title, data, isEditing=false, isOrderedList=false, editIt
             {isEditing && 
               <div>
                 <Button onClick={() => editItemCb(index)}>
-                  <MdOutlineEdit fill="black" />
+                  <MdOutlineEdit fill="black" size={70} />
                 </Button>
                 <Button onClick={() => deleteItemCb(index)}>
-                  <TiDeleteOutline fill="black" />
+                  <TiDeleteOutline fill="black" size={70} />
                 </Button>
               </div>
             }

@@ -12,6 +12,12 @@ const useAmplify = () => {
 
   const getIngredients = async () => await API.get(ingsAPI, ingsPath);
 
+  const addIngredient = async (ingredient) => await API.post(ingsAPI, ingsPath, { body: ingredient });
+
+  const editIngredient = async (ingredient) => await API.put(ingsAPI, ingsPath, { body: ingredient });
+
+  const deleteIngredient = async (ingredientId) => await API.del(ingsAPI, `${ingsPath}/${ingredientId}`);
+
   const getUsers = async () => await API.get(userAPI, userPath);
 
   const getUserById = async (id) => await API.get(userAPI, `${userPath}/${id}`);
@@ -36,13 +42,13 @@ const useAmplify = () => {
   
   const getRecipeById = async (recipe_id) => await API.get(myAPI, `${recipesPath}/${recipe_id}`);
 
-  const deleteRecipe = async (recipe_id) => await API.del(myAPI, `${recipesPath}/${recipe_author}/${recipe_id}`);
+  const deleteRecipe = async (recipe_id) => await API.del(myAPI, `${recipesPath}/${recipe_id}`);
   
   const updateRecipe = async (recipe) => await API.put(myAPI, recipesPath, { body: recipe });
 
   const addRecipe = async (recipe) => await API.post(myAPI, recipesPath, { body: recipe });
 
-  return { getRecipeAsset, getRecipesAssets, getIngredientsAssets, getRecipes, getRecipeById, deleteRecipe, updateRecipe, addRecipe, addAsset, authGoogle, getGoogleAuthUser, signoutUser, getIngredients, getUsers, getUserById, addUser };
+  return { getRecipeAsset, getRecipesAssets, getIngredientsAssets, getRecipes, getRecipeById, deleteRecipe, updateRecipe, addRecipe, addAsset, authGoogle, getGoogleAuthUser, signoutUser, getIngredients, addIngredient, editIngredient, deleteIngredient, getUsers, getUserById, addUser };
 };
 
 export default useAmplify;
