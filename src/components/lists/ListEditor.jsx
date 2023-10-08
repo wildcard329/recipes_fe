@@ -72,7 +72,7 @@ const ListEditor = ({ list, listTitle, isOrderedList=false, isLongInput=false, e
             </Button>
           </>
         :
-        <div className={hasError ? "input-error" : "input-row"}>
+        <div className="input-row">
           <input ref={inputRef} style={hasError ? { borderColor: "#B20000" } : { borderColor: "gray" }} name="item" value={item} onChange={(e) => setItem(e.target.value)} placeholder="add item" />
         <Button variant="outlined" className="editor-btn" onClick={handleAddItem}>
           add item
