@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { accordionContext, recipeContext } from "../../state/contexts";
-import { useAmplify, useBool } from "../../utils/customhooks";
+import { useAmplify, useBool, useReactRouter } from "../../utils/customhooks";
 import { ListEditor } from "../lists";
 import { AccordionControll, AccordionDrawer } from "../accordion";
 import imgUplPlchldr from "../../assets/images/upload_image.png";
@@ -12,6 +12,7 @@ import { FormInput } from "../form";
 const RecipeForm = () => {
   const { recipe, setRecipe, isNewRecipe, asset, setAsset, user } = useContext(recipeContext);
   const { addAsset, addRecipe, updateRecipe } = useAmplify();
+  const { navTo } = useReactRouter();
   const { accordionDrawers } = useContext(accordionContext);
   const {
     isTruthy: hasFailedAttempt,
@@ -49,6 +50,12 @@ const RecipeForm = () => {
     recipeInstructions: recipe?.recipe_instructions?.length > 0,
   };
 
+  const goToRecipe = () => {
+    setTimeout(() => {
+      navTo(`/recipe/${recipe?.recipe_id}`);
+    }, 5000);
+  };
+
   const handleChange = (e) => setRecipe({ ...recipe, [e.target.name]: e.target.value });
 
   const handleIntChange = (e) => setRecipe({ ...recipe, [e.target.name]: parseInt(e.target.value) });
@@ -84,6 +91,7 @@ const RecipeForm = () => {
       await setIsNotServerError();
       await setHasSubmitted();
       await setIsNotSubmitting();
+      await goToRecipe();
     } catch {
       setIsServerError();
     }
