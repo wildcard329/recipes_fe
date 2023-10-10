@@ -42,7 +42,7 @@ const DeleteDialogue = ({ recipe }) => {
         : isDelReq ?
           "yes"
         :
-          <RouterLink classname={"btn-link"} label={"edit"} path={`/recipes/${recipe?.recipe_id}/edit`} state={recipe} /> 
+          <RouterLink classname={"accent-btn-link"} label={"edit"} path={`/recipes/${recipe?.recipe_id}/edit`} state={recipe} /> 
         }
       </Button>
       <Button 

@@ -54,7 +54,6 @@
 .input-row {
   display: flex;
   flex-direction: row;
-  /* border: thin solid gray; */
 }
 
 .input-error {
@@ -71,12 +70,5 @@
 
 .input-row input {
   flex-grow: 1;
-  /* border: none !important; */
   box-shadow: none;
-}
-
-.input-row button {
-  /* border-top: none !important; */
-  /* border-right: none !important; */
-  /* border-bottom: none !important; */
 }
