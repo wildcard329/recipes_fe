@@ -18,23 +18,23 @@ const RecipeViewer = () => {
           <DeleteDialogue recipe={recipe} />
         </div>
         <ImageLoader image={recipeImage ? recipeImage : imgPlaceholder} imgAlt={'recipe-image'} id="recipe-info-image" />
-        <div id="recipe-time" className="bg-whitesmoke highlight-line min-height">
+        <div id="recipe-time" className="bg-pastel-green highlight-line min-height">
           <span>Prep time: {formatMinutes(recipe?.recipe_prep_time)}</span>
           <span>Cook time: {formatMinutes(recipe?.recipe_cook_time)}</span>
           <span>Total time: {formatMinutes(recipe?.recipe_total_time)}</span>
         </div>
-        <p id="recipe-details" className="bg-whitesmoke highlight-line">{recipe?.recipe_description}</p>
+        <p id="recipe-details" className="bg-pastel-green highlight-line">{recipe?.recipe_description}</p>
       </section>
       <section id="recipe-prep">
         <a className="anchor-target" id="recipe-tools-ingredients"></a>
-        <div className="bg-whitesmoke highlight-line m-1">
+        <div className="bg-pastel-green highlight-line m-1">
           <ListDisplay title={'Tools'} data={recipe?.recipe_tools} />
         </div>
-        <div className="bg-whitesmoke highlight-line m-1">
+        <div className="bg-pastel-green highlight-line m-1">
           <ListDisplay title={'Ingredients'} data={recipe?.recipe_ingredients} />
         </div>
       </section>
-      <section id="recipe-instructions" className="bg-whitesmoke highlight-line m-1">
+      <section id="recipe-instructions" className="bg-pastel-green highlight-line m-1">
         <a className="anchor-target" id="recipe-steps"></a>       
         <ListDisplay title={'Instructions'} data={recipe?.recipe_instructions} isOrderedList />
       </section>

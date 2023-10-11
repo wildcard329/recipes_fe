@@ -10,7 +10,7 @@ import "./RecipeForm.css";
 import { FormInput } from "../form";
 
 const RecipeForm = () => {
-  const { recipe, setRecipe, isNewRecipe, asset, setAsset, user } = useContext(recipeContext);
+  const { recipe, setRecipe, isNewRecipe, asset, setAsset, user, getRecipe } = useContext(recipeContext);
   const { addAsset, addRecipe, updateRecipe } = useAmplify();
   const { navTo } = useReactRouter();
   const { accordionDrawers } = useContext(accordionContext);
@@ -50,9 +50,10 @@ const RecipeForm = () => {
     recipeInstructions: recipe?.recipe_instructions?.length > 0,
   };
 
-  const goToRecipe = () => {
-    setTimeout(() => {
-      navTo(`/recipe/${recipe?.recipe_id}`);
+  const goToRecipe = async () => {
+    await setTimeout(async () => {
+      // await getRecipe(recipe?.recipe_id);
+      navTo(`/recipe/:${recipe?.recipe_id}`);
     }, 5000);
   };
 
