@@ -3,6 +3,7 @@
   top: 6.4rem;
   background-color: white;
   width: min-content;
+  z-index: 2;
 }
 
 .sub-header button {
