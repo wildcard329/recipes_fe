@@ -62,37 +62,6 @@
   box-shadow: 2px 2px 2px black;
 }
 
-.editor-btn, 
-.recipe-submit-btn {
-  width: min-content;
-  padding: 0.5rem 1rem;
-  white-space: nowrap;
-  text-transform: capitalize;
-  border: 1px solid green;
-}
-
-.editor-btn {
-  color: black;
-}
-
-.editor-btn:hover,
-.editor-btn:focus {
-  background-color: green;
-  color: white;
-}
-
-.recipe-submit-btn {
-  background-color: green;
-  border: 1px solid green;
-  color: white;
-}
-
-.recipe-submit-btn:hover,
-.recipe-submit-btn:focus {
-  background-color: white;
-  color: green;
-}
-
 .img-btn {
   background-color: transparent;
   border: none;
