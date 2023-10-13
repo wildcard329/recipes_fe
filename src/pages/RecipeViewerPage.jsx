@@ -8,11 +8,13 @@ import { useRecipeContext } from "../state/providers/RecipeProvider";
 
 const RecipeViewerPage = () => {
   const { getRecipe, isLoading } = useRecipeContext();
-  const { locationState } = useReactRouter();
+  const { locationState, routerPath } = useReactRouter();
   const { setNavLinks } = useContext(pageNavContext);
 
   useEffect(() => {
-    getRecipe(locationState?.recipe_id);
+    const urlParts = routerPath.split('/');
+    console.log('id ', urlParts[2])
+    getRecipe(locationState?.recipe_id || urlParts[2]);
     setNavLinks(recipeViewerPageNav);
   }, []);
   return(
