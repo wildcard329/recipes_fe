@@ -52,8 +52,7 @@ const RecipeForm = () => {
 
   const goToRecipe = async () => {
     await setTimeout(async () => {
-      // await getRecipe(recipe?.recipe_id);
-      navTo(`/recipe/:${recipe?.recipe_id}`);
+      navTo(`/recipe/${recipe?.recipe_id}`);
     }, 5000);
   };
 
