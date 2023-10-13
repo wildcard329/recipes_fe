@@ -27,6 +27,7 @@ input::file-selector-button {
 }
 
 .recipe-image {
+  padding-top: 1.75rem;
   grid-area: recipe-image;
 }
 
@@ -35,6 +36,7 @@ input::file-selector-button {
 }
 
 #recipe-description {
+  padding-top: 1rem;
   grid-area: recipe-description;
 }
 
@@ -57,7 +59,7 @@ input::file-selector-button {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  padding: 1rem 0;
+  padding-top: 2rem;
 }
 
 .cta-btn {
@@ -115,12 +117,14 @@ input::file-selector-button {
     padding: 0;
   }
   .recipe-image {
+    padding-top: 0;
     position: relative;
   }
   .recipe-image input {
     margin-bottom: 0;
   }
   .recipe-description {
+    padding-top: 0;
     min-width: 500px;
   }
 }
