@@ -13,10 +13,10 @@ const RecipeViewerPage = () => {
 
   useEffect(() => {
     const urlParts = routerPath.split('/');
-    console.log('id ', urlParts[2])
     getRecipe(locationState?.recipe_id || urlParts[2]);
     setNavLinks(recipeViewerPageNav);
   }, []);
+  
   return(
     <div className="page-content recipe-page">
       {

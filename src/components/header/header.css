@@ -11,6 +11,10 @@
   border-bottom: thin solid var(--dark-slate-gray);
 }
 
+.desktop-hide {
+  margin-left: 1.5rem;
+}
+
 .header-links {
   display: flex;
   flex-direction: column;
