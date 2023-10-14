@@ -13,15 +13,15 @@ const ListDisplay = ({ title, data, isEditing=false, isOrderedList=false, editIt
     {isOrderedList && data?.length > 0 ?
       <ol className="highlight-line ordered-list">
         {data?.map((item, index) => 
-          <li className={isEditing ? "editor-item" : ""} key={`${item}-${index}`}>
+          <li className={isEditing ? "editor-item li-col" : ""} key={`${item}-${index}`}>
             <span className='item-name'>{item}</span>
             {isEditing && 
-              <div>
+              <div className='cta-row'>
                 <Button onClick={() => editItemCb(index)}>
-                  <MdOutlineEdit fill="black" size={70} />
+                  <MdOutlineEdit fill="black" size={30} />
                 </Button>
                 <Button onClick={() => deleteItemCb(index)}>
-                  <TiDeleteOutline fill="black" size={70} />
+                  <TiDeleteOutline fill="black" size={30} />
                 </Button>
               </div>
             }
@@ -33,12 +33,12 @@ const ListDisplay = ({ title, data, isEditing=false, isOrderedList=false, editIt
           <li className={isEditing ? "editor-item" : ""} key={`${item}-${index}`}>
             {item}
             {isEditing && 
-              <div>
+              <div className='cta-row'>
                 <Button onClick={() => editItemCb(index)}>
-                  <MdOutlineEdit fill="black" />
+                  <MdOutlineEdit fill="black" size={30} />
                 </Button>
                 <Button onClick={() => deleteItemCb(index)}>
-                  <TiDeleteOutline fill="black" />
+                  <TiDeleteOutline fill="black" size={30} />
                 </Button>
               </div>
             }

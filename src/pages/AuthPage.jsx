@@ -14,7 +14,7 @@ const AuthPage = () => {
 
   return(
     <div className="login-page">
-      <div className="login-container">
+      <div className="login-container bg-radial-blue">
         <h3>Login Options</h3>
         <ul className="login-options">
           <li><AppButton classname={"google-login-btn"} btnIcon={<FcGoogle />} btnLabel={"login with google"} btnCb={authenticateUser} /></li>

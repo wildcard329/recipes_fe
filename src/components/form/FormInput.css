@@ -16,10 +16,7 @@
 
 .error {
   color: #B20000;
-  position: absolute;
-  left: 7px;
   font-size: xx-small;
-  bottom: -25px;
 }
 
 .invalid {
@@ -29,5 +26,8 @@
 @media (min-width: 1024px) {
   .error {
     font-size: small;
+    position: absolute;
+    left: 7px;
+    bottom: -25px;
   }
 }
