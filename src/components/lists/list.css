@@ -1,12 +1,20 @@
+.cta-row {
+  white-space: nowrap;
+  float: right;
+}
+
 .list-input {
   display: flex;
   flex-direction: column;
-  gap: 0.65rem;
   position: relative;
 }
 
 .editor-btn {
   width: 8rem;
+}
+
+.highlight-line {
+  padding: 0 2rem;
 }
 
 .editor-item {
@@ -28,15 +36,13 @@
 }
 
 .list-editor-error {
-  position: absolute;
   color: #B20000;
   font-size: small;
-  left: 10px;
-  bottom: -25px;
 }
 
 .list-field {
   right: 0;
+  top: 0;
 }
 
 .error-container {
@@ -63,4 +69,29 @@
 .input-row input {
   flex-grow: 1;
   box-shadow: none;
+}
+
+.li-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.li-col .cta-row {
+  justify-content: space-evenly;
+}
+
+@media (min-width: 1024px) {
+  .list-input {
+    gap: 0.65rem;
+  }
+  .highlight-line {
+    padding: 1rem 2rem;
+  }
+  .list-editor-error {
+    position: absolute;
+    bottom: -25px;
+  }
+  .list-editor-error:not(.list-field) {
+    left: 10px;
+  }
 }

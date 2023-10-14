@@ -1,10 +1,13 @@
 .login-page h3 {
   padding-left: 2rem;
   height: min-content;
+  color: white;
 }
 
 .login-container {
   grid-area: login;
+  height: 75vh;
+  padding-top: 2rem;
 }
 
 .login-options {
@@ -25,6 +28,8 @@
     width: 60%;
     margin: 0 auto;
     margin-top: 2rem;
+    height: auto;
+    padding-top: 0;
   }
   .login-page {
     display: grid;

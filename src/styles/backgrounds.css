@@ -28,3 +28,7 @@
 .bg-pastel-green {
   background-image: radial-gradient(#A3EBB1, #77DD77);
 }
+
+.bg-radial-blue {
+  background-image: radial-gradient(aliceblue, steelblue);
+}

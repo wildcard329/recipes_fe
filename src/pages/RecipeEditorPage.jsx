@@ -29,7 +29,7 @@ const RecipeEditorPage = () => {
 
   useEffect(() => {
     assembleRecipeDefault();
-    setNavLinks(recipeViewerPageNav);
+    setNavLinks([]);
   }, [routerPath]);
 
   return(
