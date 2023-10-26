@@ -163,8 +163,9 @@
     width: 25%;
   }
   .recipe-page {
-    background-image: url('./assets/images/recipe-form-bg.jpg');
+    background-image: url('./assets/images/kitchen_supplies.jpeg');
     padding: 2rem 0;
+    background-size: cover;
     background-color: gray;
     background-blend-mode: multiply;
   }
