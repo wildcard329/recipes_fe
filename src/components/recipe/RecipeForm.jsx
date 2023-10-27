@@ -53,7 +53,7 @@ const RecipeForm = () => {
   const goToRecipe = async () => {
     await setTimeout(async () => {
       navTo(`/recipe/${recipe?.recipe_id}`);
-    }, 5000);
+    }, 2000);
   };
 
   const handleChange = (e) => setRecipe({ ...recipe, [e.target.name]: e.target.value });
