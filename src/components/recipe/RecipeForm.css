@@ -84,11 +84,6 @@ input::file-selector-button {
   text-transform: capitalize;
 }
 
-.recipe-form button:hover,
-.recipe-form button:focus {
-  color: black;
-}
-
 .success {
   text-transform: capitalize;
   color: darkslategray;
