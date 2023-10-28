@@ -11,7 +11,7 @@ const ListDisplay = ({ title, data, isEditing=false, isOrderedList=false, editIt
       <h3>{title}</h3>
     }
     {isOrderedList && data?.length > 0 ?
-      <ol className="highlight-line ordered-list">
+      <ol className={`ordered-list ${isEditing ? 'editor-list' : 'highlight-line'}`}>
         {data?.map((item, index) => 
           <li className={isEditing ? "editor-item li-col" : ""} key={`${item}-${index}`}>
             <span className='item-name'>{item}</span>
@@ -28,7 +28,7 @@ const ListDisplay = ({ title, data, isEditing=false, isOrderedList=false, editIt
           </li>)}
       </ol>
     : data?.length > 0 ?
-      <ul className="highlight-line unordered-list">
+      <ul className={`unordered-list ${isEditing ? 'editor-list' : 'highlight-line'}`}>
         {data?.map((item, index) => 
           <li className={isEditing ? "editor-item" : ""} key={`${item}-${index}`}>
             {item}

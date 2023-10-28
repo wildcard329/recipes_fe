@@ -1,6 +1,5 @@
 .cta-row {
   white-space: nowrap;
-  float: right;
 }
 
 .list-input {
@@ -18,12 +17,23 @@
 }
 
 .editor-item {
-  border: thin solid gray;
+  border-top: thin solid gray;
+  border-left: thin solid gray;
+  border-right: thin solid gray;
   padding: 1rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 100%;
+}
+
+.editor-list:last-child {
+  border-bottom: thin solid gray;
+  padding-bottom: 0;
+}
+
+.ordered-list button,
+.unordered-list button {
+  padding: 0;
 }
 
 .list-display {
@@ -69,6 +79,10 @@
 .input-row input {
   flex-grow: 1;
   box-shadow: none;
+}
+
+.ordered-list {
+  padding-left: 0;
 }
 
 .li-col {
