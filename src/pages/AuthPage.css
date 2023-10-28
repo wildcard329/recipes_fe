@@ -1,21 +1,23 @@
 .login-page h3 {
-  padding-left: 2rem;
   height: min-content;
-  color: white;
 }
 
 .login-container {
   grid-area: login;
   height: 75vh;
   padding-top: 2rem;
+  margin: 0 auto;
+  width: 50%;
+}
+
+.login-container button {
+  white-space: nowrap;
 }
 
 .login-options {
   list-style: none;
   padding: 0;
   display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .page-filler {
@@ -24,9 +26,7 @@
 
 @media (min-width: 1024px) {
   .login-container {
-    background-color: whitesmoke;
-    width: 60%;
-    margin: 0 auto;
+    width: 30%;
     margin-top: 2rem;
     height: auto;
     padding-top: 0;

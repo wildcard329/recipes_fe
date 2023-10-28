@@ -12,6 +12,7 @@ const FormInput = ({ value, validCondition, validationMessage, inputName, placeH
   const isErrorThrown = showError && !validCondition;
 
   const handleValidate = () => {
+    console.log(validCondition, hasError);
     if (!validCondition) {
       inputRef.current.classList.add('invalid');
       setHasError();
@@ -30,8 +31,12 @@ const FormInput = ({ value, validCondition, validationMessage, inputName, placeH
       :
         <input style={hasError || isErrorThrown ? { borderColor: "#B20000"} : { borderColor: "gray" }} ref={inputRef} value={value} name={inputName} placeholder={placeHolder} type={inputType} onChange={handleChangeCb} onBlur={handleValidate} className={isErrorThrown ? "invalid" : ""} />
       }
-      {hasError || isErrorThrown && 
+        {/* <span className="error">{validationMessage}</span> */}
+
+      {hasError || isErrorThrown ? 
         <span className="error">{validationMessage}</span>
+      :
+        null
       }
     </div>
   )

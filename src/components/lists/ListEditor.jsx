@@ -67,14 +67,14 @@ const ListEditor = ({ list, listTitle, isOrderedList=false, isLongInput=false, e
         <>
           <textarea ref={inputRef} style={hasError || showFieldValidationMessage && !fieldValidation ? { borderColor: "#B20000", backgroundColor: "#ffcccb" } : { borderColor: "gray" }} name="item" value={item} onChange={(e) => setItem(e.target.value)} placeholder="add item" />
           <Button variant="outlined" className="editor-btn" onClick={handleAddItem}>
-            add item
+            {isEditing ? 'update' : 'add'} item
           </Button>
         </>
       :
         <div className="input-row">
           <input ref={inputRef} style={hasError || showFieldValidationMessage && !fieldValidation ? { borderColor: "#B20000" } : { borderColor: "gray" }} name="item" value={item} onChange={(e) => setItem(e.target.value)} placeholder="add item" />
           <Button variant="outlined" className="editor-btn" onClick={handleAddItem}>
-            add item
+            {isEditing ? 'update' : 'add'} item
           </Button>
         </div>} 
         {hasError || showFieldValidationMessage && !fieldValidation && <span className="list-editor-error list-item">{itemValidationMessage}</span>
