@@ -43,6 +43,13 @@ const ListEditor = ({ list, listTitle, isOrderedList=false, isLongInput=false, e
     inputRef.current.classList.remove('invalid');
   };
 
+  const handleBlur = () => {
+    // console.log('blur flag ', fieldValidation);
+    if (!fieldValidation) {
+      handleError();
+    }
+  };
+
   const handleAddItem = async () => {
     const isValidEntry = itemValidation(item);
     if (isEditing && isValidEntry) {
@@ -62,22 +69,22 @@ const ListEditor = ({ list, listTitle, isOrderedList=false, isLongInput=false, e
   return(
     <div className="list-input">
       <ListDisplay title={listTitle} data={list} isEditing isOrderedList={isOrderedList} editItemCb={handleEditItem} deleteItemCb={handleDeleteItem} />
-      {showFieldValidationMessage && !fieldValidation && <span className="list-editor-error list-field">{fieldValidationMessage}</span>}
       {isLongInput ?
         <>
-          <textarea ref={inputRef} style={hasError || showFieldValidationMessage && !fieldValidation ? { borderColor: "#B20000", backgroundColor: "#ffcccb" } : { borderColor: "gray" }} name="item" value={item} onChange={(e) => setItem(e.target.value)} placeholder="add item" />
+          <textarea ref={inputRef} style={hasError || showFieldValidationMessage && !fieldValidation ? { borderColor: "#B20000", backgroundColor: "#ffcccb" } : { borderColor: "gray" }} name="item" value={item} onChange={(e) => setItem(e.target.value)} placeholder="add item" onBlur={handleBlur} />
           <Button variant="outlined" className="editor-btn" onClick={handleAddItem}>
             {isEditing ? 'update' : 'add'} item
           </Button>
         </>
       :
         <div className="input-row">
-          <input ref={inputRef} style={hasError || showFieldValidationMessage && !fieldValidation ? { borderColor: "#B20000" } : { borderColor: "gray" }} name="item" value={item} onChange={(e) => setItem(e.target.value)} placeholder="add item" />
+          <input ref={inputRef} style={hasError || showFieldValidationMessage && !fieldValidation ? { borderColor: "#B20000", backgroundColor: "#ffcccb" } : { borderColor: "gray" }} name="item" value={item} onChange={(e) => setItem(e.target.value)} placeholder="add item" onBlur={handleBlur} />
           <Button variant="outlined" className="editor-btn" onClick={handleAddItem}>
             {isEditing ? 'update' : 'add'} item
           </Button>
         </div>} 
-        {hasError || showFieldValidationMessage && !fieldValidation && <span className="list-editor-error list-item">{itemValidationMessage}</span>
+        {hasError || showFieldValidationMessage && !fieldValidation ? <span className="list-editor-error">{fieldValidationMessage}</span> : null}
+        {hasError || showFieldValidationMessage && !fieldValidation ? <span className="list-editor-error">{itemValidationMessage}</span> : null
       }
     </div>
   )

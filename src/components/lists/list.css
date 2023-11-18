@@ -102,10 +102,6 @@
     padding: 1rem 2rem;
   }
   .list-editor-error {
-    position: absolute;
-    bottom: -25px;
-  }
-  .list-editor-error:not(.list-field) {
-    left: 10px;
+    margin-left: 10px;
   }
 }
