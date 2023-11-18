@@ -225,7 +225,7 @@ const RecipeForm = () => {
               listTitle={"ingredients"} 
               editorCb={handleIngredients}
               itemValidation={validateListItem}
-              fieldValidation={recipe?.recipe_ingredients?.length > 1}
+              fieldValidation={recipe?.recipe_ingredients?.length > 0}
               itemValidationMessage={"*Please add an ingredient that contains two or more characters."}
               fieldValidationMessage={'*Please add at least one ingredient'}
               showFieldValidationMessage={hasFailedAttempt} 
