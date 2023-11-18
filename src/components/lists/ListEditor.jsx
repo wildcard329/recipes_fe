@@ -37,17 +37,22 @@ const ListEditor = ({ list, listTitle, isOrderedList=false, isLongInput=false, e
     inputRef.current.classList.add('invalid');
   };
 
-  const handleSuccess = () => {
-    setItem('');
+  const handleRemoveError = () => {
     setNotHasError();
     inputRef.current.classList.remove('invalid');
   };
 
+  const handleSuccess = () => {
+    setItem('');
+    handleRemoveError();
+  };
+
   const handleBlur = () => {
-    // console.log('blur flag ', fieldValidation);
     if (!fieldValidation) {
       handleError();
-    }
+    } else {
+      handleRemoveError();
+    };
   };
 
   const handleAddItem = async () => {
@@ -83,7 +88,7 @@ const ListEditor = ({ list, listTitle, isOrderedList=false, isLongInput=false, e
             {isEditing ? 'update' : 'add'} item
           </Button>
         </div>} 
-        {hasError || showFieldValidationMessage && !fieldValidation ? <span className="list-editor-error">{fieldValidationMessage}</span> : null}
+        {hasError && !fieldValidation || showFieldValidationMessage && !fieldValidation ? <span className="list-editor-error">{fieldValidationMessage}</span> : null}
         {hasError || showFieldValidationMessage && !fieldValidation ? <span className="list-editor-error">{itemValidationMessage}</span> : null
       }
     </div>
