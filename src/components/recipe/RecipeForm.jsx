@@ -45,6 +45,7 @@ const RecipeForm = () => {
     recipePrepTime: Number.isInteger(recipe?.recipe_prep_time),
     recipeCookTime: Number.isInteger(recipe?.recipe_cook_time),
     recipeTotalTime: Number.isInteger(recipe?.recipe_total_time),
+    recipeImageKey: recipe?.recipe_image_key?.length > 0,
     recipeCategories: recipe?.recipe_categories?.length > 0,
     recipeIngredients: recipe?.recipe_ingredients?.length > 0,
     recipeInstructions: recipe?.recipe_instructions?.length > 0,
@@ -71,6 +72,14 @@ const RecipeForm = () => {
     } else {
       setRecipe({ ...recipe, recipe_image_key: null })
       setHasImageError();
+    };
+  };
+
+  const handleImgBlur = () => {
+    if (!validFields.recipeImageKey) {
+      setHasImageError();
+    } else {
+      setHasNotImageError();
     };
   };
 
@@ -167,7 +176,7 @@ const RecipeForm = () => {
           <div className="form-input recipe-image">
             <label>recipe image</label>
             <img src={asset ? asset : recipe?.recipe_image ? recipe?.recipe_image : imgUplPlchldr} alt="recipe-image" className="recipe-image-asset" />
-            <input name='recipe_image' onChange={handleImgUpld} type="file" accept="image/*" className="file-upload" />
+            <input name='recipe_image' onFocus={null} onBlur={handleImgBlur} onChange={handleImgUpld} type="file" accept="image/*" className={`file-upload ${hasImageError && 'invalid'}`} style={ hasImageError ? { borderColor: "#B20000" } : { borderColor: "gray" }} />
             {hasImageError && <span className="error">*Please select a valid image</span>}
           </div>
           <FormInput 

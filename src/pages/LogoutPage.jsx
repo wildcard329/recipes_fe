@@ -10,7 +10,7 @@ const LogoutPage = () => {
   const { clearLocalStorage } = useLocalStorage();
   const { logoutUser } = useContext(userContext);
   const { navTo } = useReactRouter();
-  const [counter, setCounter] = useState(5);
+  const [counter, setCounter] = useState(3);
 
   useEffect(() => {
     const timer =
