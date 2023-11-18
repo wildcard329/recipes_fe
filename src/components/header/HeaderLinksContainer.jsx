@@ -58,7 +58,7 @@ const HeaderLinksContainer = ({ isShowingLinks }) => {
       const profileLinkConfig = {
         path: `/user/${user?.username}/profile`,
         classname: "header-link sub-link",
-        label: "profile",
+        label: "my account",
       };
       const pantryLinkConfig = {
         path: `/ingredients/${user?.username}`,
@@ -114,7 +114,7 @@ const HeaderLinksContainer = ({ isShowingLinks }) => {
           <li><HeaderLinkTrigger path={"/login"} classname={"header-link"} label={"log in"} /></li>
         :
           <>
-            <li><HeaderLinkTrigger path={`/user/${user?.username}/profile`} classname={"header-link"} label={"profile"} linkConfigs={authUserLinksConfig} /></li>
+            <li><HeaderLinkTrigger path={`/user/${user?.username}/profile`} classname={"header-link"} label={"my account"} linkConfigs={authUserLinksConfig} /></li>
             <li className="desktop-hide"><Divider /></li>
             <li className="desktop-hide"><HeaderLinkTrigger path={"/logout"} classname={"header-link"} label={"log out"} /></li>
           </>}
